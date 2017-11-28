@@ -70,7 +70,7 @@ class CoupleAlbumImageCreateViewController: UIViewController,UITextFieldDelegate
         }
         
         // 画像をリサイズしてUIImageViewにセット
-        let resizeImages = resizeImage(image: albumImage.image!, width: 480)
+        let resizeImages = resizeImage(image: albumImage.image!, width: 375)
         let image: Data = UIImagePNGRepresentation(resizeImages)!
         SVProgressHUD.show()
         

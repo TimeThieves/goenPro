@@ -21,6 +21,7 @@ class CoupleAlbumDetailCollectionViewCell: UICollectionViewCell {
             let url = URL(string: stringUrl!)
             self.image.image = UIImage(data: try! Data(contentsOf: url!))
             image_name.text = album_image.image_name!
+            image_name.sizeToFit()
         }
     }
 }

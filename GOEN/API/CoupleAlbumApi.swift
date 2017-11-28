@@ -61,29 +61,39 @@ class CoupleAlbumApi {
                     let json = SwiftyJSON.JSON(data: response.data!)
                     print(json)
                     
-//                    for (_, item) in json {
-//                        var album = CoupleAlbum()
-//
-//                        album.albumTitle = item["album"]["title"].string!
-//                        let longDate = item["album"]["created_at"].string!
-//                        var sortDate = longDate.substring(to: longDate.index(longDate.startIndex,offsetBy: 10))
-//                        var spaCut = sortDate.split(separator: "-")
-//                        album.created_at = spaCut[0] + "年" + spaCut[1] + "月" + spaCut[2] + "日"
-//                        album.imageNum = item["album"]["album_image_count"].int
-//
-//                        if item["album"]["album_image_count"].int == 0 {
-//                            self.noImageFlg = true
-//                        }else {
-//
-//                            self.noImageFlg = false
-//
-//                        }
-//                        album.id = item["album"]["id"].int
-//
-//
-//                        self.album_list.append(album)
-//
-//                    }
+                    for (_, item) in json {
+                        var album = CoupleAlbum()
+                        
+                        album.albumTitle = item["album"]["title"].string!
+                        let longDate = item["album"]["created_at"].string!
+                        var sortDate = longDate.substring(to: longDate.index(longDate.startIndex,offsetBy: 10))
+                        var spaCut = sortDate.split(separator: "-")
+                        album.created_at = spaCut[0] + "年" + spaCut[1] + "月" + spaCut[2] + "日"
+                        album.imageNum = item["album"]["album_image_count"].int
+                        
+                        if item["album"]["album_image_count"].int == 0 {
+                            self.noImageFlg = true
+                        }else {
+                            
+                            self.noImageFlg = false
+                            
+                        }
+                        album.id = item["album"]["id"].int!
+                        var list: Array<AlbumImages> = []
+                        for(_,item2) in item["album"]["album_image_list"] {
+                            var image = AlbumImages()
+                            
+                            image.public_id = item2["public_id"].string!
+                            image.id = item2["id"].int!
+                            image.image_name = item2["image_name"].string!
+                            list.append(image)
+                            
+                        }
+                        album.image_list = list
+                        print(album.image_list!)
+                        self.album_list.append(album)
+                        
+                    }
                     
                 }
                 
@@ -238,6 +248,57 @@ class CoupleAlbumApi {
 //        cloudinary.config().setValue("915434123912862", forKey: "api_key")
 //        cloudinary.config().setValue("OY0l20vcuWILROpwGbNHG5hdcpI", forKey: "api_secret")
     
+    }
+    
+    func deleteImage(image_id: Int, album_id: Int) {
+        
+        print("API START")
+        self.error_flg = false
+        NotificationCenter.default.post(name: .coupleAlbumApiLoadStart, object: nil)
+        let userdefault = UserDefaults.standard
+        let authPostUrl = URL(string: apiHost + "album/"+String(album_id)+"/image/" + String(image_id) + "/del_album_image")!
+        let header: HTTPHeaders = [
+            "access-token": userdefault.string(forKey: "access_token")!,
+            "uid": userdefault.string(forKey: "uid")!,
+            "client": userdefault.string(forKey: "client")!
+        ]
+        Alamofire.request(authPostUrl,
+                          method: .post,
+                          parameters: nil,
+                          encoding: JSONEncoding.default,
+                          headers: header).responseJSON
+            {
+                response in
+                print("API START")
+                if response.response?.statusCode != 200 {
+                    
+                    self.error_flg = true
+                    
+                }else {
+                    let json = SwiftyJSON.JSON(data: response.data!)
+                    print(json)
+                    
+                    var album = CoupleAlbum()
+                    var list: Array<AlbumImages> = []
+                    
+                    for(_,item) in json {
+                        var image = AlbumImages()
+                        
+                        image.public_id = item["public_id"].string!
+                        image.id = item["id"].int!
+                        image.image_name = item["image_name"].string!
+                        list.append(image)
+                        
+                    }
+                    album.image_list = list
+                    print(album.image_list!)
+                    self.album_list.append(album)
+                }
+                
+                
+                NotificationCenter.default.post(name: .coupleAlbumApiLoadComplate, object: nil)
+        }
+        
     }
 }
 

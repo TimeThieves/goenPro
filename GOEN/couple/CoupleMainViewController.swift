@@ -18,12 +18,12 @@ class CoupleMainViewController: UIViewController {
     @IBOutlet var coupleMainView: UIView!
     
     var couple_id: Int = 0
+    let coupleApi = CoupleApi()
     
     var loadObserver: NSObjectProtocol?
     
     override func viewDidAppear(_ animated: Bool) {
         SVProgressHUD.show()
-        let coupleApi = CoupleApi()
         self.coupleMainView.isUserInteractionEnabled = false
         loadObserver = NotificationCenter.default.addObserver(
             forName: .coupleApiLoadComplate,
@@ -50,14 +50,14 @@ class CoupleMainViewController: UIViewController {
                         }
                     }
                 }
-                print(coupleApi.couple)
+                print(self.coupleApi.couple)
 //                print(coupleApi.coupleInfo[0].couple_image!)
-                let url = URL(string: coupleApi.couple.couple_image!)
+                let url = URL(string: self.coupleApi.couple.couple_image!)
                 self.coupleImage.image = UIImage(data: try! Data(contentsOf: url!))
-                self.sendUserName.text = coupleApi.couple.send_user.name
-                self.receiveUserName.text = coupleApi.couple.receive_user.name
+                self.sendUserName.text = self.coupleApi.couple.send_user.name
+                self.receiveUserName.text = self.coupleApi.couple.receive_user.name
                 self.coupleMainView.isUserInteractionEnabled = true
-                self.couple_id = coupleApi.couple.id
+                self.couple_id = self.coupleApi.couple.id
                 
                 SVProgressHUD.dismiss()
                 NotificationCenter.default.removeObserver(self)
@@ -86,6 +86,17 @@ class CoupleMainViewController: UIViewController {
             print("prepare")
             let coupleAlbumView: CoupleAlbumViewController = (segue.destination as? CoupleAlbumViewController)!
             coupleAlbumView.couple_id = self.couple_id
+            
+        } else if segue.identifier == "editCouple" {
+            let coupleEditView: CoupleEditViewController = (segue.destination as? CoupleEditViewController)!
+            coupleEditView.couple_id = self.couple_id
+            coupleEditView.work_couple_image = self.coupleImage.image!
+            coupleEditView.work_marred_date = self.coupleApi.couple.bride_date!
+            if !(self.coupleApi.couple.couple_name?.isEmpty)! {
+                coupleEditView.work_couple_name = self.coupleApi.couple.couple_name!
+                
+            }
+            coupleEditView.work_couple_address = self.coupleApi.couple.couple_house_zip!
             
         }
     }

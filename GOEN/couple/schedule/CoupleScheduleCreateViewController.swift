@@ -277,7 +277,7 @@ class CoupleScheduleCreateViewController: UIViewController,UITextFieldDelegate,U
     
     //キーボードが開くときの呼び出しメソッド
     @objc func keyboardWillBeShown(notification:NSNotification) {
-        
+        print("test6666666666666666666")
         //キーボードのフレームを取得する。
         if let keyboardFrame = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as AnyObject).cgRectValue {
             

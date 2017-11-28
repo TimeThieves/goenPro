@@ -13,6 +13,7 @@ class CoupleAlbumTableViewCell: UITableViewCell {
     @IBOutlet weak var albumTitle: UILabel!
     @IBOutlet weak var albumCreateDate: UILabel!
     @IBOutlet weak var albumImageNum: UILabel!
+    
     var titleName: String = ""
     var coupleAlbum: CoupleAlbum = CoupleAlbum() {
         didSet{

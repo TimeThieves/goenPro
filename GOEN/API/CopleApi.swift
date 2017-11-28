@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Cloudinary
 import Alamofire
 import SwiftyJSON
 import UIKit
@@ -22,6 +23,7 @@ class CoupleApi {
     public var coupleInfo = [Couple]()
     public var user = [UserInfo]()
     public var couple = Couple()
+    public var public_id: String = ""
     func getCouple () {
         NotificationCenter.default.post(name: .coupleApiLoadStart, object: nil)
         let userDefault = UserDefaults.standard
@@ -57,11 +59,82 @@ class CoupleApi {
                     self.couple.send_user.name = json["send_user"][0]["first_name"].string! + " " + json["send_user"][0]["last_name"].string!
                     self.couple.receive_user.name = json["receive_user"][0]["first_name"].string! + " " + json["receive_user"][0]["last_name"].string!
                     
+                    self.couple.couple_name = json["couple_name"].string!
+                    
                 }
                 
                 
                 NotificationCenter.default.post(name: .coupleApiLoadComplate, object: nil)
         }
+    }
+    func updateCouple (couple_id: Int, bride_date: String, couple_house_zip: String,couple_name: String,public_id: String) {
+        NotificationCenter.default.post(name: .coupleApiLoadStart, object: nil)
+        let userDefault = UserDefaults.standard
+        
+        let postUrl = URL(string: apiHost + "couples/" + String(couple_id) + "/couple_info_update")!
+        let headers: HTTPHeaders = [
+            "Content-Type":"Application/json",
+            "access-token": userDefault.string(forKey: "access_token")!,
+            "uid": userDefault.string(forKey: "uid")!,
+            "client": userDefault.string(forKey: "client")!
+        ]
+        
+        let params = [
+            "bride_date": bride_date,
+            "couple_house_zip": couple_house_zip,
+            "couple_name": couple_name,
+            "public_id": public_id
+        ]
+        Alamofire.request(postUrl,
+                          method: .get,
+                          parameters: params,
+                          encoding: JSONEncoding.default,
+                          headers: headers).responseJSON
+            {
+                response in
+                
+                let json = SwiftyJSON.JSON(data: response.data!)
+                
+                if response.response!.statusCode == 403 {
+                    print("couple error")
+                    self.error_code = "403"
+                }else if response.response!.statusCode == 200 {
+                    print(json["send_user"][0]["first_name"].string! + " " + json["send_user"][0]["last_name"].string!)
+                    //                    let couple = Couple(id: json["id"].int!, couple_house_zip: json["couple_house_zip"].string!, couple_name: json["couple_name"].string!, couple_image: json["couple_image"].string!, bride_date: json["bride_date"].string!)
+                    
+                    self.couple.id = json["id"].int!
+                    self.couple.couple_image = json["couple_image"].string!
+                    self.couple.couple_house_zip =  json["couple_house_zip"].string!
+                    self.couple.bride_date = json["bride_date"].string!
+                    self.couple.send_user.name = json["send_user"][0]["first_name"].string! + " " + json["send_user"][0]["last_name"].string!
+                    self.couple.receive_user.name = json["receive_user"][0]["first_name"].string! + " " + json["receive_user"][0]["last_name"].string!
+                    
+                    self.couple.couple_name = json["couple_name"].string!
+                    
+                }
+                
+                
+                NotificationCenter.default.post(name: .coupleApiLoadComplate, object: nil)
+        }
+    }
+    
+    
+    func uploadImage(image: Data) {
+        let config = CLDConfiguration(cloudName: "hhblskk6i",apiKey: "915434123912862",apiSecret: "OY0l20vcuWILROpwGbNHG5hdcpI")
+        let cloudinary = CLDCloudinary(configuration: config)
+        let uploader = cloudinary.createUploader()
+        print(image)
+        NotificationCenter.default.post(name: .upimageStart, object: nil)
+        
+        uploader.signedUpload(data: image, params: nil, progress: nil, completionHandler: {
+            (response, error) in
+            print(error)
+            print(response?.resultJson["public_id"]! as! String)
+            self.public_id = response?.resultJson["public_id"]! as! String
+            NotificationCenter.default.post(name: .upimageComplate, object: nil)
+            // Handle respone
+        })
+        
     }
 }
 
