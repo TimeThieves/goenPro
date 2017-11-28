@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import SVProgressHUD
 
-class CoupleEditViewController: UIViewController,UITextFieldDelegate,UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+
+class CoupleEditViewController: UIViewController,UITextFieldDelegate,UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -33,11 +35,17 @@ class CoupleEditViewController: UIViewController,UITextFieldDelegate,UITextViewD
     var target:UIView! //タップされた部品
     var moveY:CGFloat = 0 //移動距離
     let notification = NotificationCenter.default
+    var loadObserver: NSObjectProtocol?
+    var uploadObserver: NSObjectProtocol?
+    
+    let coupleApi: CoupleApi = CoupleApi()
     
     var couple_id: Int = 0
+    let ipc = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ipc.delegate = self
         
         self.couple_name.delegate = self
         self.couple_name.delegate = self
@@ -143,9 +151,159 @@ class CoupleEditViewController: UIViewController,UITextFieldDelegate,UITextViewD
     }
     
     @IBAction func coupleImagePushButton(_ sender: Any) {
+        let alertView = UIAlertController(title: "写真の追加",
+                                          message: "撮影した写真、またはアルバムから追加する。",
+                                          preferredStyle: .alert)
+        let action1 = UIAlertAction(title: "写真を撮る", style: UIAlertActionStyle.default, handler: {
+            (action: UIAlertAction!) in
+            
+            self.ipc.sourceType = .camera
+            
+            self.present(self.ipc, animated: true,completion: nil)
+            
+        })
+        let action2 = UIAlertAction(title: "アルバムから追加", style: UIAlertActionStyle.default, handler: {
+            (action: UIAlertAction!) in
+            
+            self.ipc.sourceType = .photoLibrary
+            
+            self.present(self.ipc, animated: true,completion: nil)
+            
+        })
+        let action3 = UIAlertAction(title: "閉じる", style: UIAlertActionStyle.default, handler: {
+            (action: UIAlertAction!) in
+            
+        })
+        alertView.addAction(action1)
+        alertView.addAction(action2)
+        alertView.addAction(action3)
+        self.present(alertView, animated: true,completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        print("couple info image selected")
+        // 選択された画像
+        let selectImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+        print(selectImage!)
+        self.couple_image.image = selectImage!
+        self.dismiss(animated: true, completion: nil )
+    }
+    // MARK: - UIImagePickerDelegate
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        ipc.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func coupleEditUpdate(_ sender: Any) {
+        if couple_image.image == work_couple_image &&
+        couple_name.text == work_couple_name &&
+        couple_address.text == work_couple_address &&
+            couple_marred_date.text == work_marred_date {
+            let alertView = UIAlertController(title: "未編集",
+                                              message: "変更されている項目がありません。",
+                                              preferredStyle: .alert)
+            let action1 = UIAlertAction(title: "閉じる", style: UIAlertActionStyle.default, handler: {
+                (action: UIAlertAction!) in
+                
+            })
+            
+            alertView.addAction(action1)
+            self.present(alertView, animated: true,completion: nil)
+            return
+        }
+        if couple_image.image == nil ||
+            (couple_name.text?.isEmpty)! ||
+            (couple_marred_date.text?.isEmpty)! {
+            let alertView = UIAlertController(title: "未入力",
+                                              message: "未入力の項目があります。",
+                                              preferredStyle: .alert)
+            let action1 = UIAlertAction(title: "閉じる", style: UIAlertActionStyle.default, handler: {
+                (action: UIAlertAction!) in
+                
+            })
+            
+            alertView.addAction(action1)
+            self.present(alertView, animated: true,completion: nil)
+            return
+        }
+        
+        let resizeImages = resizeImage(image: couple_image.image!, width: 375)
+        let image: Data = UIImagePNGRepresentation(resizeImages)!
+        
+        self.uploadObserver = NotificationCenter.default.addObserver(
+            forName: .upimageComplate,
+            object: nil,
+            queue: nil,
+            using: {
+                (notification) in
+                
+                self.loadObserver = NotificationCenter.default.addObserver(
+                    forName: .coupleAlbumApiLoadComplate,
+                    object: nil,
+                    queue: nil,
+                    using: {
+                        (notification) in
+                        SVProgressHUD.dismiss()
+                        print("API Load Complate!")
+                        
+                        if notification.userInfo != nil {
+                            if let userinfo = notification.userInfo as? [String: String?] {
+                                if userinfo["error"] != nil {
+                                    let alertView = UIAlertController(title: "通信エラー",
+                                                                      message: "通信エラーが発生しました。",
+                                                                      preferredStyle: .alert)
+                                    
+                                    alertView.addAction(
+                                        UIAlertAction(title: "閉じる",
+                                                      style: .default){
+                                                        action in return
+                                        }
+                                    )
+                                    self.present(alertView, animated: true,completion: nil)
+                                }
+                            }
+                        }
+                        
+                        if self.coupleApi.error_flg {
+                            let alert = UIAlertController(title:"データ不正", message: "データが不正です。もう一度入力してください", preferredStyle: UIAlertControllerStyle.alert)
+                            let action1 = UIAlertAction(title: "閉じる", style: UIAlertActionStyle.default, handler: {
+                                (action: UIAlertAction!) in
+                                
+                            })
+                            alert.addAction(action1)
+                            
+                            self.present(alert, animated: true, completion: nil)
+                            
+                            
+                        }else {
+                            
+                            self.dismiss(animated: true, completion: nil)
+                        }
+                        NotificationCenter.default.removeObserver(self.loadObserver!)
+                })
+                
+                self.coupleApi.updateCouple(
+                    couple_id: self.couple_id,
+                    bride_date: self.couple_marred_date.text!,
+                    couple_house_zip: self.couple_address.text!,
+                    couple_name: self.couple_name.text!,
+                    public_id: self.coupleApi.public_id)
+                
+        }
+        )
+        
+        coupleApi.uploadImage(image: image)
+        
+    }
+    
+    
+    func resizeImage(image: UIImage, width: CGFloat) -> UIImage {
+        let ratioSize = image.size.height / image.size.width
+        UIGraphicsBeginImageContext(CGSize(width: width, height: width * ratioSize))
+        image.draw(in: CGRect(x: 0, y: 0,width: width, height: width * ratioSize))
+        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return resizedImage!
     }
 
 }

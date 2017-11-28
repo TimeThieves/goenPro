@@ -24,6 +24,9 @@ class CoupleApi {
     public var user = [UserInfo]()
     public var couple = Couple()
     public var public_id: String = ""
+    
+    var error_flg:Bool = false
+    
     func getCouple () {
         NotificationCenter.default.post(name: .coupleApiLoadStart, object: nil)
         let userDefault = UserDefaults.standard
@@ -111,6 +114,8 @@ class CoupleApi {
                     
                     self.couple.couple_name = json["couple_name"].string!
                     
+                }else {
+                    self.error_flg = true
                 }
                 
                 
