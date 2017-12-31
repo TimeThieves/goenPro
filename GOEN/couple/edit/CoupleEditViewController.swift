@@ -28,6 +28,7 @@ class CoupleEditViewController: UIViewController,UITextFieldDelegate,UITextViewD
     var work_couple_name: String = ""
     var work_couple_address: String = ""
     var work_marred_date: String = ""
+    var image_url: String = ""
     
     @IBOutlet weak var editCoupleInfoScrollView: UIScrollView!
     let datePicker = UIDatePicker()
@@ -46,7 +47,7 @@ class CoupleEditViewController: UIViewController,UITextFieldDelegate,UITextViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         ipc.delegate = self
-        
+        print("testestestet e     :  "+self.coupleApi.public_id)
         self.couple_name.delegate = self
         self.couple_name.delegate = self
         self.couple_address.delegate = self
@@ -180,7 +181,7 @@ class CoupleEditViewController: UIViewController,UITextFieldDelegate,UITextViewD
         self.present(alertView, animated: true,completion: nil)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         print("couple info image selected")
         // 選択された画像
         let selectImage = info[UIImagePickerControllerOriginalImage] as? UIImage
@@ -229,70 +230,140 @@ class CoupleEditViewController: UIViewController,UITextFieldDelegate,UITextViewD
         let resizeImages = resizeImage(image: couple_image.image!, width: 375)
         let image: Data = UIImagePNGRepresentation(resizeImages)!
         
-        self.uploadObserver = NotificationCenter.default.addObserver(
-            forName: .upimageComplate,
-            object: nil,
-            queue: nil,
-            using: {
-                (notification) in
-                
-                self.loadObserver = NotificationCenter.default.addObserver(
-                    forName: .coupleAlbumApiLoadComplate,
-                    object: nil,
-                    queue: nil,
-                    using: {
-                        (notification) in
-                        SVProgressHUD.dismiss()
-                        print("API Load Complate!")
-                        
-                        if notification.userInfo != nil {
-                            if let userinfo = notification.userInfo as? [String: String?] {
-                                if userinfo["error"] != nil {
-                                    let alertView = UIAlertController(title: "通信エラー",
-                                                                      message: "通信エラーが発生しました。",
-                                                                      preferredStyle: .alert)
-                                    
-                                    alertView.addAction(
-                                        UIAlertAction(title: "閉じる",
-                                                      style: .default){
-                                                        action in return
-                                        }
-                                    )
-                                    self.present(alertView, animated: true,completion: nil)
-                                }
+        SVProgressHUD.show()
+        if couple_image.image == work_couple_image {
+            print("couple edit start1")
+            self.loadObserver = NotificationCenter.default.addObserver(
+                forName: .coupleApiLoadComplate,
+                object: nil,
+                queue: nil,
+                using: {
+                    (notification) in
+                    SVProgressHUD.dismiss()
+                    print("API Load Complate!")
+                    
+                    if notification.userInfo != nil {
+                        if let userinfo = notification.userInfo as? [String: String?] {
+                            if userinfo["error"] != nil {
+                                let alertView = UIAlertController(title: "通信エラー",
+                                                                  message: "通信エラーが発生しました。",
+                                                                  preferredStyle: .alert)
+                                
+                                alertView.addAction(
+                                    UIAlertAction(title: "閉じる",
+                                                  style: .default){
+                                                    action in return
+                                    }
+                                )
+                                self.present(alertView, animated: true,completion: nil)
                             }
                         }
+                    }
+                    
+                    if self.coupleApi.error_flg {
+                        let alert = UIAlertController(title:"データ不正", message: "データが不正です。もう一度入力してください", preferredStyle: UIAlertControllerStyle.alert)
+                        let action1 = UIAlertAction(title: "閉じる", style: UIAlertActionStyle.default, handler: {
+                            (action: UIAlertAction!) in
+                            
+                        })
+                        alert.addAction(action1)
                         
-                        if self.coupleApi.error_flg {
-                            let alert = UIAlertController(title:"データ不正", message: "データが不正です。もう一度入力してください", preferredStyle: UIAlertControllerStyle.alert)
-                            let action1 = UIAlertAction(title: "閉じる", style: UIAlertActionStyle.default, handler: {
-                                (action: UIAlertAction!) in
+                        self.present(alert, animated: true, completion: nil)
+                        
+                        
+                    }else {
+                        
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                    NotificationCenter.default.removeObserver(self.loadObserver!)
+            })
+            
+            self.coupleApi.updateCouple(
+                couple_id: self.couple_id,
+                bride_date: self.couple_marred_date.text!,
+                couple_house_zip: self.couple_address.text!,
+                couple_name: self.couple_name.text!,
+                public_id: self.image_url)
+            
+        }else {
+            
+            print("couple edit start2")
+            self.uploadObserver = NotificationCenter.default.addObserver(
+                forName: .upimageComplate,
+                object: nil,
+                queue: nil,
+                using: {
+                    (notification) in
+                    
+                    self.loadObserver = NotificationCenter.default.addObserver(
+                        forName: .coupleApiLoadComplate,
+                        object: nil,
+                        queue: nil,
+                        using: {
+                            (notification) in
+                            SVProgressHUD.dismiss()
+                            print("API Load Complate!")
+                            
+                            if notification.userInfo != nil {
+                                if let userinfo = notification.userInfo as? [String: String?] {
+                                    if userinfo["error"] != nil {
+                                        let alertView = UIAlertController(title: "通信エラー",
+                                                                          message: "通信エラーが発生しました。",
+                                                                          preferredStyle: .alert)
+                                        
+                                        alertView.addAction(
+                                            UIAlertAction(title: "閉じる",
+                                                          style: .default){
+                                                            action in return
+                                            }
+                                        )
+                                        self.present(alertView, animated: true,completion: nil)
+                                    }
+                                }
+                            }
+                            
+                            if self.coupleApi.error_flg {
+                                let alert = UIAlertController(title:"データ不正", message: "データが不正です。もう一度入力してください", preferredStyle: UIAlertControllerStyle.alert)
+                                let action1 = UIAlertAction(title: "閉じる", style: UIAlertActionStyle.default, handler: {
+                                    (action: UIAlertAction!) in
+                                    
+                                })
+                                alert.addAction(action1)
                                 
-                            })
-                            alert.addAction(action1)
-                            
-                            self.present(alert, animated: true, completion: nil)
-                            
-                            
-                        }else {
-                            
-                            self.dismiss(animated: true, completion: nil)
-                        }
-                        NotificationCenter.default.removeObserver(self.loadObserver!)
-                })
-                
-                self.coupleApi.updateCouple(
-                    couple_id: self.couple_id,
-                    bride_date: self.couple_marred_date.text!,
-                    couple_house_zip: self.couple_address.text!,
-                    couple_name: self.couple_name.text!,
-                    public_id: self.coupleApi.public_id)
-                
+                                self.present(alert, animated: true, completion: nil)
+                                
+                                
+                            }else {
+                                
+                                self.dismiss(animated: true, completion: nil)
+                            }
+                            NotificationCenter.default.removeObserver(self.loadObserver!)
+                    })
+                    
+                    self.coupleApi.updateCouple(
+                        couple_id: self.couple_id,
+                        bride_date: self.couple_marred_date.text!,
+                        couple_house_zip: self.couple_address.text!,
+                        couple_name: self.couple_name.text!,
+                        public_id: self.coupleApi.public_id)
+                    
+            }
+            )
+            
+            coupleApi.uploadImage(image: image)
         }
-        )
         
-        coupleApi.uploadImage(image: image)
         
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        if self.loadObserver != nil {
+            NotificationCenter.default.removeObserver(self.loadObserver!)
+        }
+        if self.uploadObserver != nil {
+            NotificationCenter.default.removeObserver(self.uploadObserver!)
+            
+        }
     }
     
     

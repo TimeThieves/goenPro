@@ -107,6 +107,7 @@ class SignInViewController: UIViewController,UITextFieldDelegate {
                 (notification) in
                 SVProgressHUD.dismiss()
                 print("API Load Complate!")
+                print(authApi.errFlg)
                 
                 if notification.userInfo != nil {
                     if let userinfo = notification.userInfo as? [String: String?] {

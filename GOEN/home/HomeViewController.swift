@@ -31,6 +31,10 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
     override func viewDidAppear(_ animated: Bool) {
     
         let userdefault = UserDefaults.standard
+        print("===============current user id===================")
+        print(userdefault.integer(forKey: "user_id"))
+        print("===============current user id===================")
+        
         if (userdefault.integer(forKey: "user_id") == 0){
             print(" No authentication")
             let storyboard: UIStoryboard = UIStoryboard(name: "Auth", bundle: nil)
@@ -71,8 +75,9 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
                         let nextView = storyboard.instantiateInitialViewController()
                         self.present(nextView!, animated: true, completion: nil)
                     }
-                    
+                    print("home reload1")
                     self.serviceCollectionView.reloadData()
+                    print("home reload2")
                     
                     NotificationCenter.default.removeObserver(self.loadDataObserver!)
                     
@@ -118,6 +123,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
         
             if self.serviceApi.serviceList1[indexPath.row].service_cd! == "0001" {
                 // 個人データ設定画面
+                self.performSegue(withIdentifier: "userInfoEdit", sender: nil)
                 
             }else if self.serviceApi.serviceList1[indexPath.row].service_cd! == "0002" {
                 // 挙式情報一覧画面
@@ -127,12 +133,23 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
             if self.serviceApi.serviceList1[indexPath.row].service_cd! == "0101" {
                 let userdefault = UserDefaults.standard
                 
-                if self.serviceApi.couple_id != 0 {
+                if self.serviceApi.couple_info_exist_flg && self.serviceApi.couple_id != 0 {
                     userdefault.set(self.serviceApi.couple_id, forKey: "couple_id")
+                    
+                    // カップル
+                    self.performSegue(withIdentifier: "showCoupleSegue", sender: nil)
+                }else if self.serviceApi.couple_id == 0{
+                    userdefault.set(self.serviceApi.couple_id, forKey: "couple_id")
+                    let storyboard: UIStoryboard = UIStoryboard(name: "CreateCouple", bundle: nil)
+                    let nextView = storyboard.instantiateInitialViewController()
+                    
+                    present(nextView!, animated: true, completion: nil)
+                }else {
+                    let storyboard: UIStoryboard = UIStoryboard(name: "CreateCouple", bundle: nil)
+                    let nextView = storyboard.instantiateInitialViewController()
+                    
+                    present(nextView!, animated: true, completion: nil)
                 }
-                
-                // カップル
-                self.performSegue(withIdentifier: "showCoupleSegue", sender: nil)
             }
             
 //        }
@@ -158,6 +175,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
         
         if self.serviceApi.serviceList1[indexPath.row].service_cd! == "0001" {
             
+            print("home reload3")
             let image = UIImage(named: "setting")
             
             cell.serviceImage.image = image
@@ -184,6 +202,16 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "CreateCouple" {
+            print("couple information create")
+                let view: CoupleCreateConfUserViewController = (segue.destination as? CoupleCreateConfUserViewController)!
+//                view.couple_id = self.serviceApi.couple_id
+            
+        }
     }
 
 }

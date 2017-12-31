@@ -8,6 +8,8 @@
 
 import UIKit
 import SVProgressHUD
+import Cloudinary
+
 class CoupleMainViewController: UIViewController {
 
     @IBOutlet weak var coupleImage: UIImageView!
@@ -52,15 +54,28 @@ class CoupleMainViewController: UIViewController {
                 }
                 print(self.coupleApi.couple)
 //                print(coupleApi.coupleInfo[0].couple_image!)
-                let url = URL(string: self.coupleApi.couple.couple_image!)
-                self.coupleImage.image = UIImage(data: try! Data(contentsOf: url!))
+                if !self.coupleApi.couple.couple_image!.isEmpty {
+                    let config = CLDConfiguration(cloudName: "hhblskk6i",apiKey: "915434123912862",apiSecret: "OY0l20vcuWILROpwGbNHG5hdcpI")
+                    let cloudinary = CLDCloudinary(configuration: config)
+                    let tranceform = CLDTransformation().setWidth(300).setHeight(400).setCrop(.crop)
+                    let stringUrl = cloudinary.createUrl().setTransformation(tranceform).generate(self.coupleApi.couple.couple_image! + ".jpg")
+                    let url = URL(string: stringUrl!)
+                    self.coupleImage.image = UIImage(data: try! Data(contentsOf: url!))
+                }else {
+                    let config = CLDConfiguration(cloudName: "hhblskk6i",apiKey: "915434123912862",apiSecret: "OY0l20vcuWILROpwGbNHG5hdcpI")
+                    let cloudinary = CLDCloudinary(configuration: config)
+                    let tranceform = CLDTransformation().setWidth(300).setHeight(400).setCrop(.crop)
+                    let stringUrl = cloudinary.createUrl().setTransformation(tranceform).generate("sample.jpg")
+                    let url = URL(string: stringUrl!)
+                    self.coupleImage.image = UIImage(data: try! Data(contentsOf: url!))
+                    
+                }
                 self.sendUserName.text = self.coupleApi.couple.send_user.name
                 self.receiveUserName.text = self.coupleApi.couple.receive_user.name
                 self.coupleMainView.isUserInteractionEnabled = true
                 self.couple_id = self.coupleApi.couple.id
                 
                 SVProgressHUD.dismiss()
-                NotificationCenter.default.removeObserver(self)
         })
         
         coupleApi.getCouple()
@@ -91,6 +106,12 @@ class CoupleMainViewController: UIViewController {
             let coupleEditView: CoupleEditViewController = (segue.destination as? CoupleEditViewController)!
             coupleEditView.couple_id = self.couple_id
             coupleEditView.work_couple_image = self.coupleImage.image!
+            if !self.coupleApi.couple.couple_image!.isEmpty {
+                coupleEditView.image_url = self.coupleApi.couple.couple_image!
+            }else {
+                coupleEditView.image_url = "sample"
+                
+            }
             coupleEditView.work_marred_date = self.coupleApi.couple.bride_date!
             if !(self.coupleApi.couple.couple_name?.isEmpty)! {
                 coupleEditView.work_couple_name = self.coupleApi.couple.couple_name!

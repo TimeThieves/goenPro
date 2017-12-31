@@ -17,6 +17,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var signUpApiButton: UIButton!
+    @IBOutlet weak var watch_word: UITextField!
     
     var toolBar:UIToolbar!
     var loadDataObserve: NSObjectProtocol?
@@ -30,7 +31,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
         self.firstNameTextField.delegate = self
         self.lastNameTextField.delegate = self
         // Do any additional setup after loading the view.
-        if (self.emailTextField.text?.isEmpty)! && (self.passwordTextField.text?.isEmpty)! && (self.firstNameTextField.text?.isEmpty)! && (self.lastNameTextField.text?.isEmpty)! {
+        if (self.emailTextField.text?.isEmpty)! && (self.passwordTextField.text?.isEmpty)! && (self.firstNameTextField.text?.isEmpty)! && (self.lastNameTextField.text?.isEmpty)!  && (self.watch_word.text?.isEmpty)! {
             self.signUpApiButton.isEnabled = false
             self.signUpApiButton.setTitleColor(UIColor.gray, for: UIControlState.normal)
         }
@@ -171,14 +172,17 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
                             
                         }else {
                             
-                            self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+//                            self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+                            
+                            self.dismiss(animated: true, completion: nil)
                         }
                 })
                 authApi.signUp(
                     email: self.emailTextField.text!,
                     password: self.passwordTextField.text!,
                     first_name: self.firstNameTextField.text!,
-                    last_name: self.lastNameTextField.text!
+                    last_name: self.lastNameTextField.text!,
+                    watch_word: self.watch_word.text!
                 )
                 
             }

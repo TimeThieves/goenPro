@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TdX-sK-xEr">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--カップル作成-->
+        <scene sceneID="cpI-8Q-w7J">
+            <objects>
+                <viewController id="DTq-6O-Kvd" customClass="CoupleCreateConfUserViewController" customModule="GOEN" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Kvv-vQ-ODf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="G7G-v4-mQ6">
+                                <rect key="frame" x="8" y="145" width="359" height="90"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="アドレスの入力" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H6w-Y6-KMY">
+                                        <rect key="frame" x="0.0" y="0.0" width="359" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="合言葉の入力" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cJ5-5r-uAd">
+                                        <rect key="frame" x="0.0" y="60" width="359" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="359" id="n39-au-oks"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A1r-Ir-cJ0">
+                                <rect key="frame" x="0.0" y="286" width="375" height="30"/>
+                                <state key="normal" title="次へ"/>
+                                <connections>
+                                    <action selector="gotoCoupleInfoCreate:" destination="DTq-6O-Kvd" eventType="touchUpInside" id="Z8w-Nr-Icb"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="相手の情報を入力してください" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lqH-1v-9tF">
+                                <rect key="frame" x="0.0" y="81" width="375" height="21"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="G7G-v4-mQ6" firstAttribute="leading" secondItem="CA7-Ec-sCO" secondAttribute="leading" constant="8" id="DFR-zG-sCF"/>
+                            <constraint firstItem="G7G-v4-mQ6" firstAttribute="centerX" secondItem="A1r-Ir-cJ0" secondAttribute="centerX" id="K1W-zE-iym"/>
+                            <constraint firstItem="CA7-Ec-sCO" firstAttribute="trailing" secondItem="G7G-v4-mQ6" secondAttribute="trailing" constant="8" id="LnD-xM-thm"/>
+                            <constraint firstItem="G7G-v4-mQ6" firstAttribute="top" secondItem="CA7-Ec-sCO" secondAttribute="top" constant="81" id="pSg-WN-nXJ"/>
+                            <constraint firstItem="A1r-Ir-cJ0" firstAttribute="top" secondItem="G7G-v4-mQ6" secondAttribute="bottom" constant="51" id="sux-UV-NPt"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="CA7-Ec-sCO"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="カップル作成" id="LBD-IQ-5LG">
+                        <barButtonItem key="rightBarButtonItem" title="閉じる" id="i7F-qb-GAP">
+                            <connections>
+                                <action selector="closeModal:" destination="DTq-6O-Kvd" id="nO4-Bs-gGq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="confView" destination="Kvv-vQ-ODf" id="j3S-xp-hvu"/>
+                        <outlet property="receive_user_email" destination="H6w-Y6-KMY" id="SrC-ug-2go"/>
+                        <outlet property="receive_user_watch_word" destination="cJ5-5r-uAd" id="CP7-er-uvZ"/>
+                        <segue destination="T94-qe-ClM" kind="show" identifier="createCoupleInfo" id="Opi-x3-jEi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b4S-Z3-UIk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="444" y="62.518740629685162"/>
+        </scene>
+        <!--Couple Create Info View Controller-->
+        <scene sceneID="Rc5-kY-bkv">
+            <objects>
+                <viewController id="T94-qe-ClM" customClass="CoupleCreateInfoViewController" customModule="GOEN" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Eti-zi-Qq4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="カップル情報の入力" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zWL-XN-0sd">
+                                <rect key="frame" x="0.0" y="77" width="375" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1P7-W6-paN">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="fp5-Z1-DZK">
+                                        <rect key="frame" x="16" y="83" width="343" height="469.5"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="カップルに名前をつけましょう" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uGU-fT-mau">
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="結婚、または入籍した日" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WIG-ar-rx2">
+                                                <rect key="frame" x="0.0" y="60" width="343" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="現在住んでいる住所" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qxE-Dk-d8D">
+                                                <rect key="frame" x="0.0" y="120" width="343" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="告白の言葉" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IlE-HQ-eFo">
+                                                <rect key="frame" x="0.0" y="180" width="343" height="21.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="fDl-rX-OKi">
+                                                <rect key="frame" x="0.0" y="231.5" width="343" height="178"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yv5-Ex-bvs">
+                                                <rect key="frame" x="0.0" y="439.5" width="343" height="30"/>
+                                                <color key="backgroundColor" red="0.75737670619999997" green="0.23684495089999999" blue="0.82411134180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="送信">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="reg_couple_info:" destination="T94-qe-ClM" eventType="touchUpInside" id="Ka1-Hz-kXq"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="0.22293133800000001" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="fp5-Z1-DZK" firstAttribute="centerX" secondItem="1P7-W6-paN" secondAttribute="centerX" id="WDt-H1-Yz7"/>
+                                    <constraint firstItem="fp5-Z1-DZK" firstAttribute="leading" secondItem="1P7-W6-paN" secondAttribute="leading" constant="16" id="bRl-4E-5on"/>
+                                    <constraint firstItem="fp5-Z1-DZK" firstAttribute="top" secondItem="1P7-W6-paN" secondAttribute="top" constant="83" id="grB-1T-IHh"/>
+                                    <constraint firstAttribute="trailing" secondItem="fp5-Z1-DZK" secondAttribute="trailing" constant="16" id="rjy-jS-qTr"/>
+                                    <constraint firstAttribute="bottom" secondItem="fp5-Z1-DZK" secondAttribute="bottom" constant="110" id="yoF-1v-dEx"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="H31-5H-HmZ" appends="YES" id="vyq-rE-vqG"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="1P7-W6-paN" firstAttribute="top" secondItem="Ocu-ZH-I8I" secondAttribute="top" id="5el-CM-MeR"/>
+                            <constraint firstItem="zWL-XN-0sd" firstAttribute="top" secondItem="Ocu-ZH-I8I" secondAttribute="top" constant="13" id="93s-Lo-Rkj"/>
+                            <constraint firstItem="1P7-W6-paN" firstAttribute="leading" secondItem="Eti-zi-Qq4" secondAttribute="leading" id="U4m-KJ-ZQ2"/>
+                            <constraint firstItem="Ocu-ZH-I8I" firstAttribute="bottom" secondItem="zWL-XN-0sd" secondAttribute="bottom" constant="569" id="Wn8-OA-sFy"/>
+                            <constraint firstItem="1P7-W6-paN" firstAttribute="trailing" secondItem="zWL-XN-0sd" secondAttribute="trailing" id="ZCh-ea-ecd"/>
+                            <constraint firstAttribute="trailing" secondItem="1P7-W6-paN" secondAttribute="trailing" id="da7-nY-b6j"/>
+                            <constraint firstItem="1P7-W6-paN" firstAttribute="leading" secondItem="zWL-XN-0sd" secondAttribute="leading" id="ftP-Sc-99b"/>
+                            <constraint firstItem="1P7-W6-paN" firstAttribute="bottom" secondItem="Ocu-ZH-I8I" secondAttribute="bottom" id="s38-oy-i9T"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ocu-ZH-I8I"/>
+                    </view>
+                    <connections>
+                        <outlet property="bride_date" destination="WIG-ar-rx2" id="iuU-bu-nIV"/>
+                        <outlet property="couple_create_scroll_view" destination="1P7-W6-paN" id="Oq7-eQ-c5G"/>
+                        <outlet property="couple_house_zip" destination="qxE-Dk-d8D" id="CK1-8P-tKc"/>
+                        <outlet property="couple_name" destination="uGU-fT-mau" id="kUp-Rh-STx"/>
+                        <outlet property="propose_word" destination="fDl-rX-OKi" id="rZu-IL-o88"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e69-MI-Dlr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="H31-5H-HmZ"/>
+            </objects>
+            <point key="canvasLocation" x="1453.5999999999999" y="62.518740629685162"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="uHC-q7-r5D">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TdX-sK-xEr" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="BED-U7-9Fh">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="DTq-6O-Kvd" kind="relationship" relationship="rootViewController" id="hit-JN-SE7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="heQ-fJ-LCu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-478" y="63"/>
+        </scene>
+    </scenes>
+</document>

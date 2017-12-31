@@ -25,6 +25,8 @@ class UserApi: UIViewController {
     public var serviceList2 = [Service]()
     public var couple_id:Int = 0
     
+    public var couple_info_exist_flg: Bool = false
+    
     public var service_flg = false
     public var auth_flg = true
     
@@ -53,6 +55,7 @@ class UserApi: UIViewController {
                 response in
                 
                 let json = SwiftyJSON.JSON(data: response.data!)
+                print(json)
                 var service = Service()
                 if response.response!.statusCode == 401 {
                     self.auth_flg = false
@@ -68,7 +71,18 @@ class UserApi: UIViewController {
                             self.serviceList1.append(service)
                         }
                         print(item1["couple_info"])
-                        self.couple_id = item1["couple_info"]["id"].int!
+                        if(item1["couple_info"] != nil) {
+                            if item1["couple_info"]["id"] != nil || item1["couple_info"]["id"] != ""  {
+                                
+                                self.couple_id = item1["couple_info"]["id"].int!
+                                if item1["couple_info"]["reg_flg"].string! != "0" {
+                                    
+                                    self.couple_info_exist_flg = true
+                                }
+                                
+                            }
+                            
+                        }
                     }
                 }
                 NotificationCenter.default.post(name: .userApiLoadComplate, object: nil)
@@ -168,7 +182,7 @@ class UserApi: UIViewController {
                 }
                 
 
-                NotificationCenter.default.post(name: .authApiLoadComplate, object: nil)
+                NotificationCenter.default.post(name: .userApiLoadComplate, object: nil)
         }
     }
     
