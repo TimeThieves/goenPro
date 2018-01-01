@@ -89,50 +89,53 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="カップル情報の入力" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zWL-XN-0sd">
-                                <rect key="frame" x="0.0" y="77" width="375" height="21"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1P7-W6-paN">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1P7-W6-paN">
+                                <rect key="frame" x="0.0" y="64" width="375" height="1000"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="fp5-Z1-DZK">
-                                        <rect key="frame" x="16" y="83" width="343" height="469.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="522.5"/>
                                         <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="カップル情報の入力" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zWL-XN-0sd">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="23"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="カップルに名前をつけましょう" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uGU-fT-mau">
-                                                <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
+                                                <rect key="frame" x="0.0" y="53" width="375" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="結婚、または入籍した日" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WIG-ar-rx2">
-                                                <rect key="frame" x="0.0" y="60" width="343" height="30"/>
+                                                <rect key="frame" x="0.0" y="113" width="375" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="現在住んでいる住所" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qxE-Dk-d8D">
-                                                <rect key="frame" x="0.0" y="120" width="343" height="30"/>
+                                                <rect key="frame" x="0.0" y="173" width="375" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="告白の言葉" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IlE-HQ-eFo">
-                                                <rect key="frame" x="0.0" y="180" width="343" height="21.5"/>
+                                                <rect key="frame" x="0.0" y="233" width="375" height="21.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="fDl-rX-OKi">
-                                                <rect key="frame" x="0.0" y="231.5" width="343" height="178"/>
+                                                <rect key="frame" x="0.0" y="284.5" width="375" height="178"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="178" id="Rzb-o0-e07"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yv5-Ex-bvs">
-                                                <rect key="frame" x="0.0" y="439.5" width="343" height="30"/>
+                                                <rect key="frame" x="0.0" y="492.5" width="375" height="30"/>
                                                 <color key="backgroundColor" red="0.75737670619999997" green="0.23684495089999999" blue="0.82411134180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="送信">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -142,16 +145,18 @@
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="375" id="Doi-eX-W6j"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="0.22293133800000001" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstItem="fp5-Z1-DZK" firstAttribute="centerX" secondItem="1P7-W6-paN" secondAttribute="centerX" id="WDt-H1-Yz7"/>
-                                    <constraint firstItem="fp5-Z1-DZK" firstAttribute="leading" secondItem="1P7-W6-paN" secondAttribute="leading" constant="16" id="bRl-4E-5on"/>
-                                    <constraint firstItem="fp5-Z1-DZK" firstAttribute="top" secondItem="1P7-W6-paN" secondAttribute="top" constant="83" id="grB-1T-IHh"/>
-                                    <constraint firstAttribute="trailing" secondItem="fp5-Z1-DZK" secondAttribute="trailing" constant="16" id="rjy-jS-qTr"/>
-                                    <constraint firstAttribute="bottom" secondItem="fp5-Z1-DZK" secondAttribute="bottom" constant="110" id="yoF-1v-dEx"/>
+                                    <constraint firstItem="fp5-Z1-DZK" firstAttribute="top" secondItem="1P7-W6-paN" secondAttribute="top" id="EXC-i9-gYZ"/>
+                                    <constraint firstItem="fp5-Z1-DZK" firstAttribute="leading" secondItem="1P7-W6-paN" secondAttribute="leading" id="YBA-il-b6M"/>
+                                    <constraint firstAttribute="bottom" secondItem="fp5-Z1-DZK" secondAttribute="bottom" id="iez-H2-Iyg"/>
+                                    <constraint firstAttribute="trailing" secondItem="fp5-Z1-DZK" secondAttribute="trailing" id="uEj-AZ-Tof"/>
                                 </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="H31-5H-HmZ" appends="YES" id="vyq-rE-vqG"/>
@@ -160,14 +165,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="1P7-W6-paN" firstAttribute="top" secondItem="Ocu-ZH-I8I" secondAttribute="top" id="5el-CM-MeR"/>
-                            <constraint firstItem="zWL-XN-0sd" firstAttribute="top" secondItem="Ocu-ZH-I8I" secondAttribute="top" constant="13" id="93s-Lo-Rkj"/>
-                            <constraint firstItem="1P7-W6-paN" firstAttribute="leading" secondItem="Eti-zi-Qq4" secondAttribute="leading" id="U4m-KJ-ZQ2"/>
-                            <constraint firstItem="Ocu-ZH-I8I" firstAttribute="bottom" secondItem="zWL-XN-0sd" secondAttribute="bottom" constant="569" id="Wn8-OA-sFy"/>
-                            <constraint firstItem="1P7-W6-paN" firstAttribute="trailing" secondItem="zWL-XN-0sd" secondAttribute="trailing" id="ZCh-ea-ecd"/>
-                            <constraint firstAttribute="trailing" secondItem="1P7-W6-paN" secondAttribute="trailing" id="da7-nY-b6j"/>
-                            <constraint firstItem="1P7-W6-paN" firstAttribute="leading" secondItem="zWL-XN-0sd" secondAttribute="leading" id="ftP-Sc-99b"/>
-                            <constraint firstItem="1P7-W6-paN" firstAttribute="bottom" secondItem="Ocu-ZH-I8I" secondAttribute="bottom" id="s38-oy-i9T"/>
+                            <constraint firstItem="1P7-W6-paN" firstAttribute="bottom" secondItem="Ocu-ZH-I8I" secondAttribute="bottom" id="0Ot-YE-DhV"/>
+                            <constraint firstItem="1P7-W6-paN" firstAttribute="leading" secondItem="Eti-zi-Qq4" secondAttribute="leading" id="1TL-eH-BfP"/>
+                            <constraint firstItem="1P7-W6-paN" firstAttribute="top" secondItem="Ocu-ZH-I8I" secondAttribute="top" id="FyE-j0-FFE"/>
+                            <constraint firstAttribute="trailing" secondItem="1P7-W6-paN" secondAttribute="trailing" id="s3Q-93-8Vx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ocu-ZH-I8I"/>
                     </view>
@@ -180,7 +181,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e69-MI-Dlr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="H31-5H-HmZ"/>
+                <tapGestureRecognizer id="H31-5H-HmZ">
+                    <connections>
+                        <action selector="tapScreen:" destination="T94-qe-ClM" id="zW8-Bf-cgd"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1453.5999999999999" y="62.518740629685162"/>
         </scene>

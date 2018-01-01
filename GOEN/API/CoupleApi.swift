@@ -29,6 +29,8 @@ class CoupleApi {
     public var no_partner: Bool = false
     public var couple_flg: Bool = false
     
+    public var updateFlg: Bool = false
+    
     func getCouple () {
         NotificationCenter.default.post(name: .coupleApiLoadStart, object: nil)
         let userDefault = UserDefaults.standard
@@ -58,7 +60,12 @@ class CoupleApi {
 //                    let couple = Couple(id: json["id"].int!, couple_house_zip: json["couple_house_zip"].string!, couple_name: json["couple_name"].string!, couple_image: json["couple_image"].string!, bride_date: json["bride_date"].string!)
                     
                     self.couple.id = json["id"].int!
-                    self.couple.couple_image = json["couple_image"].string!
+                    if json["couple_image"].string != nil {
+                        self.couple.couple_image = json["couple_image"].string!
+                        
+                    }else {
+                        self.couple.couple_image = "sample"
+                    }
                     self.couple.couple_house_zip =  json["couple_house_zip"].string!
                     self.couple.bride_date = json["bride_date"].string!
                     self.couple.send_user.name = json["send_user"][0]["first_name"].string! + " " + json["send_user"][0]["last_name"].string!
@@ -151,7 +158,7 @@ class CoupleApi {
         
         NotificationCenter.default.post(name: .coupleApiLoadStart, object: nil)
         let userDefault = UserDefaults.standard
-        
+        self.no_partner = false
         let postUrl = URL(string: apiHost + "user/conf")!
         let headers: HTTPHeaders = [
             "Content-Type":"Application/json",
@@ -173,7 +180,7 @@ class CoupleApi {
                 response in
                 
                 let json = SwiftyJSON.JSON(data: response.data!)
-                print(response.response!.statusCode)
+                
                 if response.response!.statusCode == 402 {
                     print("couple error")
                     self.no_partner = true
@@ -183,6 +190,56 @@ class CoupleApi {
                     self.couple.receive_user.last_name = json[0]["last_name"].string!
                     self.couple.receive_user.email = json[0]["email"].string!
                     
+                }
+                
+                
+                NotificationCenter.default.post(name: .coupleApiLoadComplate, object: nil)
+        }
+        
+    }
+    func getSendUserInfo(email: String, watch_word: String, send_user_id: Int) {
+        
+        NotificationCenter.default.post(name: .coupleApiLoadStart, object: nil)
+        let userDefault = UserDefaults.standard
+        self.no_partner = false
+        let postUrl = URL(string: apiHost + "user/send_user_conf")!
+        let headers: HTTPHeaders = [
+            "Content-Type":"Application/json",
+            "access-token": userDefault.string(forKey: "access_token")!,
+            "uid": userDefault.string(forKey: "uid")!,
+            "client": userDefault.string(forKey: "client")!
+        ]
+        
+        let params = [
+            "email": email,
+            "watch_word": watch_word,
+            "send_user_id": String(send_user_id)
+        ]
+        Alamofire.request(postUrl,
+                          method: .post,
+                          parameters: params,
+                          encoding: JSONEncoding.default,
+                          headers: headers).responseJSON
+            {
+                response in
+                
+                let json = SwiftyJSON.JSON(data: response.data!)
+                print(json)
+                if response.response!.statusCode == 402 {
+                    print("couple error")
+                    self.no_partner = true
+                }else if response.response!.statusCode == 200 {
+                    self.couple.send_user.first_name = json["send_user"]["first_name"].string!
+                    self.couple.send_user.last_name = json["send_user"]["last_name"].string!
+                    self.couple.id = json["couple_info"]["id"].int!
+                    self.couple.send_user.email = json["send_user"]["email"].string!
+                    self.couple.propose_message = json["couple_info"]["propose_message"].string!
+                    if  json["user_profile"]["image"].string != nil {
+                        
+                        self.couple.send_user.profile.image = json["user_profile"]["image"].string!
+                    } else {
+                        self.couple.send_user.profile.image = "sample"
+                    }
                 }
                 
                 
@@ -200,11 +257,85 @@ class CoupleApi {
         let userDefault = UserDefaults.standard
         
         var couple_id = userDefault.integer(forKey: "couple_id")
-        
+        print(couple_id)
         if couple_id != 0 {
             self.couple_flg = true
         }else {
+            NotificationCenter.default.post(name: .coupleApiLoadStart, object: nil)
+            let userDefault = UserDefaults.standard
+            self.no_partner = false
+            let postUrl = URL(string: apiHost + "couples/tem_create")!
+            let headers: HTTPHeaders = [
+                "Content-Type":"Application/json",
+                "access-token": userDefault.string(forKey: "access_token")!,
+                "uid": userDefault.string(forKey: "uid")!,
+                "client": userDefault.string(forKey: "client")!
+            ]
             
+            let params = [
+                "receive_user_id": String(receive_user_id),
+                "couple_house_zip": couple_house_zip,
+                "cohabitation_flg": String(cohabitation_flg),
+                "bride_date": bride_date,
+                "propose_message": propose_message,
+                "couple_name": couple_name
+            ]
+            Alamofire.request(postUrl,
+                              method: .post,
+                              parameters: params,
+                              encoding: JSONEncoding.default,
+                              headers: headers).responseJSON
+                {
+                    response in
+                    
+                    let json = SwiftyJSON.JSON(data: response.data!)
+                    print(response.response!.statusCode)
+                    if response.response!.statusCode == 402 {
+                        print("couple error")
+                        self.no_partner = true
+                    }else if response.response!.statusCode == 200 {
+                        
+                        self.no_partner = false
+                        
+                    }
+                    
+                    
+                    NotificationCenter.default.post(name: .coupleApiLoadComplate, object: nil)
+            }
+        }
+    }
+    
+    func regFlgUpdate(coupleId: Int) {
+        NotificationCenter.default.post(name: .coupleApiLoadStart, object: nil)
+        let userDefault = UserDefaults.standard
+        self.no_partner = false
+        let postUrl = URL(string: apiHost + "couples/reg_flg_update")!
+        let headers: HTTPHeaders = [
+            "Content-Type":"Application/json",
+            "access-token": userDefault.string(forKey: "access_token")!,
+            "uid": userDefault.string(forKey: "uid")!,
+            "client": userDefault.string(forKey: "client")!
+        ]
+        
+        let params = [
+            "id": String(coupleId)
+        ]
+        Alamofire.request(postUrl,
+                          method: .post,
+                          parameters: params,
+                          encoding: JSONEncoding.default,
+                          headers: headers).responseJSON
+            {
+                response in
+                
+                let json = SwiftyJSON.JSON(data: response.data!)
+                print(json)
+                if response.response!.statusCode == 402 {
+                    self.updateFlg = false
+                }else if response.response!.statusCode == 200 {
+                    self.updateFlg = true
+                }
+                NotificationCenter.default.post(name: .coupleApiLoadComplate, object: nil)
         }
     }
 }
@@ -218,5 +349,6 @@ public struct Couple {
     public var bride_date: String? = nil
     public var send_user = UserInfo()
     public var receive_user = UserInfo()
+    public var propose_message: String? = nil
     public var user_id: Int = 0
 }

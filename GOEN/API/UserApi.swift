@@ -24,11 +24,15 @@ class UserApi: UIViewController {
     public var serviceList1 = [Service]()
     public var serviceList2 = [Service]()
     public var couple_id:Int = 0
+    public var receive_user_id:Int = 0
+    public var send_user_id: Int = 0
     
     public var couple_info_exist_flg: Bool = false
     
     public var service_flg = false
     public var auth_flg = true
+    
+    public var send_user_name: String = ""
     
     func getUserService() {
         serviceList1 = [Service]()
@@ -55,8 +59,10 @@ class UserApi: UIViewController {
                 response in
                 
                 let json = SwiftyJSON.JSON(data: response.data!)
-                print(json)
                 var service = Service()
+                print("~~~~~~~~~~~~~~~~~~~~~~~~~~")
+                print(json)
+                print("~~~~~~~~~~~~~~~~~~~~~~~~~~")
                 if response.response!.statusCode == 401 {
                     self.auth_flg = false
                 }else {
@@ -70,14 +76,23 @@ class UserApi: UIViewController {
         
                             self.serviceList1.append(service)
                         }
-                        print(item1["couple_info"])
                         if(item1["couple_info"] != nil) {
                             if item1["couple_info"]["id"] != nil || item1["couple_info"]["id"] != ""  {
                                 
                                 self.couple_id = item1["couple_info"]["id"].int!
                                 if item1["couple_info"]["reg_flg"].string! != "0" {
-                                    
+                                    print("=================")
+                                    print(item1["couple_info"])
+                                    print("=================")
                                     self.couple_info_exist_flg = true
+                                    self.receive_user_id = item1["couple_info"]["receive_user_id"].int!
+                                    self.send_user_id = item1["couple_info"]["send_user_id"].int!
+                                    
+                                    self.send_user_name = item1["send_user"]["first_name"].string! + " " + item1["send_user"]["last_name"].string!
+                                }else {
+                                    self.receive_user_id = item1["couple_info"]["receive_user_id"].int!
+                                    self.send_user_name = item1["send_user"]["first_name"].string! + " " + item1["send_user"]["last_name"].string!
+                                    self.send_user_id = item1["couple_info"]["send_user_id"].int!
                                 }
                                 
                             }
@@ -200,5 +215,6 @@ public struct UserInfo {
     public var last_name: String? = nil
     public var email: String? = nil
     public var name: String? = nil
+    public var profile = Profile()
     
 }

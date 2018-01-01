@@ -1,39 +1,53 @@
 //
-//  CoupleCreateViewController.swift
+//  CoupleCreateResViewController.swift
 //  GOEN
 //
-//  Created by 木村猛 on 2017/10/11.
+//  Created by 木村猛 on 2017/12/31.
 //  Copyright © 2017年 木村猛. All rights reserved.
 //
 
 import UIKit
 import SVProgressHUD
 
-class CoupleCreateConfUserViewController: UIViewController {
+class CoupleCreateResViewController: UIViewController, UITextFieldDelegate {
 
-    @IBOutlet weak var receive_user_email: UITextField!
-    @IBOutlet weak var receive_user_watch_word: UITextField!
-    
-    @IBOutlet var confView: UIView!
-    var coupleApi: CoupleApi = CoupleApi()
+    @IBOutlet weak var send_user_name: UILabel!
+    @IBOutlet weak var send_user_email: UITextField!
+    @IBOutlet weak var send_user_watch_word: UITextField!
+    let userdefault = UserDefaults.standard
     var loadDataObserver: NSObjectProtocol?
-    public var receive_user_name: String = ""
-    public var email: String = ""
+    var coupleApi: CoupleApi = CoupleApi()
+    public var send_user_id: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        send_user_name.text! = userdefault.string(forKey: "send_user_name")!
+        send_user_id = userdefault.integer(forKey: "send_user_id")
+        // Do any additional setup after loading the view.
+        
+        send_user_email.delegate = self
+        send_user_watch_word.delegate = self
     }
-
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print("close keyboard")
+        // キーボードを閉じる
+        textField.resignFirstResponder()
+        return true
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     @IBAction func closeModal(_ sender: Any) {
-        print("close")
         self.dismiss(animated: true, completion: nil)
-        
     }
-    @IBAction func gotoCoupleInfoCreate(_ sender: Any) {
-        if self.receive_user_email.text! == "" && self.receive_user_watch_word.text! == "" {
+    @IBAction func destroyRes(_ sender: Any) {
+    }
+    @IBAction func confSendUser(_ sender: Any) {
+        
+        if self.send_user_email.text! == "" && self.send_user_watch_word.text! == "" {
             let alert = UIAlertController(title:"入力謝り", message: "アドレスと合言葉を入力してください。", preferredStyle: UIAlertControllerStyle.alert)
             let action1 = UIAlertAction(title: "閉じる", style: UIAlertActionStyle.default, handler: {
                 (action: UIAlertAction!) in
@@ -46,7 +60,7 @@ class CoupleCreateConfUserViewController: UIViewController {
             return
         }
         SVProgressHUD.show()
-        self.confView.isUserInteractionEnabled = false
+//        self.confView.isUserInteractionEnabled = false
         loadDataObserver = NotificationCenter.default.addObserver(
             forName: .coupleApiLoadComplate,
             object: nil,
@@ -72,10 +86,9 @@ class CoupleCreateConfUserViewController: UIViewController {
                         }
                     }
                 }
-                print(self.coupleApi.couple)
                 if self.coupleApi.no_partner {
                     SVProgressHUD.dismiss()
-                    self.confView.isUserInteractionEnabled = true
+//                    self.confView.isUserInteractionEnabled = true
                     let alert = UIAlertController(title:"パートナー情報不正", message: "パートナーのアドレス、もしくは合言葉が誤っています。", preferredStyle: UIAlertControllerStyle.alert)
                     let action1 = UIAlertAction(title: "閉じる", style: UIAlertActionStyle.default, handler: {
                         (action: UIAlertAction!) in
@@ -88,36 +101,43 @@ class CoupleCreateConfUserViewController: UIViewController {
                     return
                     
                 }else {
+                    SVProgressHUD.dismiss()
                     
-                    self.confView.isUserInteractionEnabled = true
+                    self.performSegue(withIdentifier: "coupleCreateResAnswer", sender: nil)
                     
-                    self.performSegue(withIdentifier: "createCoupleInfo", sender: nil)
                 }
                 
-                SVProgressHUD.dismiss()
         })
-        
-        coupleApi.getPartnerInfo(email: self.receive_user_email.text!, watch_word: self.receive_user_watch_word.text!)
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        if loadDataObserver != nil {
-            
-            NotificationCenter.default.removeObserver(self.loadDataObserver!)
-        }
+        print("~~~~~~~~~~~~~~~~~~")
+        print(self.send_user_id)
+        print("~~~~~~~~~~~~~~~~~~")
+
+        coupleApi.getSendUserInfo(email: self.send_user_email.text!, watch_word: self.send_user_watch_word.text!, send_user_id: self.send_user_id)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "createCoupleInfo" {
+        if segue.identifier == "coupleCreateResAnswer" {
             print("couple information create")
-            let itemView: CoupleCreateInfoViewController = (segue.destination as? CoupleCreateInfoViewController)!
-            itemView.receive_user_name = self.coupleApi.couple.receive_user.first_name! + " " + self.coupleApi.couple.receive_user.last_name!
-            itemView.receive_user_email = self.coupleApi.couple.receive_user.email!
-            itemView.receive_user_id = self.coupleApi.couple.receive_user.id
+            print(self.coupleApi.couple.propose_message!)
+            print(self.coupleApi.couple.send_user.profile.image!)
+            let itemView: CoupleCreateResAnswerViewController = (segue.destination as? CoupleCreateResAnswerViewController)!
+            
+            itemView.work_send_user_name = self.coupleApi.couple.send_user.first_name! + " " + self.coupleApi.couple.send_user.last_name!
+            
+            itemView.work_propose_message = self.coupleApi.couple.propose_message!
+            itemView.work_send_user_image = self.coupleApi.couple.send_user.profile.image!
+            itemView.work_couple_id = self.coupleApi.couple.id
+            
             
             
         }
     }
-
+    override func viewDidDisappear(_ animated: Bool) {
+        if self.loadDataObserver != nil {
+            NotificationCenter.default.removeObserver(self.loadDataObserver!)
+            
+        }
+    }
+    
 }

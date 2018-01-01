@@ -302,22 +302,22 @@ class ProfileApi {
         })
         
     }
-    
-    public struct Profile {
-        public var id: Int = 0
-        public var birth_day_date: String? = "----"
-        public var birth_day_year: String? = "----"
-        public var blood_type: String? = "----"
-        public var birth_place: String? = "----"
-        public var university_name: String? = "----"
-        public var university_subject: String? = "----"
-        public var propose_place: String? = "----"
-        public var propose_word: String? = "----"
-        public var user_name: String? = ""
-        public var first_name: String? = ""
-        public var last_name: String? = ""
-        public var watch_word: String? = ""
-        public var image: String? = ""
-    }
 
+}
+
+public struct Profile {
+    public var id: Int = 0
+    public var birth_day_date: String? = "----"
+    public var birth_day_year: String? = "----"
+    public var blood_type: String? = "----"
+    public var birth_place: String? = "----"
+    public var university_name: String? = "----"
+    public var university_subject: String? = "----"
+    public var propose_place: String? = "----"
+    public var propose_word: String? = "----"
+    public var user_name: String? = ""
+    public var first_name: String? = ""
+    public var last_name: String? = ""
+    public var watch_word: String? = ""
+    public var image: String? = ""
 }

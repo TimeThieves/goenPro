@@ -78,7 +78,6 @@ class CoupleEditViewController: UIViewController,UITextFieldDelegate,UITextViewD
         couple_marred_date.inputAccessoryView = pickerToolBar
         
         let nofitiShow = Notification.Name.UIKeyboardWillShow
-//        let nofitiHide = Notification.Name.UIKeyboardWillHide
         
         // Notification の追加
         NotificationCenter.default.addObserver(

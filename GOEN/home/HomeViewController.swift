@@ -138,12 +138,30 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
                     
                     // カップル
                     self.performSegue(withIdentifier: "showCoupleSegue", sender: nil)
-                }else if self.serviceApi.couple_id == 0{
-                    userdefault.set(self.serviceApi.couple_id, forKey: "couple_id")
-                    let storyboard: UIStoryboard = UIStoryboard(name: "CreateCouple", bundle: nil)
-                    let nextView = storyboard.instantiateInitialViewController()
+                }else if !self.serviceApi.couple_info_exist_flg && self.serviceApi.couple_id != 0{
                     
-                    present(nextView!, animated: true, completion: nil)
+                    
+                    userdefault.set(self.serviceApi.couple_id, forKey: "couple_id")
+                    print("==================================")
+                    print(self.serviceApi.receive_user_id)
+                    print("==================================")
+                    print("==================================")
+                    print(userdefault.integer(forKey: "user_id"))
+                    print("==================================")
+                    if self.serviceApi.receive_user_id == userdefault.integer(forKey: "user_id") {
+                        let storyboard: UIStoryboard = UIStoryboard(name: "CoupleCreateRes", bundle: nil)
+                        let nextView = storyboard.instantiateInitialViewController()
+                        userdefault.set(self.serviceApi.send_user_name, forKey: "send_user_name")
+                        userdefault.set(self.serviceApi.send_user_id, forKey: "send_user_id")
+                        present(nextView!, animated: true, completion: nil)
+                        
+                    }else {
+                        let storyboard: UIStoryboard = UIStoryboard(name: "CreateCouple", bundle: nil)
+                        let nextView = storyboard.instantiateInitialViewController()
+                        
+                        present(nextView!, animated: true, completion: nil)
+                        
+                    }
                 }else {
                     let storyboard: UIStoryboard = UIStoryboard(name: "CreateCouple", bundle: nil)
                     let nextView = storyboard.instantiateInitialViewController()
