@@ -58,6 +58,7 @@ class AuthApi: UIViewController {
     }
     
     func signIn(email: String, password:String) {
+        self.errFlg = false
         // API 実行開始を通知
         NotificationCenter.default.post(name: .authApiLoadStart, object: nil)
         let authPostUrl = URL(string: apiHost + "auth/sign_in")!
@@ -110,6 +111,11 @@ class AuthApi: UIViewController {
                         print(uid!)
                         print(client!)
                     }
+                    
+                    userdefault.set(json["id"].int!, forKey: "user_id")
+                    
+                    print(self.errFlg)
+                    
                     /*
                      ちゃんと元に戻せ
                      */
@@ -118,7 +124,6 @@ class AuthApi: UIViewController {
                         self.serviceCdFlg = true
                     }else {
                         print(json)
-                        userdefault.set(json["id"].int!, forKey: "user_id")
 
 
                     }

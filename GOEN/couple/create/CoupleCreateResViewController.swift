@@ -27,6 +27,9 @@ class CoupleCreateResViewController: UIViewController, UITextFieldDelegate {
         
         send_user_email.delegate = self
         send_user_watch_word.delegate = self
+        
+        send_user_email.addBorderBottom(height: 1.0, color: UIColor.lightGray)
+        send_user_watch_word.addBorderBottom(height: 1.0, color: UIColor.lightGray)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

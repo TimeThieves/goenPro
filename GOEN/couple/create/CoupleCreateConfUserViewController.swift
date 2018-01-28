@@ -22,6 +22,12 @@ class CoupleCreateConfUserViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        receive_user_email.addBorderBottom(height: 1.0, color: UIColor.lightGray)
+        
+        receive_user_watch_word.addBorderBottom(height: 1.0, color: UIColor.lightGray)
+        
+        
     }
 
     override func didReceiveMemoryWarning() {

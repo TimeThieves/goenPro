@@ -34,7 +34,6 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
         print("===============current user id===================")
         print(userdefault.integer(forKey: "user_id"))
         print("===============current user id===================")
-        
         if (userdefault.integer(forKey: "user_id") == 0){
             print(" No authentication")
             let storyboard: UIStoryboard = UIStoryboard(name: "Auth", bundle: nil)
@@ -126,7 +125,15 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
                 self.performSegue(withIdentifier: "userInfoEdit", sender: nil)
                 
             }else if self.serviceApi.serviceList1[indexPath.row].service_cd! == "0002" {
+                
+                let userdefault = UserDefaults.standard
+                
+                userdefault.set(self.serviceApi.couple_reg_flg, forKey: "couple_reg_flg")
                 // 挙式情報一覧画面
+                let storyboard: UIStoryboard = UIStoryboard(name: "CeremonyHome", bundle: nil)
+                let nextView = storyboard.instantiateInitialViewController()
+                
+                present(nextView!, animated: true, completion: nil)
             }else if self.serviceApi.serviceList1[indexPath.row].service_cd! == "0003" {
                 // 写真一覧
             }
@@ -223,13 +230,17 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        print(segue.identifier)
         if segue.identifier == "CreateCouple" {
             print("couple information create")
                 let view: CoupleCreateConfUserViewController = (segue.destination as? CoupleCreateConfUserViewController)!
-//                view.couple_id = self.serviceApi.couple_id
             
+        }else if segue.identifier == "ceremonyHome" {
+            print("ceremony info go to ")
+            let view: CeremonyListViewController = (segue.destination as? CeremonyListViewController)!
+            view.work_couple_id = self.serviceApi.couple_id
         }
+        
     }
 
 }

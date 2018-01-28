@@ -16,6 +16,9 @@ class SignInViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     var serviceFlg: Bool = false
+    
+    var loadDataObserver: NSObjectProtocol?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.emailTextField.delegate = self
@@ -99,7 +102,7 @@ class SignInViewController: UIViewController,UITextFieldDelegate {
         
         SVProgressHUD.show()
         let authApi = AuthApi()
-        NotificationCenter.default.addObserver(
+        loadDataObserver = NotificationCenter.default.addObserver(
             forName: .authApiLoadComplate,
             object: nil,
             queue: nil,
@@ -129,9 +132,13 @@ class SignInViewController: UIViewController,UITextFieldDelegate {
                 
                 
                 if authApi.errFlg {
+                    
+                    NotificationCenter.default.removeObserver(self.loadDataObserver!)
+                    
                     let alert = UIAlertController(title:"データ不正", message: "データが不正です。もう一度入力してください", preferredStyle: UIAlertControllerStyle.alert)
                     let action1 = UIAlertAction(title: "閉じる", style: UIAlertActionStyle.default, handler: {
                         (action: UIAlertAction!) in
+                        
                         
                     })
                     alert.addAction(action1)
@@ -147,7 +154,7 @@ class SignInViewController: UIViewController,UITextFieldDelegate {
                         self.dismiss(animated: true, completion: nil)
                     }
                 }
-                NotificationCenter.default.removeObserver(self)
+                NotificationCenter.default.removeObserver(self.loadDataObserver!)
         })
         authApi.signIn(
             email: self.emailTextField.text!,

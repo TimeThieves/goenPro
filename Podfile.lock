@@ -2,21 +2,26 @@ PODS:
   - Alamofire (4.6.0)
   - Cloudinary (2.0.3):
     - Alamofire (~> 4.1)
+  - SDWebImage (4.2.2):
+    - SDWebImage/Core (= 4.2.2)
+  - SDWebImage/Core (4.2.2)
   - SVProgressHUD (2.2.2)
   - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
   - Alamofire
   - Cloudinary (~> 2.0)
+  - SDWebImage
   - SVProgressHUD
   - SwiftyJSON (= 3.1.4)
 
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   Cloudinary: 341dbe68a4b0121b1018e3bd353cf94d68ded04f
+  SDWebImage: 89a9d32cd520bbb46eb14e541d5109b3564af198
   SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: bb5466647da156bb29f83d4069305e7a4edeaa37
+PODFILE CHECKSUM: de250f6ab83fd3330905aa42e5c344736141a511
 
 COCOAPODS: 1.3.1

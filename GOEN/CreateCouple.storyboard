@@ -19,23 +19,29 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="G7G-v4-mQ6">
-                                <rect key="frame" x="8" y="145" width="359" height="90"/>
+                                <rect key="frame" x="0.0" y="145" width="375" height="80"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="アドレスの入力" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H6w-Y6-KMY">
-                                        <rect key="frame" x="0.0" y="0.0" width="359" height="30"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="アドレスの入力" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H6w-Y6-KMY">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="265-pD-zmz"/>
+                                        </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="合言葉の入力" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cJ5-5r-uAd">
-                                        <rect key="frame" x="0.0" y="60" width="359" height="30"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="合言葉の入力" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cJ5-5r-uAd">
+                                        <rect key="frame" x="0.0" y="55" width="375" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="Wbm-cV-QAV"/>
+                                        </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="359" id="n39-au-oks"/>
+                                    <constraint firstAttribute="width" constant="375" id="n39-au-oks"/>
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A1r-Ir-cJ0">
@@ -55,9 +61,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="G7G-v4-mQ6" firstAttribute="leading" secondItem="CA7-Ec-sCO" secondAttribute="leading" constant="8" id="DFR-zG-sCF"/>
+                            <constraint firstItem="G7G-v4-mQ6" firstAttribute="leading" secondItem="CA7-Ec-sCO" secondAttribute="leading" id="DFR-zG-sCF"/>
                             <constraint firstItem="G7G-v4-mQ6" firstAttribute="centerX" secondItem="A1r-Ir-cJ0" secondAttribute="centerX" id="K1W-zE-iym"/>
-                            <constraint firstItem="CA7-Ec-sCO" firstAttribute="trailing" secondItem="G7G-v4-mQ6" secondAttribute="trailing" constant="8" id="LnD-xM-thm"/>
+                            <constraint firstItem="CA7-Ec-sCO" firstAttribute="trailing" secondItem="G7G-v4-mQ6" secondAttribute="trailing" id="LnD-xM-thm"/>
                             <constraint firstItem="G7G-v4-mQ6" firstAttribute="top" secondItem="CA7-Ec-sCO" secondAttribute="top" constant="81" id="pSg-WN-nXJ"/>
                             <constraint firstItem="A1r-Ir-cJ0" firstAttribute="top" secondItem="G7G-v4-mQ6" secondAttribute="bottom" constant="51" id="sux-UV-NPt"/>
                         </constraints>

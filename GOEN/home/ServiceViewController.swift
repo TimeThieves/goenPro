@@ -263,9 +263,6 @@ class ServiceViewController: UIViewController,UICollectionViewDelegate,UICollect
                         }
                     }
                 }
-                
-//                self.dismiss(animated: true, completion: nil)
-                print("閉じてよ")
                 self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
                 
                 

@@ -109,19 +109,6 @@ class profileBasicViewController: UIViewController, UITableViewDelegate, UITable
         label.textAlignment = NSTextAlignment.left
         myView.addSubview(label)
         
-        
-        button.frame = CGRect(x: 310, y:15, width: 50, height: 20)
-        button.setTitle("編集", for: .normal)
-        button.setTitleColor(UIColor.black, for: .normal)
-        button.layer.cornerRadius = 3.0
-        button.layer.borderColor = UIColor.white.cgColor
-        button.layer.backgroundColor = UIColor.white.cgColor
-        button.layer.borderWidth = 1.0
-        
-        
-        myView.addSubview(button)
-        button.addTarget(self, action: #selector(self.changeColor(sender: )), for: .touchUpInside)
-        button.addTarget(self, action: #selector(self.changeColor2(sender: )), for: .touchDown)
         return myView
     }
     @objc func changeColor(sender: Any) {

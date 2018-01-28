@@ -32,9 +32,12 @@ class UserApi: UIViewController {
     public var service_flg = false
     public var auth_flg = true
     
+    public var couple_reg_flg: String = ""
+    
     public var send_user_name: String = ""
     
     func getUserService() {
+        
         serviceList1 = [Service]()
         errFlg = false
         // API 実行開始を通知
@@ -45,6 +48,7 @@ class UserApi: UIViewController {
         print(userdefault.string(forKey: "access_token")!)
         print(userdefault.string(forKey: "uid")!)
         print(userdefault.string(forKey: "client")!)
+        
         let header: HTTPHeaders = [
             "access-token": userdefault.string(forKey: "access_token")!,
             "uid": userdefault.string(forKey: "uid")!,
@@ -57,12 +61,17 @@ class UserApi: UIViewController {
                           headers: header).responseJSON
             {
                 response in
-                
+                userdefault.removeObject(forKey: "couple_id")
+                userdefault.removeObject(forKey: "ceremony_id")
                 let json = SwiftyJSON.JSON(data: response.data!)
                 var service = Service()
                 print("~~~~~~~~~~~~~~~~~~~~~~~~~~")
                 print(json)
                 print("~~~~~~~~~~~~~~~~~~~~~~~~~~")
+                if response.response == nil {
+                    self.auth_flg = false
+                    return
+                }
                 if response.response!.statusCode == 401 {
                     self.auth_flg = false
                 }else {
@@ -76,11 +85,15 @@ class UserApi: UIViewController {
         
                             self.serviceList1.append(service)
                         }
-                        if(item1["couple_info"] != nil) {
-                            if item1["couple_info"]["id"] != nil || item1["couple_info"]["id"] != ""  {
-                                
+                        if(item1["couple_info"] != JSON.null) {
+                            print(item1["couple_info"]["id"])
+                            if item1["couple_info"]["id"].int != nil  {
+                                userdefault.set(item1["couple_info"]["id"].int!, forKey: "couple_id")
                                 self.couple_id = item1["couple_info"]["id"].int!
                                 if item1["couple_info"]["reg_flg"].string! != "0" {
+                                    
+                                    self.couple_reg_flg = item1["couple_info"]["reg_flg"].string!
+                                    
                                     print("=================")
                                     print(item1["couple_info"])
                                     print("=================")
@@ -93,10 +106,17 @@ class UserApi: UIViewController {
                                     self.receive_user_id = item1["couple_info"]["receive_user_id"].int!
                                     self.send_user_name = item1["send_user"]["first_name"].string! + " " + item1["send_user"]["last_name"].string!
                                     self.send_user_id = item1["couple_info"]["send_user_id"].int!
+                                    print(item1["couple_info"])
+                                    self.couple_reg_flg = item1["couple_info"]["reg_flg"].string!
                                 }
                                 
                             }
                             
+                        }
+                        
+                        if(item1["ceremony_info"] != JSON.null) {
+                            print("ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg")
+                            userdefault.set(item1["ceremony_info"]["id"].int!, forKey: "ceremony_id")
                         }
                     }
                 }
@@ -216,5 +236,6 @@ public struct UserInfo {
     public var email: String? = nil
     public var name: String? = nil
     public var profile = Profile()
+    public var image: String? = ""
     
 }

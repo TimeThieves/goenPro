@@ -27,7 +27,7 @@ class CoupleCreateResAnswerViewController: UIViewController,UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         propose_message.delegate = self
-        propose_message.allowsEditingTextAttributes = false
+        propose_message.isEditable = false
         // Do any additional setup after loading the view.
         
         send_user_name.text = work_send_user_name

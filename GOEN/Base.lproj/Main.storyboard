@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="j2o-fW-9u5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="j2o-fW-9u5">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -42,6 +43,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K3c-mx-OSv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1380" y="515"/>
+        </scene>
+        <!--CeremonyHome-->
+        <scene sceneID="dvl-0q-QjH">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CeremonyHome" id="SSu-SJ-rdf" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lxi-Hv-aam" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1398" y="613"/>
         </scene>
         <!--サービス一覧-->
         <scene sceneID="pdE-ah-2XJ">
@@ -104,6 +113,7 @@
                         <segue destination="Ly3-9h-zHv" kind="presentation" identifier="showCoupleSegue" id="7ay-mV-YTB"/>
                         <segue destination="06N-35-WwS" kind="presentation" identifier="createCoupleSegue" id="B50-hi-d93"/>
                         <segue destination="bJd-8Z-qEU" kind="presentation" identifier="userInfoEdit" id="xCC-3C-vH6"/>
+                        <segue destination="SSu-SJ-rdf" kind="presentation" identifier="ceremonyHome" id="Sj0-s4-plY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fQ1-UX-8rc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -116,6 +126,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="j2o-fW-9u5" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Cf5-nO-W88">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>

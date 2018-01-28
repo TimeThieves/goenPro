@@ -30,6 +30,7 @@
 		251EA8C31F8CBF86003805F7 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 251EA8C41F8CBF86003805F7 /* SVProgressHUD.framework */; };
 		251EA8C71F8CCE6E003805F7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251EA8C61F8CCE6E003805F7 /* HomeViewController.swift */; };
 		253F67721FD97F2D004CEF07 /* ProfileApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253F67711FD97F2D004CEF07 /* ProfileApi.swift */; };
+		2544BC20201C509F00922FB3 /* NoDataInvitedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2544BC1F201C509F00922FB3 /* NoDataInvitedTableViewCell.swift */; };
 		2553CEF11FCC42ED0097B8DE /* CoupleEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2553CEF01FCC42ED0097B8DE /* CoupleEditViewController.swift */; };
 		255BBCEB1FF8D1D200DE22E6 /* CoupleCreateRes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 255BBCEA1FF8D1D200DE22E6 /* CoupleCreateRes.storyboard */; };
 		255BBCED1FF8EEC900DE22E6 /* CoupleCreateResViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255BBCEC1FF8EEC900DE22E6 /* CoupleCreateResViewController.swift */; };
@@ -38,6 +39,19 @@
 		259C930A1FDEDC95004C0F06 /* UserProfileEdit3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259C93091FDEDC95004C0F06 /* UserProfileEdit3ViewController.swift */; };
 		259C930C1FDEDCB2004C0F06 /* UserProfileEdit4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259C930B1FDEDCB2004C0F06 /* UserProfileEdit4ViewController.swift */; };
 		259C938C1FE2D4EA004C0F06 /* UserProfileEdit5ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259C938B1FE2D4EA004C0F06 /* UserProfileEdit5ViewController.swift */; };
+		25B282131FFA8F1A00E24B9F /* CeremonyHome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25B282121FFA8F1A00E24B9F /* CeremonyHome.storyboard */; };
+		25B282151FFB847900E24B9F /* CeremonyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B282141FFB847900E24B9F /* CeremonyListViewController.swift */; };
+		25B282171FFB84A500E24B9F /* CeremonyListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B282161FFB84A500E24B9F /* CeremonyListTableViewCell.swift */; };
+		25B282191FFBCF0600E24B9F /* NoCeremonyListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B282181FFBCF0600E24B9F /* NoCeremonyListTableViewCell.swift */; };
+		25B2821B1FFBCF5700E24B9F /* CeremonyApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B2821A1FFBCF5700E24B9F /* CeremonyApi.swift */; };
+		25B2821E1FFFB62600E24B9F /* CeremonyMyBrideMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B2821D1FFFB62600E24B9F /* CeremonyMyBrideMainViewController.swift */; };
+		25B282212000E8E800E24B9F /* MyBrideBasicInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B282202000E8E800E24B9F /* MyBrideBasicInfoCollectionViewCell.swift */; };
+		25B282232000E95400E24B9F /* MyBrideHoldingInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B282222000E95400E24B9F /* MyBrideHoldingInfoCollectionViewCell.swift */; };
+		25B282252000E99500E24B9F /* MyBrideReceptionHoldingInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B282242000E99500E24B9F /* MyBrideReceptionHoldingInfoCollectionViewCell.swift */; };
+		25B282272000E9AE00E24B9F /* MyBrideSecReceptionHoldingInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B282262000E9AE00E24B9F /* MyBrideSecReceptionHoldingInfoCollectionViewCell.swift */; };
+		25B2822920010CF900E24B9F /* NoBrideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B2822820010CF900E24B9F /* NoBrideViewController.swift */; };
+		25B2822B2002306400E24B9F /* CeremonyListTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B2822A2002306400E24B9F /* CeremonyListTabBarController.swift */; };
+		25B2822E2003041700E24B9F /* textField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B2822D2003041700E24B9F /* textField.swift */; };
 		25B2F7FB1F8E5C6100DF599B /* CoupleCreateConfUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B2F7FA1F8E5C6100DF599B /* CoupleCreateConfUserViewController.swift */; };
 		25B2F7FD1F8E5CE900DF599B /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B2F7FC1F8E5CE900DF599B /* HomeTabBarController.swift */; };
 		25B2F7FF1F8FB4F400DF599B /* CoupleApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B2F7FE1F8FB4F400DF599B /* CoupleApi.swift */; };
@@ -69,6 +83,20 @@
 		25DCC4E71FD465A400ABCCB0 /* UniversityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25DCC4E61FD465A400ABCCB0 /* UniversityTableViewCell.swift */; };
 		25DCC4E91FD465C200ABCCB0 /* ProposeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25DCC4E81FD465C200ABCCB0 /* ProposeTableViewCell.swift */; };
 		25ECD67C1FCF0AD500402304 /* CreateCouple.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25ECD67B1FCF0AD500402304 /* CreateCouple.storyboard */; };
+		25F017CF2004F7790063C125 /* CeremonyMyBrideBasicInfoCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F017CE2004F7790063C125 /* CeremonyMyBrideBasicInfoCreateViewController.swift */; };
+		25F017D4200CE8C40063C125 /* CeremonyInvitationMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F017D3200CE8C40063C125 /* CeremonyInvitationMainViewController.swift */; };
+		25F017D9200D0F710063C125 /* MyBridalInviListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F017D8200D0F710063C125 /* MyBridalInviListViewController.swift */; };
+		25F017DB200F915F0063C125 /* MyBridalInvTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F017DA200F915F0063C125 /* MyBridalInvTableViewCell.swift */; };
+		25F017DD200F91CC0063C125 /* NoDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F017DC200F91CC0063C125 /* NoDataTableViewCell.swift */; };
+		25F017E02010DF580063C125 /* InviteUserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F017DF2010DF580063C125 /* InviteUserListViewController.swift */; };
+		25F017E22010F0210063C125 /* InviteUserListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F017E12010F0210063C125 /* InviteUserListTableViewCell.swift */; };
+		25F017E520145C830063C125 /* InviteUsersDetailInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F017E420145C830063C125 /* InviteUsersDetailInfoViewController.swift */; };
+		25F017E72014700F0063C125 /* InviteUserDetailBasicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F017E62014700F0063C125 /* InviteUserDetailBasicTableViewCell.swift */; };
+		25F017E9201470E30063C125 /* InviteUserDetailPhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F017E8201470E30063C125 /* InviteUserDetailPhotoTableViewCell.swift */; };
+		25F017EB2014F3CD0063C125 /* CeremonyPhotoApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F017EA2014F3CD0063C125 /* CeremonyPhotoApi.swift */; };
+		25F017EE201613820063C125 /* dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F017ED201613820063C125 /* dummy.m */; };
+		25F017F22018EBC90063C125 /* InvitedMainListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F017F12018EBC90063C125 /* InvitedMainListViewController.swift */; };
+		25F017F42018F3B30063C125 /* InvitedMainListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F017F32018F3B30063C125 /* InvitedMainListTableViewCell.swift */; };
 		7EFE3A23E161BC17CB8F020E /* Pods_GOEN.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 837D5CD73E064F5182DCD471 /* Pods_GOEN.framework */; };
 		A5267EA1A9EEA6F7F9834A43 /* Pods_GOENTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CAFB791DEC0B7CDEB03FE65 /* Pods_GOENTests.framework */; };
 		F0632D962ABA905C05E46074 /* Pods_GOENUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 020680F1DA2E6F838E0DA6A7 /* Pods_GOENUITests.framework */; };
@@ -142,6 +170,7 @@
 		251EA8C41F8CBF86003805F7 /* SVProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SVProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		251EA8C61F8CCE6E003805F7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		253F67711FD97F2D004CEF07 /* ProfileApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileApi.swift; sourceTree = "<group>"; };
+		2544BC1F201C509F00922FB3 /* NoDataInvitedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDataInvitedTableViewCell.swift; sourceTree = "<group>"; };
 		2553CEF01FCC42ED0097B8DE /* CoupleEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoupleEditViewController.swift; sourceTree = "<group>"; };
 		255BBCEA1FF8D1D200DE22E6 /* CoupleCreateRes.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CoupleCreateRes.storyboard; sourceTree = "<group>"; };
 		255BBCEC1FF8EEC900DE22E6 /* CoupleCreateResViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoupleCreateResViewController.swift; sourceTree = "<group>"; };
@@ -150,6 +179,19 @@
 		259C93091FDEDC95004C0F06 /* UserProfileEdit3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileEdit3ViewController.swift; sourceTree = "<group>"; };
 		259C930B1FDEDCB2004C0F06 /* UserProfileEdit4ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileEdit4ViewController.swift; sourceTree = "<group>"; };
 		259C938B1FE2D4EA004C0F06 /* UserProfileEdit5ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileEdit5ViewController.swift; sourceTree = "<group>"; };
+		25B282121FFA8F1A00E24B9F /* CeremonyHome.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CeremonyHome.storyboard; sourceTree = "<group>"; };
+		25B282141FFB847900E24B9F /* CeremonyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CeremonyListViewController.swift; sourceTree = "<group>"; };
+		25B282161FFB84A500E24B9F /* CeremonyListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CeremonyListTableViewCell.swift; sourceTree = "<group>"; };
+		25B282181FFBCF0600E24B9F /* NoCeremonyListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoCeremonyListTableViewCell.swift; sourceTree = "<group>"; };
+		25B2821A1FFBCF5700E24B9F /* CeremonyApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CeremonyApi.swift; sourceTree = "<group>"; };
+		25B2821D1FFFB62600E24B9F /* CeremonyMyBrideMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CeremonyMyBrideMainViewController.swift; sourceTree = "<group>"; };
+		25B282202000E8E800E24B9F /* MyBrideBasicInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBrideBasicInfoCollectionViewCell.swift; sourceTree = "<group>"; };
+		25B282222000E95400E24B9F /* MyBrideHoldingInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBrideHoldingInfoCollectionViewCell.swift; sourceTree = "<group>"; };
+		25B282242000E99500E24B9F /* MyBrideReceptionHoldingInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBrideReceptionHoldingInfoCollectionViewCell.swift; sourceTree = "<group>"; };
+		25B282262000E9AE00E24B9F /* MyBrideSecReceptionHoldingInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBrideSecReceptionHoldingInfoCollectionViewCell.swift; sourceTree = "<group>"; };
+		25B2822820010CF900E24B9F /* NoBrideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoBrideViewController.swift; sourceTree = "<group>"; };
+		25B2822A2002306400E24B9F /* CeremonyListTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CeremonyListTabBarController.swift; sourceTree = "<group>"; };
+		25B2822D2003041700E24B9F /* textField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = textField.swift; sourceTree = "<group>"; };
 		25B2F7FA1F8E5C6100DF599B /* CoupleCreateConfUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoupleCreateConfUserViewController.swift; sourceTree = "<group>"; };
 		25B2F7FC1F8E5CE900DF599B /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
 		25B2F7FE1F8FB4F400DF599B /* CoupleApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoupleApi.swift; sourceTree = "<group>"; };
@@ -181,6 +223,21 @@
 		25DCC4E61FD465A400ABCCB0 /* UniversityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversityTableViewCell.swift; sourceTree = "<group>"; };
 		25DCC4E81FD465C200ABCCB0 /* ProposeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProposeTableViewCell.swift; sourceTree = "<group>"; };
 		25ECD67B1FCF0AD500402304 /* CreateCouple.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateCouple.storyboard; sourceTree = "<group>"; };
+		25F017CE2004F7790063C125 /* CeremonyMyBrideBasicInfoCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CeremonyMyBrideBasicInfoCreateViewController.swift; sourceTree = "<group>"; };
+		25F017D3200CE8C40063C125 /* CeremonyInvitationMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CeremonyInvitationMainViewController.swift; sourceTree = "<group>"; };
+		25F017D8200D0F710063C125 /* MyBridalInviListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBridalInviListViewController.swift; sourceTree = "<group>"; };
+		25F017DA200F915F0063C125 /* MyBridalInvTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBridalInvTableViewCell.swift; sourceTree = "<group>"; };
+		25F017DC200F91CC0063C125 /* NoDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDataTableViewCell.swift; sourceTree = "<group>"; };
+		25F017DF2010DF580063C125 /* InviteUserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteUserListViewController.swift; sourceTree = "<group>"; };
+		25F017E12010F0210063C125 /* InviteUserListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteUserListTableViewCell.swift; sourceTree = "<group>"; };
+		25F017E420145C830063C125 /* InviteUsersDetailInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteUsersDetailInfoViewController.swift; sourceTree = "<group>"; };
+		25F017E62014700F0063C125 /* InviteUserDetailBasicTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteUserDetailBasicTableViewCell.swift; sourceTree = "<group>"; };
+		25F017E8201470E30063C125 /* InviteUserDetailPhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteUserDetailPhotoTableViewCell.swift; sourceTree = "<group>"; };
+		25F017EA2014F3CD0063C125 /* CeremonyPhotoApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CeremonyPhotoApi.swift; sourceTree = "<group>"; };
+		25F017EC201613820063C125 /* GOEN-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GOEN-Bridging-Header.h"; sourceTree = "<group>"; };
+		25F017ED201613820063C125 /* dummy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = dummy.m; sourceTree = "<group>"; };
+		25F017F12018EBC90063C125 /* InvitedMainListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitedMainListViewController.swift; sourceTree = "<group>"; };
+		25F017F32018F3B30063C125 /* InvitedMainListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitedMainListTableViewCell.swift; sourceTree = "<group>"; };
 		374E2175F324F3A0D5E00FEB /* Pods-GOEN.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GOEN.release.xcconfig"; path = "Pods/Target Support Files/Pods-GOEN/Pods-GOEN.release.xcconfig"; sourceTree = "<group>"; };
 		5FF1EEE5C4C21F8ADEF57203 /* Pods-GOENTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GOENTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GOENTests/Pods-GOENTests.release.xcconfig"; sourceTree = "<group>"; };
 		837D5CD73E064F5182DCD471 /* Pods_GOEN.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GOEN.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -272,6 +329,8 @@
 		251EA86B1F8AFDAD003805F7 /* GOEN */ = {
 			isa = PBXGroup;
 			children = (
+				25B2822C200303FB00E24B9F /* common */,
+				25B282101FFA8B9600E24B9F /* ceremony */,
 				25DCC4D41FD3E39300ABCCB0 /* userProfile */,
 				25B2F7F91F8E5C3E00DF599B /* couple */,
 				251EA8C51F8CCE4A003805F7 /* home */,
@@ -288,6 +347,9 @@
 				25ECD67B1FCF0AD500402304 /* CreateCouple.storyboard */,
 				25DCC4D21FD3034900ABCCB0 /* UserInfoEdit.storyboard */,
 				255BBCEA1FF8D1D200DE22E6 /* CoupleCreateRes.storyboard */,
+				25B282121FFA8F1A00E24B9F /* CeremonyHome.storyboard */,
+				25F017ED201613820063C125 /* dummy.m */,
+				25F017EC201613820063C125 /* GOEN-Bridging-Header.h */,
 			);
 			path = GOEN;
 			sourceTree = "<group>";
@@ -328,6 +390,8 @@
 				25C8DD7F1FADC6A30094E571 /* CoupleScheduleApi.swift */,
 				25BDDE191FB8AEB2005DA540 /* CoupleAlbumApi.swift */,
 				253F67711FD97F2D004CEF07 /* ProfileApi.swift */,
+				25B2821A1FFBCF5700E24B9F /* CeremonyApi.swift */,
+				25F017EA2014F3CD0063C125 /* CeremonyPhotoApi.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -402,6 +466,58 @@
 			path = edit;
 			sourceTree = "<group>";
 		};
+		25B282101FFA8B9600E24B9F /* ceremony */ = {
+			isa = PBXGroup;
+			children = (
+				25F017EF2018EA750063C125 /* invited */,
+				25F017D1200CE8920063C125 /* invitation */,
+				25B2821C1FFFB5F200E24B9F /* mybride */,
+				25B282111FFA8BA900E24B9F /* home */,
+			);
+			path = ceremony;
+			sourceTree = "<group>";
+		};
+		25B282111FFA8BA900E24B9F /* home */ = {
+			isa = PBXGroup;
+			children = (
+				25B282141FFB847900E24B9F /* CeremonyListViewController.swift */,
+				25B282161FFB84A500E24B9F /* CeremonyListTableViewCell.swift */,
+				25B282181FFBCF0600E24B9F /* NoCeremonyListTableViewCell.swift */,
+			);
+			path = home;
+			sourceTree = "<group>";
+		};
+		25B2821C1FFFB5F200E24B9F /* mybride */ = {
+			isa = PBXGroup;
+			children = (
+				25F017D02004FE9A0063C125 /* edit */,
+				25B2821F2000DB3400E24B9F /* mybrideCell */,
+				25B2821D1FFFB62600E24B9F /* CeremonyMyBrideMainViewController.swift */,
+				25B2822A2002306400E24B9F /* CeremonyListTabBarController.swift */,
+			);
+			path = mybride;
+			sourceTree = "<group>";
+		};
+		25B2821F2000DB3400E24B9F /* mybrideCell */ = {
+			isa = PBXGroup;
+			children = (
+				25B282202000E8E800E24B9F /* MyBrideBasicInfoCollectionViewCell.swift */,
+				25B282222000E95400E24B9F /* MyBrideHoldingInfoCollectionViewCell.swift */,
+				25B282242000E99500E24B9F /* MyBrideReceptionHoldingInfoCollectionViewCell.swift */,
+				25B282262000E9AE00E24B9F /* MyBrideSecReceptionHoldingInfoCollectionViewCell.swift */,
+				25B2822820010CF900E24B9F /* NoBrideViewController.swift */,
+			);
+			path = mybrideCell;
+			sourceTree = "<group>";
+		};
+		25B2822C200303FB00E24B9F /* common */ = {
+			isa = PBXGroup;
+			children = (
+				25B2822D2003041700E24B9F /* textField.swift */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
 		25B2F7F91F8E5C3E00DF599B /* couple */ = {
 			isa = PBXGroup;
 			children = (
@@ -456,6 +572,80 @@
 				25DCC4E81FD465C200ABCCB0 /* ProposeTableViewCell.swift */,
 			);
 			path = card;
+			sourceTree = "<group>";
+		};
+		25F017D02004FE9A0063C125 /* edit */ = {
+			isa = PBXGroup;
+			children = (
+				25F017CE2004F7790063C125 /* CeremonyMyBrideBasicInfoCreateViewController.swift */,
+			);
+			path = edit;
+			sourceTree = "<group>";
+		};
+		25F017D1200CE8920063C125 /* invitation */ = {
+			isa = PBXGroup;
+			children = (
+				25F017DE2010DF250063C125 /* invite_user */,
+				25F017D2200CE89C0063C125 /* mainList */,
+			);
+			path = invitation;
+			sourceTree = "<group>";
+		};
+		25F017D2200CE89C0063C125 /* mainList */ = {
+			isa = PBXGroup;
+			children = (
+				25F017D7200D0F2E0063C125 /* myBridalInviList */,
+				25F017D3200CE8C40063C125 /* CeremonyInvitationMainViewController.swift */,
+			);
+			path = mainList;
+			sourceTree = "<group>";
+		};
+		25F017D7200D0F2E0063C125 /* myBridalInviList */ = {
+			isa = PBXGroup;
+			children = (
+				25F017D8200D0F710063C125 /* MyBridalInviListViewController.swift */,
+				25F017DA200F915F0063C125 /* MyBridalInvTableViewCell.swift */,
+				25F017DC200F91CC0063C125 /* NoDataTableViewCell.swift */,
+			);
+			path = myBridalInviList;
+			sourceTree = "<group>";
+		};
+		25F017DE2010DF250063C125 /* invite_user */ = {
+			isa = PBXGroup;
+			children = (
+				25F017E320145C580063C125 /* detail */,
+				25F017DF2010DF580063C125 /* InviteUserListViewController.swift */,
+				25F017E12010F0210063C125 /* InviteUserListTableViewCell.swift */,
+			);
+			path = invite_user;
+			sourceTree = "<group>";
+		};
+		25F017E320145C580063C125 /* detail */ = {
+			isa = PBXGroup;
+			children = (
+				25F017E420145C830063C125 /* InviteUsersDetailInfoViewController.swift */,
+				25F017E62014700F0063C125 /* InviteUserDetailBasicTableViewCell.swift */,
+				25F017E8201470E30063C125 /* InviteUserDetailPhotoTableViewCell.swift */,
+			);
+			path = detail;
+			sourceTree = "<group>";
+		};
+		25F017EF2018EA750063C125 /* invited */ = {
+			isa = PBXGroup;
+			children = (
+				25F017F02018EBA10063C125 /* mainList */,
+			);
+			path = invited;
+			sourceTree = "<group>";
+		};
+		25F017F02018EBA10063C125 /* mainList */ = {
+			isa = PBXGroup;
+			children = (
+				25F017F12018EBC90063C125 /* InvitedMainListViewController.swift */,
+				25F017F32018F3B30063C125 /* InvitedMainListTableViewCell.swift */,
+				2544BC1F201C509F00922FB3 /* NoDataInvitedTableViewCell.swift */,
+			);
+			path = mainList;
 			sourceTree = "<group>";
 		};
 		94C0ED97E201DED84AB00810 /* Frameworks */ = {
@@ -564,6 +754,7 @@
 				TargetAttributes = {
 					251EA8681F8AFDAD003805F7 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 					251EA87C1F8AFDAD003805F7 = {
@@ -608,6 +799,7 @@
 				251EA8771F8AFDAD003805F7 /* LaunchScreen.storyboard in Resources */,
 				251EA8741F8AFDAD003805F7 /* Assets.xcassets in Resources */,
 				251EA8721F8AFDAD003805F7 /* Main.storyboard in Resources */,
+				25B282131FFA8F1A00E24B9F /* CeremonyHome.storyboard in Resources */,
 				25DCC4D31FD3034A00ABCCB0 /* UserInfoEdit.storyboard in Resources */,
 				251266761FA2307F003C65D4 /* ShowCouple.storyboard in Resources */,
 				255BBCEB1FF8D1D200DE22E6 /* CoupleCreateRes.storyboard in Resources */,
@@ -685,6 +877,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-GOEN/Pods-GOEN-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Cloudinary/Cloudinary.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
@@ -692,6 +885,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cloudinary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
@@ -791,22 +985,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25F017E72014700F0063C125 /* InviteUserDetailBasicTableViewCell.swift in Sources */,
 				25C76C1C1FC119DC00EFD5A5 /* CoupleAlbumDetailCollectionViewCell.swift in Sources */,
+				25F017EB2014F3CD0063C125 /* CeremonyPhotoApi.swift in Sources */,
 				259C93061FDD54D8004C0F06 /* UserProfileEdit1ViewController.swift in Sources */,
 				251266701F98E6F0003C65D4 /* ServiceCollectionViewCell.swift in Sources */,
 				25DCC4D71FD3E3CF00ABCCB0 /* UserProfileMainViewController.swift in Sources */,
+				25F017EE201613820063C125 /* dummy.m in Sources */,
+				25F017D9200D0F710063C125 /* MyBridalInviListViewController.swift in Sources */,
 				2553CEF11FCC42ED0097B8DE /* CoupleEditViewController.swift in Sources */,
+				25F017CF2004F7790063C125 /* CeremonyMyBrideBasicInfoCreateViewController.swift in Sources */,
+				25B282151FFB847900E24B9F /* CeremonyListViewController.swift in Sources */,
 				25DCC4DD1FD4633100ABCCB0 /* profileBasicViewController.swift in Sources */,
+				25B2821B1FFBCF5700E24B9F /* CeremonyApi.swift in Sources */,
+				25F017DD200F91CC0063C125 /* NoDataTableViewCell.swift in Sources */,
 				25DCC4E51FD4659400ABCCB0 /* BirthPlaceTableViewCell.swift in Sources */,
+				25B282272000E9AE00E24B9F /* MyBrideSecReceptionHoldingInfoCollectionViewCell.swift in Sources */,
+				25F017E22010F0210063C125 /* InviteUserListTableViewCell.swift in Sources */,
+				25B2822920010CF900E24B9F /* NoBrideViewController.swift in Sources */,
 				25B2F8011F91092E00DF599B /* CoupleMainViewController.swift in Sources */,
 				251EA8A81F8B9CDB003805F7 /* AuthApi.swift in Sources */,
 				251EA86F1F8AFDAD003805F7 /* ViewController.swift in Sources */,
 				25DCC4E11FD4653900ABCCB0 /* BirthdayTableViewCell.swift in Sources */,
+				25F017E520145C830063C125 /* InviteUsersDetailInfoViewController.swift in Sources */,
+				25F017D4200CE8C40063C125 /* CeremonyInvitationMainViewController.swift in Sources */,
+				25F017F42018F3B30063C125 /* InvitedMainListTableViewCell.swift in Sources */,
 				25BDDE181FB8AC05005DA540 /* CoupleAlbumTableViewCell.swift in Sources */,
+				25B2822B2002306400E24B9F /* CeremonyListTabBarController.swift in Sources */,
+				25B282212000E8E800E24B9F /* MyBrideBasicInfoCollectionViewCell.swift in Sources */,
 				25B2F7FF1F8FB4F400DF599B /* CoupleApi.swift in Sources */,
 				25B2F8051F92464F00DF599B /* HomeCollectionViewCell.swift in Sources */,
 				25DCC4E71FD465A400ABCCB0 /* UniversityTableViewCell.swift in Sources */,
 				259C930A1FDEDC95004C0F06 /* UserProfileEdit3ViewController.swift in Sources */,
+				2544BC20201C509F00922FB3 /* NoDataInvitedTableViewCell.swift in Sources */,
 				25DCC4E31FD4658300ABCCB0 /* BloodTypeTableViewCell.swift in Sources */,
 				25B2F8071F9578DA00DF599B /* UserApi.swift in Sources */,
 				25DCC4E91FD465C200ABCCB0 /* ProposeTableViewCell.swift in Sources */,
@@ -815,30 +1026,40 @@
 				259C938C1FE2D4EA004C0F06 /* UserProfileEdit5ViewController.swift in Sources */,
 				25BDDE1A1FB8AEB2005DA540 /* CoupleAlbumApi.swift in Sources */,
 				25C76C1E1FC19EEA00EFD5A5 /* CoupleAlbumImageCreateViewController.swift in Sources */,
+				25B282252000E99500E24B9F /* MyBrideReceptionHoldingInfoCollectionViewCell.swift in Sources */,
 				25B2F7FB1F8E5C6100DF599B /* CoupleCreateConfUserViewController.swift in Sources */,
 				25B2F7FD1F8E5CE900DF599B /* HomeTabBarController.swift in Sources */,
 				25DCC4DF1FD4647A00ABCCB0 /* UserNameImageTableViewCell.swift in Sources */,
+				25B282232000E95400E24B9F /* MyBrideHoldingInfoCollectionViewCell.swift in Sources */,
 				25C8DD801FADC6A30094E571 /* CoupleScheduleApi.swift in Sources */,
 				251EA8A01F8B4307003805F7 /* SignUpViewController.swift in Sources */,
 				2512C3A81FA625F400B2BDFE /* CoupleScheduleViewController.swift in Sources */,
 				251266721F98E710003C65D4 /* ServiceCollectionReusableView.swift in Sources */,
+				25F017E9201470E30063C125 /* InviteUserDetailPhotoTableViewCell.swift in Sources */,
 				25C76C1A1FC1110300EFD5A5 /* CoupleAlbumDetailViewController.swift in Sources */,
+				25B2821E1FFFB62600E24B9F /* CeremonyMyBrideMainViewController.swift in Sources */,
 				25BDDE1C1FBC8C21005DA540 /* CoupleAlbumCreateViewController.swift in Sources */,
 				25BDBC771FD26F7C00CDFE86 /* CoupleCreateInfoViewController.swift in Sources */,
 				25B2F8031F921E4600DF599B /* HomeCollectionViewController.swift in Sources */,
 				25C8DD821FB3529B0094E571 /* CoupleScheduleDetailViewController.swift in Sources */,
 				259C930C1FDEDCB2004C0F06 /* UserProfileEdit4ViewController.swift in Sources */,
+				25F017E02010DF580063C125 /* InviteUserListViewController.swift in Sources */,
 				25C1ED411FA8CEA80096738B /* CoupleScheduleCreateViewController.swift in Sources */,
 				251EA8C71F8CCE6E003805F7 /* HomeViewController.swift in Sources */,
 				2512C3AA1FA6263600B2BDFE /* CoupleAlbumViewController.swift in Sources */,
+				25B282171FFB84A500E24B9F /* CeremonyListTableViewCell.swift in Sources */,
 				259C93081FDEDC86004C0F06 /* UserProfileEdit2ViewController.swift in Sources */,
+				25B2822E2003041700E24B9F /* textField.swift in Sources */,
 				25B9AE221FFA367A00B30A3B /* CoupleCreateResAnswerViewController.swift in Sources */,
 				253F67721FD97F2D004CEF07 /* ProfileApi.swift in Sources */,
 				255BBCED1FF8EEC900DE22E6 /* CoupleCreateResViewController.swift in Sources */,
 				25DCC4DA1FD3EDFA00ABCCB0 /* BasicProfileView.swift in Sources */,
+				25B282191FFBCF0600E24B9F /* NoCeremonyListTableViewCell.swift in Sources */,
 				25DCC4D11FD2C45400ABCCB0 /* HomeTabViewController.swift in Sources */,
+				25F017DB200F915F0063C125 /* MyBridalInvTableViewCell.swift in Sources */,
 				251EA89E1F8B2E51003805F7 /* SignInViewController.swift in Sources */,
 				2512C3AC1FA8BA9D00B2BDFE /* CoupleScheduleTableViewCell.swift in Sources */,
+				25F017F22018EBC90063C125 /* InvitedMainListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -949,6 +1170,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				test = "";
 			};
 			name = Debug;
 		};
@@ -1001,6 +1223,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
+				test = "";
 			};
 			name = Release;
 		};
@@ -1010,6 +1233,7 @@
 			buildSettings = {
 				API_HOST = "https://juno-teraco-stg--staging.herokuapp.com/api/";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R2XS7CKCJS;
@@ -1019,6 +1243,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = jp.tuyano.10days.GOEN;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "GOEN/GOEN-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1029,6 +1255,7 @@
 			baseConfigurationReference = 374E2175F324F3A0D5E00FEB /* Pods-GOEN.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R2XS7CKCJS;
@@ -1038,6 +1265,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = jp.tuyano.10days.GOEN;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "GOEN/GOEN-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
