@@ -379,6 +379,91 @@ class CoupleApi {
                 NotificationCenter.default.post(name: .coupleApiLoadComplate, object: nil)
         }
     }
+    
+    func insertMessage(message: String, couple_id: Int) {
+        self.sys_err = false
+        NotificationCenter.default.post(name: .coupleApiLoadStart, object: nil)
+        let userDefault = UserDefaults.standard
+        let postUrl = URL(string:
+            apiHost + "ceremonies/" + String(userDefault.integer(forKey: "ceremony_id")) + "/ceremony_info")!
+        
+        let headers: HTTPHeaders = [
+            "Content-Type":"Application/json",
+            "access-token": userDefault.string(forKey: "access_token")!,
+            "uid": userDefault.string(forKey: "uid")!,
+            "client": userDefault.string(forKey: "client")!
+        ]
+        
+        let params = [
+            "message_body": message,
+            "couple_id": String(couple_id),
+            "user_id": String(userDefault.integer(forKey: "user_id"))
+            
+        ]
+        
+        Alamofire.request(postUrl,
+                          method: .post,
+                          parameters: params,
+                          encoding: JSONEncoding.default,
+                          headers: headers).responseJSON
+            {
+                response in
+                
+                let json = SwiftyJSON.JSON(data: response.data!)
+                print(json)
+                if(response.response) == nil {
+                    self.sys_err = true
+                    return
+                    
+                }
+                if response.response!.statusCode == 403 {
+                    self.no_ceremony = true
+                }else if response.response!.statusCode == 200 {
+                    self.no_ceremony = false
+                    self.couple.ceremony_info.celemony_name = json["celemony_name"].string!
+                    self.couple.ceremony_info.celemony_message = json["celemony_message"].string!
+                }
+                NotificationCenter.default.post(name: .coupleApiLoadComplate, object: nil)
+        }
+    }
+    
+    func getCoupleMessages() {
+        self.sys_err = false
+        NotificationCenter.default.post(name: .coupleApiLoadStart, object: nil)
+        let userDefault = UserDefaults.standard
+        let postUrl = URL(string:
+            apiHost + "couples/" + String(userDefault.integer(forKey: "couple_id")) + "/send_message_list")!
+        
+        let headers: HTTPHeaders = [
+            "Content-Type":"Application/json",
+            "access-token": userDefault.string(forKey: "access_token")!,
+            "uid": userDefault.string(forKey: "uid")!,
+            "client": userDefault.string(forKey: "client")!
+        ]
+        
+        Alamofire.request(postUrl,
+                          method: .get,
+                          parameters: nil,
+                          encoding: JSONEncoding.default,
+                          headers: headers).responseJSON
+            {
+                response in
+                
+                let json = SwiftyJSON.JSON(data: response.data!)
+                print(json)
+                if(response.response) == nil {
+                    self.sys_err = true
+                    return
+                    
+                }
+                if response.response!.statusCode == 403 {
+                    self.no_ceremony = true
+                }else if response.response!.statusCode == 200 {
+                    print(json)
+                }
+                NotificationCenter.default.post(name: .coupleApiLoadComplate, object: nil)
+        }
+    }
 }
 
 
@@ -393,4 +478,17 @@ public struct Couple {
     public var propose_message: String? = nil
     public var user_id: Int = 0
     public var ceremony_info = Ceremony()
+}
+
+public struct SendCoupleMessage {
+    public var id: Int = 0
+    public var couple: Couple = Couple()
+    public var user: UserInfo = UserInfo()
+    
+}
+
+public struct Message {
+    public var id: Int = 0
+    public var message_body: String? = nil
+    
 }

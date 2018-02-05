@@ -221,12 +221,13 @@ class UserApi: UIViewController {
         }
     }
     
-    public struct Service {
-        public var id: Int = 0
-        public var service_cd: String? = nil
-        public var name: String? = nil
-        public var reg_flg: Bool? = false
-    }
+}
+
+public struct Service {
+    public var id: Int = 0
+    public var service_cd: String? = nil
+    public var name: String? = nil
+    public var reg_flg: Bool? = false
 }
 
 public struct UserInfo {

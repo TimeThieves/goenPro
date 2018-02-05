@@ -329,7 +329,7 @@ class CeremonyApi {
                         
                         info.couple_info.receive_user.first_name = item["couple"]["receive_user"][0]["first_name"].string!
                         info.couple_info.receive_user.last_name = item["couple"]["receive_user"][0]["last_name"].string!
-                        
+                        info.couple_info.id = item["couple"]["id"].int!
                         info.couple_info.ceremony_info.celemony_name = item["couple"]["ceremony_info"]["celemony_name"].string!
                         if item["couple"]["couple_image"].string == nil {
                             info.couple_info.couple_image = "sample"

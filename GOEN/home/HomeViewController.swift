@@ -8,9 +8,28 @@
 
 import UIKit
 import SVProgressHUD
+
+let screenSize: CGSize = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
+
 class HomeViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
-    @IBOutlet weak var serviceCollectionView: UICollectionView!
+    
+    private var serviceCollectionView: UICollectionView = {
+        //セルのレイアウト設計
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        
+        //各々の設計に合わせて調整
+        layout.scrollDirection = .vertical
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+        
+        let collectionView = UICollectionView( frame: CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height ), collectionViewLayout: layout)
+        collectionView.backgroundColor = UIColor.white
+        //セルの登録
+        collectionView.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: "HomeCollectionViewCell")
+        return collectionView
+    }()
+    
     private var myActivityIndicator: UIActivityIndicatorView!
     
     
@@ -29,7 +48,9 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
     }
     
     override func viewDidAppear(_ animated: Bool) {
-    
+        
+        serviceCollectionView.delegate = self
+        serviceCollectionView.dataSource = self
         let userdefault = UserDefaults.standard
         print("===============current user id===================")
         print(userdefault.integer(forKey: "user_id"))
@@ -82,8 +103,12 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
                     
                     self.serviceCollectionView.isUserInteractionEnabled = true
                     
+                    
             })
             serviceApi.getUserService()
+            
+            self.view.addSubview(self.serviceCollectionView)
+            
         }
     }
     
@@ -187,7 +212,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
     
     //セルの設定
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell:HomeCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier:"homeCollectionCell",for:indexPath as IndexPath) as! HomeCollectionViewCell
+        let cell:HomeCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier:"HomeCollectionViewCell",for:indexPath as IndexPath) as! HomeCollectionViewCell
         //セルの背景色をランダムに設定する。
         cell.backgroundColor = UIColor(red: CGFloat(drand48()),
                                        green: CGFloat(drand48()),
@@ -196,31 +221,9 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
         
         cell.layer.cornerRadius = 10.0
         
-        cell.serviceName.text = self.serviceApi.serviceList1[indexPath.row].name!
+        cell.service = self.serviceApi.serviceList1[indexPath.row]
         
-        if self.serviceApi.serviceList1[indexPath.row].service_cd! == "0001" {
-            
-            print("home reload3")
-            let image = UIImage(named: "setting")
-            
-            cell.serviceImage.image = image
-            
-        }else if self.serviceApi.serviceList1[indexPath.row].service_cd! == "0002" {
-            let image = UIImage(named: "bride")
-            
-            cell.serviceImage.image = image
-        }else if self.serviceApi.serviceList1[indexPath.row].service_cd! == "0003" {
-            let image = UIImage(named: "camera")
-            
-            cell.serviceImage.image = image
-        }
-        if self.serviceApi.serviceList1[indexPath.row].service_cd! == "0101" {
-            
-            let image = UIImage(named: "couple")
-            
-            cell.serviceImage.image = image
-            
-        }
+        
         return cell
     }
 

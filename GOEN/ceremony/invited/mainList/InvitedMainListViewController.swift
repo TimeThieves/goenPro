@@ -15,6 +15,8 @@ class InvitedMainListViewController: UIViewController,UITableViewDelegate,UITabl
     let api: CeremonyApi = CeremonyApi()
     var loadObserver: NSObjectProtocol?
     
+    var couple_id: Int = 0
+    
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(true)
         tableView.delegate = self
@@ -185,6 +187,35 @@ class InvitedMainListViewController: UIViewController,UITableViewDelegate,UITabl
         
         self.present(alert, animated: true, completion: nil)
     }
+    @IBAction func sendMessage(_ sender: UIButton) {
+        
+        let cell =  sender.superview?.superview?.superview as! InvitedMainListTableViewCell
+        guard let row = self.tableView.indexPath(for: cell)?.row else {
+            return
+        }
+        
+        self.couple_id = self.api.invitationList[row].couple_info.id
+        
+        print("test1")
+        print(self.couple_id)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "sendMessage" {
+            print(self.couple_id)
+            let view: CeremonyMessageListViewController = (segue.destination as? CeremonyMessageListViewController)!
+            view.couple_id = self.couple_id
+//
+//            print("test2")
+//            print(self.couple_id)
+//            let view: CeremonyMessageListViewController =  CeremonyMessageListViewController()
+//            view.couple_id = self.couple_id
+//            print(view.couple_id)
+        }
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         print("disappear")
         NotificationCenter.default.removeObserver(self.loadObserver!)

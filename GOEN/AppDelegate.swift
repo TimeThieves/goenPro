@@ -16,6 +16,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        var viewControllers: [UIViewController] = []
+        
+        let newsFeedController = NewsFeedViewController()
+        newsFeedController.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.init(rawValue: 0)!, tag: 1)
+        
+        let homeViewContorller = HomeViewController()
+        homeViewContorller.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.init(rawValue: 1)!, tag: 2)
+        
+        viewControllers.append(newsFeedController)
+        viewControllers.append(homeViewContorller)
+        
+        // ViewControllerをセット
+        let tabBarController = UITabBarController()
+        tabBarController.setViewControllers(viewControllers, animated: false)
+        
+        // rootViewControllerをUITabBarControllerにする
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = tabBarController
+        window?.makeKeyAndVisible()
+        
         return true
     }
 

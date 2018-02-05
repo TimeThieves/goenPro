@@ -16,7 +16,6 @@
 		2512C3AC1FA8BA9D00B2BDFE /* CoupleScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2512C3AB1FA8BA9C00B2BDFE /* CoupleScheduleTableViewCell.swift */; };
 		251EA86D1F8AFDAD003805F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251EA86C1F8AFDAD003805F7 /* AppDelegate.swift */; };
 		251EA86F1F8AFDAD003805F7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251EA86E1F8AFDAD003805F7 /* ViewController.swift */; };
-		251EA8721F8AFDAD003805F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 251EA8701F8AFDAD003805F7 /* Main.storyboard */; };
 		251EA8741F8AFDAD003805F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 251EA8731F8AFDAD003805F7 /* Assets.xcassets */; };
 		251EA8771F8AFDAD003805F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 251EA8751F8AFDAD003805F7 /* LaunchScreen.storyboard */; };
 		251EA8821F8AFDAD003805F7 /* GOENTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251EA8811F8AFDAD003805F7 /* GOENTests.swift */; };
@@ -29,6 +28,7 @@
 		251EA8BE1F8B9D75003805F7 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 251EA8BF1F8B9D75003805F7 /* Alamofire.framework */; };
 		251EA8C31F8CBF86003805F7 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 251EA8C41F8CBF86003805F7 /* SVProgressHUD.framework */; };
 		251EA8C71F8CCE6E003805F7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251EA8C61F8CCE6E003805F7 /* HomeViewController.swift */; };
+		252DE08A2020AC4D0026B243 /* NewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252DE0892020AC4D0026B243 /* NewsFeedViewController.swift */; };
 		253F67721FD97F2D004CEF07 /* ProfileApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253F67711FD97F2D004CEF07 /* ProfileApi.swift */; };
 		2544BC20201C509F00922FB3 /* NoDataInvitedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2544BC1F201C509F00922FB3 /* NoDataInvitedTableViewCell.swift */; };
 		2553CEF11FCC42ED0097B8DE /* CoupleEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2553CEF01FCC42ED0097B8DE /* CoupleEditViewController.swift */; };
@@ -97,6 +97,10 @@
 		25F017EE201613820063C125 /* dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 25F017ED201613820063C125 /* dummy.m */; };
 		25F017F22018EBC90063C125 /* InvitedMainListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F017F12018EBC90063C125 /* InvitedMainListViewController.swift */; };
 		25F017F42018F3B30063C125 /* InvitedMainListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F017F32018F3B30063C125 /* InvitedMainListTableViewCell.swift */; };
+		25F130F12020D349000DE3E1 /* CeremonyMessageListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F130F02020D349000DE3E1 /* CeremonyMessageListViewController.swift */; };
+		25F130F320220307000DE3E1 /* CeremonyMessageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F130F220220307000DE3E1 /* CeremonyMessageCollectionViewCell.swift */; };
+		25F130F52025BBB4000DE3E1 /* CeremonyMessageListHeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F130F42025BBB4000DE3E1 /* CeremonyMessageListHeaderCollectionViewCell.swift */; };
+		25F130F82025F082000DE3E1 /* CreateMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F130F72025F082000DE3E1 /* CreateMessageViewController.swift */; };
 		7EFE3A23E161BC17CB8F020E /* Pods_GOEN.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 837D5CD73E064F5182DCD471 /* Pods_GOEN.framework */; };
 		A5267EA1A9EEA6F7F9834A43 /* Pods_GOENTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CAFB791DEC0B7CDEB03FE65 /* Pods_GOENTests.framework */; };
 		F0632D962ABA905C05E46074 /* Pods_GOENUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 020680F1DA2E6F838E0DA6A7 /* Pods_GOENUITests.framework */; };
@@ -131,7 +135,6 @@
 		251EA8691F8AFDAD003805F7 /* GOEN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GOEN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		251EA86C1F8AFDAD003805F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		251EA86E1F8AFDAD003805F7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		251EA8711F8AFDAD003805F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		251EA8731F8AFDAD003805F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		251EA8761F8AFDAD003805F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		251EA8781F8AFDAD003805F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -169,6 +172,7 @@
 		251EA8BF1F8B9D75003805F7 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		251EA8C41F8CBF86003805F7 /* SVProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SVProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		251EA8C61F8CCE6E003805F7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		252DE0892020AC4D0026B243 /* NewsFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedViewController.swift; sourceTree = "<group>"; };
 		253F67711FD97F2D004CEF07 /* ProfileApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileApi.swift; sourceTree = "<group>"; };
 		2544BC1F201C509F00922FB3 /* NoDataInvitedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDataInvitedTableViewCell.swift; sourceTree = "<group>"; };
 		2553CEF01FCC42ED0097B8DE /* CoupleEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoupleEditViewController.swift; sourceTree = "<group>"; };
@@ -238,6 +242,10 @@
 		25F017ED201613820063C125 /* dummy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = dummy.m; sourceTree = "<group>"; };
 		25F017F12018EBC90063C125 /* InvitedMainListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitedMainListViewController.swift; sourceTree = "<group>"; };
 		25F017F32018F3B30063C125 /* InvitedMainListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitedMainListTableViewCell.swift; sourceTree = "<group>"; };
+		25F130F02020D349000DE3E1 /* CeremonyMessageListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CeremonyMessageListViewController.swift; sourceTree = "<group>"; };
+		25F130F220220307000DE3E1 /* CeremonyMessageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CeremonyMessageCollectionViewCell.swift; sourceTree = "<group>"; };
+		25F130F42025BBB4000DE3E1 /* CeremonyMessageListHeaderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CeremonyMessageListHeaderCollectionViewCell.swift; sourceTree = "<group>"; };
+		25F130F72025F082000DE3E1 /* CreateMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMessageViewController.swift; sourceTree = "<group>"; };
 		374E2175F324F3A0D5E00FEB /* Pods-GOEN.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GOEN.release.xcconfig"; path = "Pods/Target Support Files/Pods-GOEN/Pods-GOEN.release.xcconfig"; sourceTree = "<group>"; };
 		5FF1EEE5C4C21F8ADEF57203 /* Pods-GOENTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GOENTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GOENTests/Pods-GOENTests.release.xcconfig"; sourceTree = "<group>"; };
 		837D5CD73E064F5182DCD471 /* Pods_GOEN.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GOEN.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -338,7 +346,6 @@
 				251EA89C1F8B2E2B003805F7 /* Auth */,
 				251EA86C1F8AFDAD003805F7 /* AppDelegate.swift */,
 				251EA86E1F8AFDAD003805F7 /* ViewController.swift */,
-				251EA8701F8AFDAD003805F7 /* Main.storyboard */,
 				251EA89A1F8AFEB7003805F7 /* Auth.storyboard */,
 				251EA8731F8AFDAD003805F7 /* Assets.xcassets */,
 				251EA8751F8AFDAD003805F7 /* LaunchScreen.storyboard */,
@@ -434,6 +441,7 @@
 		251EA8C51F8CCE4A003805F7 /* home */ = {
 			isa = PBXGroup;
 			children = (
+				252DE0882020AB840026B243 /* main */,
 				251EA8C61F8CCE6E003805F7 /* HomeViewController.swift */,
 				25B2F7FC1F8E5CE900DF599B /* HomeTabBarController.swift */,
 				25B2F8021F921E4600DF599B /* HomeCollectionViewController.swift */,
@@ -444,6 +452,14 @@
 				25DCC4D01FD2C45400ABCCB0 /* HomeTabViewController.swift */,
 			);
 			path = home;
+			sourceTree = "<group>";
+		};
+		252DE0882020AB840026B243 /* main */ = {
+			isa = PBXGroup;
+			children = (
+				252DE0892020AC4D0026B243 /* NewsFeedViewController.swift */,
+			);
+			path = main;
 			sourceTree = "<group>";
 		};
 		2553CEEF1FCC42D50097B8DE /* edit */ = {
@@ -469,6 +485,7 @@
 		25B282101FFA8B9600E24B9F /* ceremony */ = {
 			isa = PBXGroup;
 			children = (
+				25F130EF2020D32D000DE3E1 /* message */,
 				25F017EF2018EA750063C125 /* invited */,
 				25F017D1200CE8920063C125 /* invitation */,
 				25B2821C1FFFB5F200E24B9F /* mybride */,
@@ -648,6 +665,25 @@
 			path = mainList;
 			sourceTree = "<group>";
 		};
+		25F130EF2020D32D000DE3E1 /* message */ = {
+			isa = PBXGroup;
+			children = (
+				25F130F62025F064000DE3E1 /* create */,
+				25F130F02020D349000DE3E1 /* CeremonyMessageListViewController.swift */,
+				25F130F220220307000DE3E1 /* CeremonyMessageCollectionViewCell.swift */,
+				25F130F42025BBB4000DE3E1 /* CeremonyMessageListHeaderCollectionViewCell.swift */,
+			);
+			path = message;
+			sourceTree = "<group>";
+		};
+		25F130F62025F064000DE3E1 /* create */ = {
+			isa = PBXGroup;
+			children = (
+				25F130F72025F082000DE3E1 /* CreateMessageViewController.swift */,
+			);
+			path = create;
+			sourceTree = "<group>";
+		};
 		94C0ED97E201DED84AB00810 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -798,7 +834,6 @@
 				251EA89B1F8AFEB7003805F7 /* Auth.storyboard in Resources */,
 				251EA8771F8AFDAD003805F7 /* LaunchScreen.storyboard in Resources */,
 				251EA8741F8AFDAD003805F7 /* Assets.xcassets in Resources */,
-				251EA8721F8AFDAD003805F7 /* Main.storyboard in Resources */,
 				25B282131FFA8F1A00E24B9F /* CeremonyHome.storyboard in Resources */,
 				25DCC4D31FD3034A00ABCCB0 /* UserInfoEdit.storyboard in Resources */,
 				251266761FA2307F003C65D4 /* ShowCouple.storyboard in Resources */,
@@ -988,9 +1023,11 @@
 				25F017E72014700F0063C125 /* InviteUserDetailBasicTableViewCell.swift in Sources */,
 				25C76C1C1FC119DC00EFD5A5 /* CoupleAlbumDetailCollectionViewCell.swift in Sources */,
 				25F017EB2014F3CD0063C125 /* CeremonyPhotoApi.swift in Sources */,
+				252DE08A2020AC4D0026B243 /* NewsFeedViewController.swift in Sources */,
 				259C93061FDD54D8004C0F06 /* UserProfileEdit1ViewController.swift in Sources */,
 				251266701F98E6F0003C65D4 /* ServiceCollectionViewCell.swift in Sources */,
 				25DCC4D71FD3E3CF00ABCCB0 /* UserProfileMainViewController.swift in Sources */,
+				25F130F52025BBB4000DE3E1 /* CeremonyMessageListHeaderCollectionViewCell.swift in Sources */,
 				25F017EE201613820063C125 /* dummy.m in Sources */,
 				25F017D9200D0F710063C125 /* MyBridalInviListViewController.swift in Sources */,
 				2553CEF11FCC42ED0097B8DE /* CoupleEditViewController.swift in Sources */,
@@ -1034,10 +1071,12 @@
 				25C8DD801FADC6A30094E571 /* CoupleScheduleApi.swift in Sources */,
 				251EA8A01F8B4307003805F7 /* SignUpViewController.swift in Sources */,
 				2512C3A81FA625F400B2BDFE /* CoupleScheduleViewController.swift in Sources */,
+				25F130F12020D349000DE3E1 /* CeremonyMessageListViewController.swift in Sources */,
 				251266721F98E710003C65D4 /* ServiceCollectionReusableView.swift in Sources */,
 				25F017E9201470E30063C125 /* InviteUserDetailPhotoTableViewCell.swift in Sources */,
 				25C76C1A1FC1110300EFD5A5 /* CoupleAlbumDetailViewController.swift in Sources */,
 				25B2821E1FFFB62600E24B9F /* CeremonyMyBrideMainViewController.swift in Sources */,
+				25F130F320220307000DE3E1 /* CeremonyMessageCollectionViewCell.swift in Sources */,
 				25BDDE1C1FBC8C21005DA540 /* CoupleAlbumCreateViewController.swift in Sources */,
 				25BDBC771FD26F7C00CDFE86 /* CoupleCreateInfoViewController.swift in Sources */,
 				25B2F8031F921E4600DF599B /* HomeCollectionViewController.swift in Sources */,
@@ -1057,6 +1096,7 @@
 				25B282191FFBCF0600E24B9F /* NoCeremonyListTableViewCell.swift in Sources */,
 				25DCC4D11FD2C45400ABCCB0 /* HomeTabViewController.swift in Sources */,
 				25F017DB200F915F0063C125 /* MyBridalInvTableViewCell.swift in Sources */,
+				25F130F82025F082000DE3E1 /* CreateMessageViewController.swift in Sources */,
 				251EA89E1F8B2E51003805F7 /* SignInViewController.swift in Sources */,
 				2512C3AC1FA8BA9D00B2BDFE /* CoupleScheduleTableViewCell.swift in Sources */,
 				25F017F22018EBC90063C125 /* InvitedMainListViewController.swift in Sources */,
@@ -1095,14 +1135,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		251EA8701F8AFDAD003805F7 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				251EA8711F8AFDAD003805F7 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		251EA8751F8AFDAD003805F7 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
