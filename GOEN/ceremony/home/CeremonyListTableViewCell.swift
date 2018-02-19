@@ -18,6 +18,15 @@ class CeremonyListTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
+    
+    var invi: Invite = Invite() {
+        didSet{
+            
+            ceremony_name.text = invi.ceremony.celemony_name!
+            
+            
+        }
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

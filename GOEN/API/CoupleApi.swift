@@ -22,6 +22,7 @@ class CoupleApi {
     
     public var coupleInfo = [Couple]()
     public var user = [UserInfo]()
+    public var messageList = [SendCoupleMessage]()
     public var couple = Couple()
     public var public_id: String = ""
     public var sys_err: Bool = false
@@ -382,10 +383,11 @@ class CoupleApi {
     
     func insertMessage(message: String, couple_id: Int) {
         self.sys_err = false
+        self.updateFlg = false
         NotificationCenter.default.post(name: .coupleApiLoadStart, object: nil)
         let userDefault = UserDefaults.standard
         let postUrl = URL(string:
-            apiHost + "ceremonies/" + String(userDefault.integer(forKey: "ceremony_id")) + "/ceremony_info")!
+            apiHost + "couples/send_message")!
         
         let headers: HTTPHeaders = [
             "Content-Type":"Application/json",
@@ -420,19 +422,22 @@ class CoupleApi {
                     self.no_ceremony = true
                 }else if response.response!.statusCode == 200 {
                     self.no_ceremony = false
-                    self.couple.ceremony_info.celemony_name = json["celemony_name"].string!
-                    self.couple.ceremony_info.celemony_message = json["celemony_message"].string!
+//                    self.couple.ceremony_info.celemony_name = json["celemony_name"].string!
+//                    self.couple.ceremony_info.celemony_message = json["celemony_message"].string!
+                }else {
+                    self.updateFlg = true
                 }
                 NotificationCenter.default.post(name: .coupleApiLoadComplate, object: nil)
         }
     }
     
-    func getCoupleMessages() {
+    func getCoupleMessages(couple_id: Int) {
         self.sys_err = false
         NotificationCenter.default.post(name: .coupleApiLoadStart, object: nil)
         let userDefault = UserDefaults.standard
+        messageList = [SendCoupleMessage]()
         let postUrl = URL(string:
-            apiHost + "couples/" + String(userDefault.integer(forKey: "couple_id")) + "/send_message_list")!
+            apiHost + "couples/" + String(couple_id) + "/send_message_list")!
         
         let headers: HTTPHeaders = [
             "Content-Type":"Application/json",
@@ -450,7 +455,6 @@ class CoupleApi {
                 response in
                 
                 let json = SwiftyJSON.JSON(data: response.data!)
-                print(json)
                 if(response.response) == nil {
                     self.sys_err = true
                     return
@@ -460,6 +464,23 @@ class CoupleApi {
                     self.no_ceremony = true
                 }else if response.response!.statusCode == 200 {
                     print(json)
+                    for (_, item) in json {
+                        var sendMessageInfo = SendCoupleMessage()
+                        sendMessageInfo.couple.ceremony_info.celemony_message = item["couple"]["ceremony_info"]["celemony_message"].string!
+                        sendMessageInfo.couple.message_count = item["couple"]["message_count"].int!
+                        sendMessageInfo.user.first_name = item["user"]["first_name"].string!
+                        sendMessageInfo.user.last_name = item["user"]["last_name"].string!
+//                        sendMessageInfo.user.image
+                        sendMessageInfo.message.message_body = item["message"]["message_body"].string!
+                        if item["user"]["image"].string == nil ||  item["user"]["image"].string == "" {
+                            sendMessageInfo.user.image = "sample"
+                        }else {
+                            sendMessageInfo.user.image = item["user"]["image"].string!
+                        }
+                        self.messageList.append(sendMessageInfo)
+                    }
+                    print("wawai")
+                    print(self.messageList)
                 }
                 NotificationCenter.default.post(name: .coupleApiLoadComplate, object: nil)
         }
@@ -469,6 +490,7 @@ class CoupleApi {
 
 public struct Couple {
     public var id: Int = 0
+    public var message_count: Int = 0
     public var couple_house_zip: String? = nil
     public var couple_name: String? = nil
     public var couple_image:String? = nil
@@ -484,6 +506,7 @@ public struct SendCoupleMessage {
     public var id: Int = 0
     public var couple: Couple = Couple()
     public var user: UserInfo = UserInfo()
+    public var message: Message = Message()
     
 }
 

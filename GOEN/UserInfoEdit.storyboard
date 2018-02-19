@@ -27,7 +27,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DRI-qZ-nlI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-268" y="68"/>
+            <point key="canvasLocation" x="132" y="18"/>
         </scene>
         <!--User Profile Main View Controller-->
         <scene sceneID="WtH-OZ-ND5">
@@ -43,6 +43,7 @@
                                 <segments>
                                     <segment title="基本情報"/>
                                     <segment title="写真"/>
+                                    <segment title="詳細情報"/>
                                 </segments>
                                 <connections>
                                     <action selector="segmentTaped:" destination="iCn-Dh-9gK" eventType="valueChanged" id="9xA-i8-Rho"/>
@@ -70,6 +71,7 @@
                         <outlet property="basicInfoView" destination="qx5-2K-KJ8" id="iQT-H9-lzG"/>
                         <outlet property="ceremonyPhotoView" destination="Nlh-fI-t8n" id="5sZ-1L-pPN"/>
                         <outlet property="segumentTab" destination="OMU-Gi-eNH" id="YRD-EM-K47"/>
+                        <outlet property="userProfileDetail" destination="fDd-Mc-6Qy" id="k0N-rV-8U9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LtJ-a3-oE5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -102,6 +104,21 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <viewLayoutGuide key="safeArea" id="nj9-3E-Z0h"/>
+                </view>
+                <view contentMode="scaleToFill" id="fDd-Mc-6Qy">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="600"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YQO-6U-zhx">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="600"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <connections>
+                                <segue destination="hex-iT-rQA" kind="embed" id="QoB-Td-yK0"/>
+                            </connections>
+                        </containerView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <viewLayoutGuide key="safeArea" id="lyv-hk-K5j"/>
                 </view>
             </objects>
             <point key="canvasLocation" x="1281" y="18"/>
@@ -366,19 +383,19 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="プロポーズ情報" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GBf-2j-qmi">
-                                                    <rect key="frame" x="15" y="0.0" width="313" height="21"/>
+                                                    <rect key="frame" x="15" y="0.0" width="323" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Um0-R8-ayF">
-                                                    <rect key="frame" x="15" y="29" width="335" height="21"/>
+                                                    <rect key="frame" x="15" y="29" width="345" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="test" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dzU-ht-HOL">
-                                                    <rect key="frame" x="15" y="58" width="335" height="174"/>
+                                                    <rect key="frame" x="15" y="58" width="345" height="174"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -831,6 +848,20 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A4P-r9-Ol8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-962" y="-132"/>
+        </scene>
+        <!--User Profile Detail Info View Controller-->
+        <scene sceneID="KwF-Sn-eQ6">
+            <objects>
+                <viewController id="hex-iT-rQA" customClass="UserProfileDetailInfoViewController" customModule="GOEN" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rj2-DW-yep">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xjI-d2-67W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2110" y="-133"/>
         </scene>
     </scenes>
 </document>

@@ -14,17 +14,20 @@ class CeremonyMessageListViewController: UIViewController,UICollectionViewDelega
     let cellId = "ceremonyMessageCell"
     let headerId = "header"
     var loadObserver: NSObjectProtocol?
+    let cellMargin:CGFloat = 1.0
     
     public var couple_id: Int = 0
     let api: CoupleApi = CoupleApi()
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        return 10
+        print("wwwwaaai")
+        print(api.messageList.count)
+        return self.api.messageList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ceremonyMessageCell", for: indexPath) as! CeremonyMessageCollectionViewCell
+        cell.message = self.api.messageList[indexPath.row]
         return cell
     }
     
@@ -35,8 +38,10 @@ class CeremonyMessageListViewController: UIViewController,UICollectionViewDelega
     }
     
     @objc func onClick(_ sender: AnyObject){
+        print(self.couple_id)
         // 遷移するViewを定義する.
         let view: CreateMessageViewController = CreateMessageViewController()
+        view.couple_id = self.couple_id
 //        view.couple_id = 0
         // アニメーションを設定する.
         view.modalTransitionStyle = UIModalTransitionStyle.coverVertical
@@ -59,34 +64,27 @@ class CeremonyMessageListViewController: UIViewController,UICollectionViewDelega
 //        }
 //    }
     
-    
-    let messageTextView: UITextView = {
-        var text = UITextView()
-        text.frame = CGRect(x: 0, y:0, width: UIScreen.main.bounds.width, height: 40)
-        text.text = "カップルにメッセージを送りましょう。"
-        text.textColor = .gray
-        text.textAlignment = .center
-        return text
-    }()
-    
-    
     private var ceremonyMessageCollection: UICollectionView!
     
-    override func viewDidLoad() {
+    override func viewWillAppear(_ animated: Bool) {
+        
         print("test3")
         print(self.couple_id)
-        super.viewDidLoad()
+        super.viewWillAppear(true)
         self.navigationController?.navigationBar.isTranslucent = false
         // レイアウト作成
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
         flowLayout.minimumInteritemSpacing = 5.0
         flowLayout.minimumLineSpacing = 5.0
-        flowLayout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 100)
+        flowLayout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 50)
         // セクション毎のヘッダーサイズ
         flowLayout.headerReferenceSize = CGSize(width: self.view.frame.width, height: 100)
+        
+        flowLayout.estimatedItemSize = CGSize(width: UIScreen.main.bounds.width,height:1)
+        flowLayout.sectionInset = UIEdgeInsets(top: 20,left: 0,bottom: 0,right: 0)
         // コレクションビュー作成
-        ceremonyMessageCollection = UICollectionView(frame: view.frame, collectionViewLayout: flowLayout)
+        ceremonyMessageCollection = UICollectionView(frame: UIScreen.main.bounds, collectionViewLayout: flowLayout)
         ceremonyMessageCollection.register(CeremonyMessageCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
         ceremonyMessageCollection.register(CeremonyMessageListHeaderCollectionViewCell.self,
                                            forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
@@ -95,12 +93,12 @@ class CeremonyMessageListViewController: UIViewController,UICollectionViewDelega
         
         ceremonyMessageCollection.backgroundColor = UIColor.lightGray
         ceremonyMessageCollection.dataSource = self
+        ceremonyMessageCollection.delegate = self
         ceremonyMessageCollection.alwaysBounceVertical = true
         ceremonyMessageCollection.translatesAutoresizingMaskIntoConstraints = false
         // AutoLayout制約を追加
         setupConstraints()
         self.view.addSubview(ceremonyMessageCollection)
-        
         
         SVProgressHUD.show()
         loadObserver = NotificationCenter.default.addObserver(
@@ -130,9 +128,16 @@ class CeremonyMessageListViewController: UIViewController,UICollectionViewDelega
                 }
                 
                 SVProgressHUD.dismiss()
+                
+                self.ceremonyMessageCollection.reloadData()
         })
         
-        api.getCoupleMessages()
+        api.getCoupleMessages(couple_id: self.couple_id)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        print("disappear")
+        NotificationCenter.default.removeObserver(self.loadObserver!)
     }
     
     private func setupConstraints(){
@@ -142,6 +147,27 @@ class CeremonyMessageListViewController: UIViewController,UICollectionViewDelega
 //        ceremonyMessageCollection.topAnchor.constraint(equalTo: createMessageButton.bottomAnchor, constant: 8).isActive = true
         
         
+    }
+    /*
+     
+     Sectionの数
+     
+     */
+    
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        
+        return 1
+        
+    }
+    
+    //セルサイズ設定
+    func collectionView(_ collectionView:UICollectionView,layout collectionViewLayout:UICollectionViewLayout,sizeForItemAt indexPath:IndexPath) -> CGSize{
+        
+        print("layout1000001")
+        let numberOfMargin:CGFloat = 4.0
+        let width:CGFloat = self.view.frame.width
+        let height:CGFloat = 200.0
+        return CGSize(width:width,height:height)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

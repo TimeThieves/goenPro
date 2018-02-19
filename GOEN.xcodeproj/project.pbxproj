@@ -28,6 +28,19 @@
 		251EA8BE1F8B9D75003805F7 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 251EA8BF1F8B9D75003805F7 /* Alamofire.framework */; };
 		251EA8C31F8CBF86003805F7 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 251EA8C41F8CBF86003805F7 /* SVProgressHUD.framework */; };
 		251EA8C71F8CCE6E003805F7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251EA8C61F8CCE6E003805F7 /* HomeViewController.swift */; };
+		25214B6B2031BB8200D27AC3 /* UserProfileDetailInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25214B6A2031BB8200D27AC3 /* UserProfileDetailInfoViewController.swift */; };
+		25214B6D2031F28D00D27AC3 /* CreateBookListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25214B6C2031F28D00D27AC3 /* CreateBookListViewController.swift */; };
+		25214B6F2031F3A600D27AC3 /* CreateHobyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25214B6E2031F3A600D27AC3 /* CreateHobyListViewController.swift */; };
+		25214B712031F3D500D27AC3 /* CreateFoodListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25214B702031F3D500D27AC3 /* CreateFoodListViewController.swift */; };
+		25214B732031F3E700D27AC3 /* CreateRestaurantListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25214B722031F3E700D27AC3 /* CreateRestaurantListViewController.swift */; };
+		25214B752031F3F500D27AC3 /* CreateSongListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25214B742031F3F500D27AC3 /* CreateSongListViewController.swift */; };
+		25214B772031F40300D27AC3 /* CreateRingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25214B762031F40300D27AC3 /* CreateRingListViewController.swift */; };
+		25214B7A2034935700D27AC3 /* CreateBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25214B792034935700D27AC3 /* CreateBookViewController.swift */; };
+		25214B7C2035BD8300D27AC3 /* CreateHobyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25214B7B2035BD8300D27AC3 /* CreateHobyViewController.swift */; };
+		25214B7E2035BD9200D27AC3 /* CreateFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25214B7D2035BD9200D27AC3 /* CreateFoodViewController.swift */; };
+		25214B802035BDAB00D27AC3 /* CreateRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25214B7F2035BDAB00D27AC3 /* CreateRestaurantViewController.swift */; };
+		25214B822035BDBB00D27AC3 /* CreateSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25214B812035BDBB00D27AC3 /* CreateSongViewController.swift */; };
+		25214B842035BE1400D27AC3 /* CreateRingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25214B832035BE1400D27AC3 /* CreateRingViewController.swift */; };
 		252DE08A2020AC4D0026B243 /* NewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252DE0892020AC4D0026B243 /* NewsFeedViewController.swift */; };
 		253F67721FD97F2D004CEF07 /* ProfileApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253F67711FD97F2D004CEF07 /* ProfileApi.swift */; };
 		2544BC20201C509F00922FB3 /* NoDataInvitedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2544BC1F201C509F00922FB3 /* NoDataInvitedTableViewCell.swift */; };
@@ -172,6 +185,19 @@
 		251EA8BF1F8B9D75003805F7 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		251EA8C41F8CBF86003805F7 /* SVProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SVProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		251EA8C61F8CCE6E003805F7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		25214B6A2031BB8200D27AC3 /* UserProfileDetailInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileDetailInfoViewController.swift; sourceTree = "<group>"; };
+		25214B6C2031F28D00D27AC3 /* CreateBookListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBookListViewController.swift; sourceTree = "<group>"; };
+		25214B6E2031F3A600D27AC3 /* CreateHobyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateHobyListViewController.swift; sourceTree = "<group>"; };
+		25214B702031F3D500D27AC3 /* CreateFoodListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFoodListViewController.swift; sourceTree = "<group>"; };
+		25214B722031F3E700D27AC3 /* CreateRestaurantListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRestaurantListViewController.swift; sourceTree = "<group>"; };
+		25214B742031F3F500D27AC3 /* CreateSongListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSongListViewController.swift; sourceTree = "<group>"; };
+		25214B762031F40300D27AC3 /* CreateRingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRingListViewController.swift; sourceTree = "<group>"; };
+		25214B792034935700D27AC3 /* CreateBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBookViewController.swift; sourceTree = "<group>"; };
+		25214B7B2035BD8300D27AC3 /* CreateHobyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateHobyViewController.swift; sourceTree = "<group>"; };
+		25214B7D2035BD9200D27AC3 /* CreateFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFoodViewController.swift; sourceTree = "<group>"; };
+		25214B7F2035BDAB00D27AC3 /* CreateRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRestaurantViewController.swift; sourceTree = "<group>"; };
+		25214B812035BDBB00D27AC3 /* CreateSongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSongViewController.swift; sourceTree = "<group>"; };
+		25214B832035BE1400D27AC3 /* CreateRingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRingViewController.swift; sourceTree = "<group>"; };
 		252DE0892020AC4D0026B243 /* NewsFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedViewController.swift; sourceTree = "<group>"; };
 		253F67711FD97F2D004CEF07 /* ProfileApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileApi.swift; sourceTree = "<group>"; };
 		2544BC1F201C509F00922FB3 /* NoDataInvitedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDataInvitedTableViewCell.swift; sourceTree = "<group>"; };
@@ -454,6 +480,34 @@
 			path = home;
 			sourceTree = "<group>";
 		};
+		25214B692031BB4C00D27AC3 /* detail */ = {
+			isa = PBXGroup;
+			children = (
+				25214B782034904900D27AC3 /* create */,
+				25214B6A2031BB8200D27AC3 /* UserProfileDetailInfoViewController.swift */,
+				25214B6C2031F28D00D27AC3 /* CreateBookListViewController.swift */,
+				25214B6E2031F3A600D27AC3 /* CreateHobyListViewController.swift */,
+				25214B702031F3D500D27AC3 /* CreateFoodListViewController.swift */,
+				25214B722031F3E700D27AC3 /* CreateRestaurantListViewController.swift */,
+				25214B742031F3F500D27AC3 /* CreateSongListViewController.swift */,
+				25214B762031F40300D27AC3 /* CreateRingListViewController.swift */,
+			);
+			path = detail;
+			sourceTree = "<group>";
+		};
+		25214B782034904900D27AC3 /* create */ = {
+			isa = PBXGroup;
+			children = (
+				25214B792034935700D27AC3 /* CreateBookViewController.swift */,
+				25214B7B2035BD8300D27AC3 /* CreateHobyViewController.swift */,
+				25214B7D2035BD9200D27AC3 /* CreateFoodViewController.swift */,
+				25214B7F2035BDAB00D27AC3 /* CreateRestaurantViewController.swift */,
+				25214B812035BDBB00D27AC3 /* CreateSongViewController.swift */,
+				25214B832035BE1400D27AC3 /* CreateRingViewController.swift */,
+			);
+			path = create;
+			sourceTree = "<group>";
+		};
 		252DE0882020AB840026B243 /* main */ = {
 			isa = PBXGroup;
 			children = (
@@ -569,6 +623,7 @@
 		25DCC4D81FD3E4E300ABCCB0 /* main */ = {
 			isa = PBXGroup;
 			children = (
+				25214B692031BB4C00D27AC3 /* detail */,
 				259C93041FDD549D004C0F06 /* edit */,
 				25DCC4DB1FD40FD100ABCCB0 /* card */,
 				25DCC4D61FD3E3CF00ABCCB0 /* UserProfileMainViewController.swift */,
@@ -1042,16 +1097,20 @@
 				25B2822920010CF900E24B9F /* NoBrideViewController.swift in Sources */,
 				25B2F8011F91092E00DF599B /* CoupleMainViewController.swift in Sources */,
 				251EA8A81F8B9CDB003805F7 /* AuthApi.swift in Sources */,
+				25214B732031F3E700D27AC3 /* CreateRestaurantListViewController.swift in Sources */,
 				251EA86F1F8AFDAD003805F7 /* ViewController.swift in Sources */,
 				25DCC4E11FD4653900ABCCB0 /* BirthdayTableViewCell.swift in Sources */,
+				25214B712031F3D500D27AC3 /* CreateFoodListViewController.swift in Sources */,
 				25F017E520145C830063C125 /* InviteUsersDetailInfoViewController.swift in Sources */,
 				25F017D4200CE8C40063C125 /* CeremonyInvitationMainViewController.swift in Sources */,
 				25F017F42018F3B30063C125 /* InvitedMainListTableViewCell.swift in Sources */,
 				25BDDE181FB8AC05005DA540 /* CoupleAlbumTableViewCell.swift in Sources */,
+				25214B772031F40300D27AC3 /* CreateRingListViewController.swift in Sources */,
 				25B2822B2002306400E24B9F /* CeremonyListTabBarController.swift in Sources */,
 				25B282212000E8E800E24B9F /* MyBrideBasicInfoCollectionViewCell.swift in Sources */,
 				25B2F7FF1F8FB4F400DF599B /* CoupleApi.swift in Sources */,
 				25B2F8051F92464F00DF599B /* HomeCollectionViewCell.swift in Sources */,
+				25214B802035BDAB00D27AC3 /* CreateRestaurantViewController.swift in Sources */,
 				25DCC4E71FD465A400ABCCB0 /* UniversityTableViewCell.swift in Sources */,
 				259C930A1FDEDC95004C0F06 /* UserProfileEdit3ViewController.swift in Sources */,
 				2544BC20201C509F00922FB3 /* NoDataInvitedTableViewCell.swift in Sources */,
@@ -1059,6 +1118,7 @@
 				25B2F8071F9578DA00DF599B /* UserApi.swift in Sources */,
 				25DCC4E91FD465C200ABCCB0 /* ProposeTableViewCell.swift in Sources */,
 				251EA86D1F8AFDAD003805F7 /* AppDelegate.swift in Sources */,
+				25214B822035BDBB00D27AC3 /* CreateSongViewController.swift in Sources */,
 				2512666C1F98DB67003C65D4 /* ServiceViewController.swift in Sources */,
 				259C938C1FE2D4EA004C0F06 /* UserProfileEdit5ViewController.swift in Sources */,
 				25BDDE1A1FB8AEB2005DA540 /* CoupleAlbumApi.swift in Sources */,
@@ -1077,15 +1137,21 @@
 				25C76C1A1FC1110300EFD5A5 /* CoupleAlbumDetailViewController.swift in Sources */,
 				25B2821E1FFFB62600E24B9F /* CeremonyMyBrideMainViewController.swift in Sources */,
 				25F130F320220307000DE3E1 /* CeremonyMessageCollectionViewCell.swift in Sources */,
+				25214B7E2035BD9200D27AC3 /* CreateFoodViewController.swift in Sources */,
+				25214B842035BE1400D27AC3 /* CreateRingViewController.swift in Sources */,
 				25BDDE1C1FBC8C21005DA540 /* CoupleAlbumCreateViewController.swift in Sources */,
 				25BDBC771FD26F7C00CDFE86 /* CoupleCreateInfoViewController.swift in Sources */,
+				25214B752031F3F500D27AC3 /* CreateSongListViewController.swift in Sources */,
 				25B2F8031F921E4600DF599B /* HomeCollectionViewController.swift in Sources */,
 				25C8DD821FB3529B0094E571 /* CoupleScheduleDetailViewController.swift in Sources */,
 				259C930C1FDEDCB2004C0F06 /* UserProfileEdit4ViewController.swift in Sources */,
 				25F017E02010DF580063C125 /* InviteUserListViewController.swift in Sources */,
 				25C1ED411FA8CEA80096738B /* CoupleScheduleCreateViewController.swift in Sources */,
+				25214B6B2031BB8200D27AC3 /* UserProfileDetailInfoViewController.swift in Sources */,
 				251EA8C71F8CCE6E003805F7 /* HomeViewController.swift in Sources */,
+				25214B7C2035BD8300D27AC3 /* CreateHobyViewController.swift in Sources */,
 				2512C3AA1FA6263600B2BDFE /* CoupleAlbumViewController.swift in Sources */,
+				25214B7A2034935700D27AC3 /* CreateBookViewController.swift in Sources */,
 				25B282171FFB84A500E24B9F /* CeremonyListTableViewCell.swift in Sources */,
 				259C93081FDEDC86004C0F06 /* UserProfileEdit2ViewController.swift in Sources */,
 				25B2822E2003041700E24B9F /* textField.swift in Sources */,
@@ -1094,11 +1160,13 @@
 				255BBCED1FF8EEC900DE22E6 /* CoupleCreateResViewController.swift in Sources */,
 				25DCC4DA1FD3EDFA00ABCCB0 /* BasicProfileView.swift in Sources */,
 				25B282191FFBCF0600E24B9F /* NoCeremonyListTableViewCell.swift in Sources */,
+				25214B6D2031F28D00D27AC3 /* CreateBookListViewController.swift in Sources */,
 				25DCC4D11FD2C45400ABCCB0 /* HomeTabViewController.swift in Sources */,
 				25F017DB200F915F0063C125 /* MyBridalInvTableViewCell.swift in Sources */,
 				25F130F82025F082000DE3E1 /* CreateMessageViewController.swift in Sources */,
 				251EA89E1F8B2E51003805F7 /* SignInViewController.swift in Sources */,
 				2512C3AC1FA8BA9D00B2BDFE /* CoupleScheduleTableViewCell.swift in Sources */,
+				25214B6F2031F3A600D27AC3 /* CreateHobyListViewController.swift in Sources */,
 				25F017F22018EBC90063C125 /* InvitedMainListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

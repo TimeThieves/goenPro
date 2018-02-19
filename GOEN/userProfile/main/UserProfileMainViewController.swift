@@ -14,6 +14,8 @@ class UserProfileMainViewController: UIViewController{
     @IBOutlet var basicInfoView: UIView!
     @IBOutlet var ceremonyPhotoView: UIView!
     @IBOutlet weak var basicInfoContner: UIView!
+    @IBOutlet var userProfileDetail: UIView!
+    //    var detailProfile: UserProfileMainViewController = UserProfileMainViewController()
     
     var api: ProfileApi = ProfileApi()
     var auth_api: AuthApi = AuthApi()
@@ -24,7 +26,21 @@ class UserProfileMainViewController: UIViewController{
         print("profile main")
         basicInfoView.frame = CGRect(x: 0,y: segumentTab.frame.minY + segumentTab.frame.height,width: self.view.frame.width, height: (self.view.frame.height - segumentTab.frame.minY))
         ceremonyPhotoView.frame = CGRect(x: 0,y: segumentTab.frame.minY + segumentTab.frame.height,width: self.view.frame.width, height: (self.view.frame.height - segumentTab.frame.minY))
-        self.view.addSubview(basicInfoView)
+        userProfileDetail.frame = CGRect(x: 0,y: segumentTab.frame.minY + segumentTab.frame.height,width: self.view.frame.width, height: (self.view.frame.height - segumentTab.frame.minY))
+        
+        if segumentTab.selectedSegmentIndex == 0 {
+            
+            self.view.addSubview(basicInfoView)
+            
+        }else if segumentTab.selectedSegmentIndex == 1 {
+            
+            self.view.addSubview(ceremonyPhotoView)
+            
+        }else if segumentTab.selectedSegmentIndex == 2 {
+            
+            self.view.addSubview(userProfileDetail)
+            
+        }
         
         
 //            self.profileTable.tableFooterView = UIView(frame: .zero)
@@ -42,6 +58,8 @@ class UserProfileMainViewController: UIViewController{
                 addFirstView()
             case 1:
                 addSecondView()
+            case 2:
+                addThirdView()
             default:
                 addFirstView()
         }
@@ -49,12 +67,20 @@ class UserProfileMainViewController: UIViewController{
     
     func addFirstView() {
         ceremonyPhotoView.removeFromSuperview()
+        userProfileDetail.removeFromSuperview()
         self.view.addSubview(basicInfoView)
     }
     
     func addSecondView() {
         basicInfoView.removeFromSuperview()
+        userProfileDetail.removeFromSuperview()
         self.view.addSubview(ceremonyPhotoView)
+    }
+    
+    func addThirdView() {
+        basicInfoView.removeFromSuperview()
+        ceremonyPhotoView.removeFromSuperview()
+        self.view.addSubview(userProfileDetail)
     }
     @IBAction func closeModal(_ sender: Any) {
         print("close")

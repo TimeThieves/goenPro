@@ -21,7 +21,7 @@ class CeremonyApi {
     let apiHost = Bundle.main.object(forInfoDictionaryKey: "ApiHost") as! String
     var error_flg:Bool = false
     
-    public var ceremony: Ceremony = Ceremony()
+//    public var ceremony: Ceremony = Ceremony()
     public var public_id: String = ""
     public var noImageFlg: Bool = false
     public var ceremonyList = [Ceremony]()
@@ -36,12 +36,15 @@ class CeremonyApi {
     public var user_info = UserInfo()
     public var ceremonyInfo: Ceremony = Ceremony()
     
-    func getCeremonyList() {
+    public var invitation_list = [Invite]()
+    
+    func getInviteCereList() {
         print("API START")
         self.error_flg = false
         NotificationCenter.default.post(name: .ceremonyApiLoadStart, object: nil)
         let userdefault = UserDefaults.standard
         let authPostUrl = URL(string: apiHost + "ceremony/get_ceremony_list")!
+        ceremonyList = [Ceremony]()
         let header: HTTPHeaders = [
             "access-token": userdefault.string(forKey: "access_token")!,
             "uid": userdefault.string(forKey: "uid")!,
@@ -54,46 +57,50 @@ class CeremonyApi {
                           headers: header).responseJSON
             {
                 response in
-                print("API START")
                 if response.response?.statusCode != 200 {
                     
                     self.error_flg = true
                     
                 }else {
                     let json = SwiftyJSON.JSON(data: response.data!)
-                    print(json)
+                    self.invitation_list = [Invite]()
                     for (_, item) in json {
-                        print(item)
-                        self.ceremony.celemony_name = item["celemony_name"].string
-                        self.ceremony.celemony_holding_date = item["celemony_name"].string
-                        self.ceremony.celemony_message = item["celemony_message"].string
+                        print("=====================")
+                        print(item["couple"]["ceremony_info"])
+                        print("=====================")
+                        var invItem = Invite()
+                        invItem.ceremony.celemony_name = item["couple"]["ceremony_info"]["celemony_name"].string
+                        invItem.ceremony.celemony_holding_date = item["couple"]["ceremony_info"]["celemony_name"].string
+                        invItem.ceremony.celemony_message = item["couple"]["ceremony_info"]["celemony_message"].string
+                        invItem.couple_info.message_count = item["couple"]["message_count"].int!
                         // 挙式情報
-                        if item["bride_place_name"].string != nil {
-                            self.ceremony.bride_place_name = item["bride_place_name"].string
-                            self.ceremony.bride_place_zip = item["bride_place_zip"].string
-                            self.ceremony.bride_holding_time = item["bride_holding_time"].string
-                            self.ceremony.bride_place_address = item["bride_place_address"].string
+                        if item["couple"]["ceremony_info"]["bride_place_name"].string != nil {
+                            invItem.ceremony.bride_place_name = item["couple"]["ceremony_info"]["bride_place_name"].string
+                            invItem.ceremony.bride_place_zip = item["couple"]["ceremony_info"]["bride_place_zip"].string
+                            invItem.ceremony.bride_holding_time = item["couple"]["ceremony_info"]["bride_holding_time"].string
+                            invItem.ceremony.bride_place_address = item["couple"]["ceremony_info"]["bride_place_address"].string
                             
                         }
                         // 披露宴情報
-                        if item["reception_place_name"].string != nil {
-                            self.ceremony.reception_place_name = item["reception_place_name"].string
-                            self.ceremony.reception_place_zip = item["reception_place_zip"].string
-                            self.ceremony.reception_holding_time = item["reception_holding_time"].string
-                            self.ceremony.reception_place_address = item["reception_place_address"].string
+                        if item["couple"]["ceremony_info"]["reception_place_name"].string != nil {
+                            invItem.ceremony.reception_place_name = item["couple"]["ceremony_info"]["reception_place_name"].string
+                            invItem.ceremony.reception_place_zip = item["couple"]["ceremony_info"]["reception_place_zip"].string
+                            invItem.ceremony.reception_holding_time = item["couple"]["ceremony_info"]["reception_holding_time"].string
+                            invItem.ceremony.reception_place_address = item["couple"]["ceremony_info"]["reception_place_address"].string
                             
                         }
                         // 2次会情報
-                        if item["scd_reception_place_name"].string != nil {
-                            self.ceremony.scd_reception_place_name = item["scd_reception_place_name"].string
-                            self.ceremony.scd_reception_place_zip = item["scd_reception_place_zip"].string
-                            self.ceremony.scd_reception_holding_time = item["scd_reception_holding_time"].string
-                            self.ceremony.scd_reception_place_address = item["scd_reception_place_address"].string
+                        if item["couple"]["ceremony_info"]["scd_reception_place_name"].string != nil {
+                            invItem.ceremony.scd_reception_place_name = item["couple"]["ceremony_info"]["scd_reception_place_name"].string
+                            invItem.ceremony.scd_reception_place_zip = item["couple"]["ceremony_info"]["scd_reception_place_zip"].string
+                            invItem.ceremony.scd_reception_holding_time = item["couple"]["ceremony_info"]["scd_reception_holding_time"].string
+                            invItem.ceremony.scd_reception_place_address = item["couple"]["ceremony_info"]["scd_reception_place_address"].string
                             
                         }
+                        
+                        self.invitationList.append(invItem)
                     }
                 }
-                
                 
                 NotificationCenter.default.post(name: .ceremonyApiLoadComplate, object: nil)
         }
@@ -512,6 +519,7 @@ public struct Invite {
     public var id: Int = 0
     public var user_info = UserInfo()
     public var couple_info = Couple()
+    public var ceremony = Ceremony()
     public var reg_flg: Int = 0
     
 }

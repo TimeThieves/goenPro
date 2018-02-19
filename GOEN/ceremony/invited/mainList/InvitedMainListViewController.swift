@@ -84,6 +84,7 @@ class InvitedMainListViewController: UIViewController,UITableViewDelegate,UITabl
             let cell: InvitedMainListTableViewCell = tableView.dequeueReusableCell(withIdentifier: "invitedListViewCell")! as! InvitedMainListTableViewCell
             
             cell.invitationInfo = self.api.invitationList[indexPath.row]
+            
             return cell
         }
     }
@@ -189,32 +190,51 @@ class InvitedMainListViewController: UIViewController,UITableViewDelegate,UITabl
     }
     @IBAction func sendMessage(_ sender: UIButton) {
         
+        print("test1")
+        print(self.couple_id)
+        
+        let appDelegate:AppDelegate = UIApplication.shared.delegate as! AppDelegate //AppDelegateのインスタンスを取得
+        appDelegate.couple_id = self.couple_id //appDelegateの変数を操作
         let cell =  sender.superview?.superview?.superview as! InvitedMainListTableViewCell
         guard let row = self.tableView.indexPath(for: cell)?.row else {
             return
         }
-        
+
         self.couple_id = self.api.invitationList[row].couple_info.id
-        
-        print("test1")
+
+        print("test2")
         print(self.couple_id)
+        let view: CeremonyMessageListViewController = CeremonyMessageListViewController()
+        view.couple_id = self.couple_id
+        
+        self.navigationController?.pushViewController(view, animated: true)
+        
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "sendMessage" {
-            print(self.couple_id)
-            let view: CeremonyMessageListViewController = (segue.destination as? CeremonyMessageListViewController)!
-            view.couple_id = self.couple_id
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//
+//        if segue.identifier == "test" {
+//
+//            let cell =  self.view.superview?.superview?.superview as! InvitedMainListTableViewCell
+//            guard let row = self.tableView.indexPath(for: cell)?.row else {
+//                return
+//            }
+//
+//            self.couple_id = self.api.invitationList[row].couple_info.id
 //
 //            print("test2")
 //            print(self.couple_id)
-//            let view: CeremonyMessageListViewController =  CeremonyMessageListViewController()
+//            let view: CeremonyMessageListViewController = CeremonyMessageListViewController()
 //            view.couple_id = self.couple_id
-//            print(view.couple_id)
-        }
-    }
+////
+////            print("test2")
+////            print(self.couple_id)
+////            let view: CeremonyMessageListViewController =  CeremonyMessageListViewController()
+////            view.couple_id = self.couple_id
+////            print(view.couple_id)
+//        }
+//    }
     
     override func viewWillDisappear(_ animated: Bool) {
         print("disappear")

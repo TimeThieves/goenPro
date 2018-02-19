@@ -58,22 +58,23 @@ class CeremonyListViewController: UIViewController,UITableViewDelegate,UITableVi
                     self.ceremonyTable.allowsSelection = true
                     
                 }
+                self.ceremonyTable.reloadData()
                 
                 SVProgressHUD.dismiss()
         })
         
-        api.getCeremonyList()
+        api.getInviteCereList()
         
         self.ceremonyTable.tableFooterView = UIView(frame: .zero)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var num: Int = 0
-        print(self.api.ceremonyList.count)
-        if self.api.ceremonyList.count == 0 {
+        print(self.api.invitationList.count)
+        if self.api.invitationList.count == 0 {
             num = 1
         }else {
-            num = self.api.ceremonyList.count
+            num = self.api.invitationList.count
         }
         
         return num
@@ -81,13 +82,15 @@ class CeremonyListViewController: UIViewController,UITableViewDelegate,UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if self.api.ceremonyList.count == 0 {
+        if self.api.invitationList.count == 0 {
             
             let cell: NoCeremonyListTableViewCell = tableView.dequeueReusableCell(withIdentifier: "noceremonyCell")! as! NoCeremonyListTableViewCell
             cell.nomessage.text! = "まだ挙式情報がありません。"
             return cell
         }else {
             let cell: CeremonyListTableViewCell = tableView.dequeueReusableCell(withIdentifier: "ceremoyListCell")! as! CeremonyListTableViewCell
+            cell.invi = self.api.invitationList[indexPath.row]
+            
             return cell
             
         }

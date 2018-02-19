@@ -36,6 +36,15 @@ class UserApi: UIViewController {
     
     public var send_user_name: String = ""
     
+    public var user_book_list = [Book]()
+    public var user_food_list = [Food]()
+    public var user_restaurant_list = [Restaurant]()
+    public var user_hoby_list = [Hoby]()
+    public var user_song_list = [Song]()
+    public var user_ring_list = [Ring]()
+    
+    public var sys_err: Bool = false
+    
     func getUserService() {
         
         serviceList1 = [Service]()
@@ -221,6 +230,820 @@ class UserApi: UIViewController {
         }
     }
     
+    func getUserBook() {
+        print("get service")
+        let userdefault = UserDefaults.standard
+        user_book_list = [Book]()
+        // API 実行開始を通知
+        NotificationCenter.default.post(name: .userApiLoadStart, object: nil)
+        
+        let authPostUrl = URL(string: apiHost + "user/user_book_list")!
+        print("test0002")
+        print(userdefault.string(forKey: "access_token")!)
+        print(userdefault.string(forKey: "uid")!)
+        print(userdefault.string(forKey: "client")!)
+        let header: HTTPHeaders = [
+            "access-token": userdefault.string(forKey: "access_token")!,
+            "uid": userdefault.string(forKey: "uid")!,
+            "client": userdefault.string(forKey: "client")!
+        ]
+        Alamofire.request(authPostUrl,
+                          method: .get,
+                          parameters: nil,
+                          encoding: JSONEncoding.default,
+                          headers: header).responseJSON
+            {
+                response in
+                let json = SwiftyJSON.JSON(data: response.data!)
+                
+                if json != nil {
+                    for (_, item) in json {
+                        var book = Book()
+                        print(item["name"].string!)
+                        book.name = item["name"].string!
+                        book.id = item["id"].int!
+                        
+                        self.user_book_list.append(book)
+                    }
+                    print(self.serviceList2)
+                }
+                
+                
+                NotificationCenter.default.post(name: .userApiLoadComplate, object: nil)
+        }
+        
+    }
+    
+    func getUserHoby() {
+        print("get service")
+        let userdefault = UserDefaults.standard
+        user_hoby_list = [Hoby]()
+        // API 実行開始を通知
+        NotificationCenter.default.post(name: .userApiLoadStart, object: nil)
+        
+        let authPostUrl = URL(string: apiHost + "user/user_hoby_list")!
+        print("test0002")
+        print(userdefault.string(forKey: "access_token")!)
+        print(userdefault.string(forKey: "uid")!)
+        print(userdefault.string(forKey: "client")!)
+        let header: HTTPHeaders = [
+            "access-token": userdefault.string(forKey: "access_token")!,
+            "uid": userdefault.string(forKey: "uid")!,
+            "client": userdefault.string(forKey: "client")!
+        ]
+        Alamofire.request(authPostUrl,
+                          method: .get,
+                          parameters: nil,
+                          encoding: JSONEncoding.default,
+                          headers: header).responseJSON
+            {
+                response in
+                let json = SwiftyJSON.JSON(data: response.data!)
+                print(json)
+                
+                if json != nil {
+                    var array_item = Hoby()
+                    for (_, item) in json {
+                        array_item.name = item["name"].string!
+                        array_item.id = item["id"].int!
+                        
+                        self.user_hoby_list.append(array_item)
+                    }
+                    print(self.serviceList2)
+                }
+                
+                
+                NotificationCenter.default.post(name: .userApiLoadComplate, object: nil)
+        }
+        
+    }
+    
+    func getUserFood() {
+        print("get service")
+        let userdefault = UserDefaults.standard
+        user_food_list = [Food]()
+        // API 実行開始を通知
+        NotificationCenter.default.post(name: .userApiLoadStart, object: nil)
+        
+        let authPostUrl = URL(string: apiHost + "user/user_food_list")!
+        print("test0002")
+        print(userdefault.string(forKey: "access_token")!)
+        print(userdefault.string(forKey: "uid")!)
+        print(userdefault.string(forKey: "client")!)
+        let header: HTTPHeaders = [
+            "access-token": userdefault.string(forKey: "access_token")!,
+            "uid": userdefault.string(forKey: "uid")!,
+            "client": userdefault.string(forKey: "client")!
+        ]
+        Alamofire.request(authPostUrl,
+                          method: .get,
+                          parameters: nil,
+                          encoding: JSONEncoding.default,
+                          headers: header).responseJSON
+            {
+                response in
+                let json = SwiftyJSON.JSON(data: response.data!)
+                print(json)
+                
+                if json != nil {
+                    var array_item = Food()
+                    for (_, item) in json {
+                        array_item.name = item["name"].string!
+                        array_item.id = item["id"].int!
+                        self.user_food_list.append(array_item)
+                        
+                    }
+                }
+                
+                
+                NotificationCenter.default.post(name: .userApiLoadComplate, object: nil)
+        }
+        
+    }
+    
+    func getUserRestaurant() {
+        print("get service")
+        let userdefault = UserDefaults.standard
+        user_restaurant_list = [Restaurant]()
+        // API 実行開始を通知
+        NotificationCenter.default.post(name: .userApiLoadStart, object: nil)
+        
+        let authPostUrl = URL(string: apiHost + "user/user_restaurant_list")!
+        print("test0002")
+        print(userdefault.string(forKey: "access_token")!)
+        print(userdefault.string(forKey: "uid")!)
+        print(userdefault.string(forKey: "client")!)
+        let header: HTTPHeaders = [
+            "access-token": userdefault.string(forKey: "access_token")!,
+            "uid": userdefault.string(forKey: "uid")!,
+            "client": userdefault.string(forKey: "client")!
+        ]
+        Alamofire.request(authPostUrl,
+                          method: .get,
+                          parameters: nil,
+                          encoding: JSONEncoding.default,
+                          headers: header).responseJSON
+            {
+                response in
+                let json = SwiftyJSON.JSON(data: response.data!)
+                print(json)
+                
+                if json != nil {
+                    var array_item = Restaurant()
+                    for (_, item) in json {
+                        array_item.name = item["name"].string!
+                        array_item.id = item["id"].int!
+                        self.user_restaurant_list.append(array_item)
+                        
+                    }
+                }
+                
+                
+                NotificationCenter.default.post(name: .userApiLoadComplate, object: nil)
+        }
+        
+    }
+    
+    func getUserSong() {
+        print("get service")
+        let userdefault = UserDefaults.standard
+        user_song_list = [Song]()
+        // API 実行開始を通知
+        NotificationCenter.default.post(name: .userApiLoadStart, object: nil)
+        
+        let authPostUrl = URL(string: apiHost + "user/user_song_list")!
+        print("test0002")
+        print(userdefault.string(forKey: "access_token")!)
+        print(userdefault.string(forKey: "uid")!)
+        print(userdefault.string(forKey: "client")!)
+        let header: HTTPHeaders = [
+            "access-token": userdefault.string(forKey: "access_token")!,
+            "uid": userdefault.string(forKey: "uid")!,
+            "client": userdefault.string(forKey: "client")!
+        ]
+        Alamofire.request(authPostUrl,
+                          method: .get,
+                          parameters: nil,
+                          encoding: JSONEncoding.default,
+                          headers: header).responseJSON
+            {
+                response in
+                let json = SwiftyJSON.JSON(data: response.data!)
+                print(json)
+                
+                if json != nil {
+                    var song = Song()
+                    for (_, item) in json {
+                        song.name! = item["name"].string!
+                        song.id = item["id"].int!
+                        self.user_song_list.append(song)
+                        
+                    }
+                }
+                
+                
+                NotificationCenter.default.post(name: .userApiLoadComplate, object: nil)
+        }
+        
+    }
+    
+    func getUserRing() {
+        print("get service")
+        let userdefault = UserDefaults.standard
+        user_ring_list = [Ring]()
+        // API 実行開始を通知
+        NotificationCenter.default.post(name: .userApiLoadStart, object: nil)
+        
+        let authPostUrl = URL(string: apiHost + "user/user_ring_list")!
+        
+        let header: HTTPHeaders = [
+            "access-token": userdefault.string(forKey: "access_token")!,
+            "uid": userdefault.string(forKey: "uid")!,
+            "client": userdefault.string(forKey: "client")!
+        ]
+        
+        Alamofire.request(authPostUrl,
+                          method: .get,
+                          parameters: nil,
+                          encoding: JSONEncoding.default,
+                          headers: header).responseJSON
+            {
+                response in
+                let json = SwiftyJSON.JSON(data: response.data!)
+                print(json)
+                
+                if json != nil {
+                    var ring = Ring()
+                    for (_, item) in json {
+                        ring.name! = item["name"].string!
+                        ring.id = item["id"].int!
+                        self.user_ring_list.append(ring)
+                        
+                    }
+                }
+                
+                
+                NotificationCenter.default.post(name: .userApiLoadComplate, object: nil)
+        }
+        
+    }
+    
+    /*
+     user detail profile insert
+    */
+    func setUserBook(name: String) {
+        
+        NotificationCenter.default.post(name: .userApiLoadStart, object: nil)
+        let userDefault = UserDefaults.standard
+        let postUrl = URL(string:
+            apiHost + "user/user_book/create")!
+        
+        self.errFlg = false
+        
+        let headers: HTTPHeaders = [
+            "Content-Type":"Application/json",
+            "access-token": userDefault.string(forKey: "access_token")!,
+            "uid": userDefault.string(forKey: "uid")!,
+            "client": userDefault.string(forKey: "client")!
+        ]
+        
+        let params = [
+            "name": name
+        ]
+        
+        Alamofire.request(postUrl,
+                          method: .post,
+                          parameters: params,
+                          encoding: JSONEncoding.default,
+                          headers: headers).responseJSON
+            {
+                response in
+                
+                let json = SwiftyJSON.JSON(data: response.data!)
+                print(json)
+                if(response.response) == nil {
+                    self.sys_err = true
+                    return
+                    
+                }
+                if response.response!.statusCode == 200 {
+                    print("success")
+                    self.errFlg = false
+                }else {
+                    print("error")
+                    self.errFlg = true
+                }
+                NotificationCenter.default.post(name: .userApiLoadComplate, object: nil)
+        }
+        
+    }
+    
+    func setUserHoby(name: String) {
+        
+        self.errFlg = false
+        
+        NotificationCenter.default.post(name: .userApiLoadStart, object: nil)
+        let userDefault = UserDefaults.standard
+        let postUrl = URL(string:
+            apiHost + "user/user_hoby/create")!
+        
+        let headers: HTTPHeaders = [
+            "Content-Type":"Application/json",
+            "access-token": userDefault.string(forKey: "access_token")!,
+            "uid": userDefault.string(forKey: "uid")!,
+            "client": userDefault.string(forKey: "client")!
+        ]
+        
+        let params = [
+            "name": name
+        ]
+        
+        Alamofire.request(postUrl,
+                          method: .post,
+                          parameters: params,
+                          encoding: JSONEncoding.default,
+                          headers: headers).responseJSON
+            {
+                response in
+                
+                let json = SwiftyJSON.JSON(data: response.data!)
+                print(json)
+                if(response.response) == nil {
+                    self.sys_err = true
+                    return
+                    
+                }
+                if response.response!.statusCode == 200 {
+                    
+                    self.errFlg = false
+                }else {
+                    self.errFlg = true
+                }
+                NotificationCenter.default.post(name: .userApiLoadComplate, object: nil)
+        }
+        
+    }
+    
+    func setUserFood(name: String) {
+        
+        self.errFlg = false
+        
+        NotificationCenter.default.post(name: .userApiLoadStart, object: nil)
+        let userDefault = UserDefaults.standard
+        let postUrl = URL(string:
+            apiHost + "user/user_food/create")!
+        
+        let headers: HTTPHeaders = [
+            "Content-Type":"Application/json",
+            "access-token": userDefault.string(forKey: "access_token")!,
+            "uid": userDefault.string(forKey: "uid")!,
+            "client": userDefault.string(forKey: "client")!
+        ]
+        
+        let params = [
+            "name": name
+        ]
+        
+        Alamofire.request(postUrl,
+                          method: .post,
+                          parameters: params,
+                          encoding: JSONEncoding.default,
+                          headers: headers).responseJSON
+            {
+                response in
+                
+                let json = SwiftyJSON.JSON(data: response.data!)
+                print(json)
+                if(response.response) == nil {
+                    self.sys_err = true
+                    return
+                    
+                }
+                if response.response!.statusCode == 200 {
+                    
+                    self.errFlg = false
+                }else {
+                    self.errFlg = true
+                }
+                NotificationCenter.default.post(name: .userApiLoadComplate, object: nil)
+        }
+        
+    }
+    
+    func setUserRestaurant(name: String) {
+        self.errFlg = false
+        
+        NotificationCenter.default.post(name: .userApiLoadStart, object: nil)
+        let userDefault = UserDefaults.standard
+        let postUrl = URL(string:
+            apiHost + "user/user_restaurant/create")!
+        
+        let headers: HTTPHeaders = [
+            "Content-Type":"Application/json",
+            "access-token": userDefault.string(forKey: "access_token")!,
+            "uid": userDefault.string(forKey: "uid")!,
+            "client": userDefault.string(forKey: "client")!
+        ]
+        
+        let params = [
+            "name": name
+        ]
+        
+        Alamofire.request(postUrl,
+                          method: .post,
+                          parameters: params,
+                          encoding: JSONEncoding.default,
+                          headers: headers).responseJSON
+            {
+                response in
+                
+                let json = SwiftyJSON.JSON(data: response.data!)
+                print(json)
+                if(response.response) == nil {
+                    self.sys_err = true
+                    return
+                    
+                }
+                if response.response!.statusCode == 200 {
+                    
+                    self.errFlg = false
+                }else {
+                    self.errFlg = true
+                }
+                NotificationCenter.default.post(name: .userApiLoadComplate, object: nil)
+        }
+        
+    }
+    
+    func setUserSong(name: String) {
+        self.errFlg = false
+        
+        NotificationCenter.default.post(name: .userApiLoadStart, object: nil)
+        let userDefault = UserDefaults.standard
+        let postUrl = URL(string:
+            apiHost + "user/user_song/create")!
+        
+        let headers: HTTPHeaders = [
+            "Content-Type":"Application/json",
+            "access-token": userDefault.string(forKey: "access_token")!,
+            "uid": userDefault.string(forKey: "uid")!,
+            "client": userDefault.string(forKey: "client")!
+        ]
+        
+        let params = [
+            "name": name
+        ]
+        
+        Alamofire.request(postUrl,
+                          method: .post,
+                          parameters: params,
+                          encoding: JSONEncoding.default,
+                          headers: headers).responseJSON
+            {
+                response in
+                
+                let json = SwiftyJSON.JSON(data: response.data!)
+                print(json)
+                if(response.response) == nil {
+                    self.sys_err = true
+                    return
+                    
+                }
+                if response.response!.statusCode == 200 {
+                    
+                    self.errFlg = false
+                }else {
+                    self.errFlg = true
+                }
+                NotificationCenter.default.post(name: .userApiLoadComplate, object: nil)
+        }
+        
+    }
+    
+    func setUserRing(name: String) {
+        
+        self.errFlg = false
+        
+        NotificationCenter.default.post(name: .userApiLoadStart, object: nil)
+        let userDefault = UserDefaults.standard
+        let postUrl = URL(string:
+            apiHost + "user/user_ring/create")!
+        
+        let headers: HTTPHeaders = [
+            "Content-Type":"Application/json",
+            "access-token": userDefault.string(forKey: "access_token")!,
+            "uid": userDefault.string(forKey: "uid")!,
+            "client": userDefault.string(forKey: "client")!
+        ]
+        
+        let params = [
+            "name": name
+        ]
+        
+        Alamofire.request(postUrl,
+                          method: .post,
+                          parameters: params,
+                          encoding: JSONEncoding.default,
+                          headers: headers).responseJSON
+            {
+                response in
+                
+                let json = SwiftyJSON.JSON(data: response.data!)
+                print(json)
+                if(response.response) == nil {
+                    self.sys_err = true
+                    return
+                    
+                }
+                if response.response!.statusCode == 200 {
+                    
+                    self.errFlg = false
+                }else {
+                    self.errFlg = true
+                }
+                NotificationCenter.default.post(name: .userApiLoadComplate, object: nil)
+        }
+        
+    }
+    
+    
+    /*
+    user derail profile delete
+    */
+    func delUserBook(id: Int) {
+        
+        NotificationCenter.default.post(name: .userApiLoadStart, object: nil)
+        let userDefault = UserDefaults.standard
+        let postUrl = URL(string:
+            apiHost + "user/user_book/delete")!
+        
+        self.errFlg = false
+        
+        let headers: HTTPHeaders = [
+            "Content-Type":"Application/json",
+            "access-token": userDefault.string(forKey: "access_token")!,
+            "uid": userDefault.string(forKey: "uid")!,
+            "client": userDefault.string(forKey: "client")!
+        ]
+        
+        let params = [
+            "id": String(id)
+        ]
+        
+        Alamofire.request(postUrl,
+                          method: .post,
+                          parameters: params,
+                          encoding: JSONEncoding.default,
+                          headers: headers).responseJSON
+            {
+                response in
+                
+                let json = SwiftyJSON.JSON(data: response.data!)
+                print(json)
+                if(response.response) == nil {
+                    self.sys_err = true
+                    return
+                    
+                }
+                if response.response!.statusCode == 200 {
+                    print("success")
+                    self.errFlg = false
+                }else {
+                    print("error")
+                    self.errFlg = true
+                }
+                NotificationCenter.default.post(name: .userApiLoadComplate, object: nil)
+        }
+        
+    }
+    
+    func delUserHoby(id: Int) {
+        
+        self.errFlg = false
+        
+        NotificationCenter.default.post(name: .userApiLoadStart, object: nil)
+        let userDefault = UserDefaults.standard
+        let postUrl = URL(string:
+            apiHost + "user/user_hoby/delete")!
+        
+        let headers: HTTPHeaders = [
+            "Content-Type":"Application/json",
+            "access-token": userDefault.string(forKey: "access_token")!,
+            "uid": userDefault.string(forKey: "uid")!,
+            "client": userDefault.string(forKey: "client")!
+        ]
+        
+        let params = [
+            "id": String(id)
+        ]
+        
+        Alamofire.request(postUrl,
+                          method: .post,
+                          parameters: params,
+                          encoding: JSONEncoding.default,
+                          headers: headers).responseJSON
+            {
+                response in
+                
+                let json = SwiftyJSON.JSON(data: response.data!)
+                print(json)
+                if(response.response) == nil {
+                    self.sys_err = true
+                    return
+                    
+                }
+                if response.response!.statusCode == 200 {
+                    
+                    self.errFlg = false
+                }else {
+                    self.errFlg = true
+                }
+                NotificationCenter.default.post(name: .userApiLoadComplate, object: nil)
+        }
+        
+    }
+    
+    func delUserFood(id: Int) {
+        
+        self.errFlg = false
+        
+        NotificationCenter.default.post(name: .userApiLoadStart, object: nil)
+        let userDefault = UserDefaults.standard
+        let postUrl = URL(string:
+            apiHost + "user/user_food/delete")!
+        
+        let headers: HTTPHeaders = [
+            "Content-Type":"Application/json",
+            "access-token": userDefault.string(forKey: "access_token")!,
+            "uid": userDefault.string(forKey: "uid")!,
+            "client": userDefault.string(forKey: "client")!
+        ]
+        
+        let params = [
+            "id": String(id)
+        ]
+        
+        Alamofire.request(postUrl,
+                          method: .post,
+                          parameters: params,
+                          encoding: JSONEncoding.default,
+                          headers: headers).responseJSON
+            {
+                response in
+                
+                let json = SwiftyJSON.JSON(data: response.data!)
+                print(json)
+                if(response.response) == nil {
+                    self.sys_err = true
+                    return
+                    
+                }
+                if response.response!.statusCode == 200 {
+                    
+                    self.errFlg = false
+                }else {
+                    self.errFlg = true
+                }
+                NotificationCenter.default.post(name: .userApiLoadComplate, object: nil)
+        }
+        
+    }
+    
+    func delUserRestaurant(id: Int) {
+        self.errFlg = false
+        
+        NotificationCenter.default.post(name: .userApiLoadStart, object: nil)
+        let userDefault = UserDefaults.standard
+        let postUrl = URL(string:
+            apiHost + "user/user_restaurant/delete")!
+        
+        let headers: HTTPHeaders = [
+            "Content-Type":"Application/json",
+            "access-token": userDefault.string(forKey: "access_token")!,
+            "uid": userDefault.string(forKey: "uid")!,
+            "client": userDefault.string(forKey: "client")!
+        ]
+        
+        let params = [
+            "id": String(id)
+        ]
+        
+        Alamofire.request(postUrl,
+                          method: .post,
+                          parameters: params,
+                          encoding: JSONEncoding.default,
+                          headers: headers).responseJSON
+            {
+                response in
+                
+                let json = SwiftyJSON.JSON(data: response.data!)
+                print(json)
+                if(response.response) == nil {
+                    self.sys_err = true
+                    return
+                    
+                }
+                if response.response!.statusCode == 200 {
+                    
+                    self.errFlg = false
+                }else {
+                    self.errFlg = true
+                }
+                NotificationCenter.default.post(name: .userApiLoadComplate, object: nil)
+        }
+        
+    }
+    
+    func delUserSong(id: Int) {
+        self.errFlg = false
+        
+        NotificationCenter.default.post(name: .userApiLoadStart, object: nil)
+        let userDefault = UserDefaults.standard
+        let postUrl = URL(string:
+            apiHost + "user/user_song/delete")!
+        
+        let headers: HTTPHeaders = [
+            "Content-Type":"Application/json",
+            "access-token": userDefault.string(forKey: "access_token")!,
+            "uid": userDefault.string(forKey: "uid")!,
+            "client": userDefault.string(forKey: "client")!
+        ]
+        
+        let params = [
+            "id": String(id)
+        ]
+        
+        Alamofire.request(postUrl,
+                          method: .post,
+                          parameters: params,
+                          encoding: JSONEncoding.default,
+                          headers: headers).responseJSON
+            {
+                response in
+                
+                let json = SwiftyJSON.JSON(data: response.data!)
+                print(json)
+                if(response.response) == nil {
+                    self.sys_err = true
+                    return
+                    
+                }
+                if response.response!.statusCode == 200 {
+                    
+                    self.errFlg = false
+                }else {
+                    self.errFlg = true
+                }
+                NotificationCenter.default.post(name: .userApiLoadComplate, object: nil)
+        }
+        
+    }
+    
+    func delUserRing(id: Int) {
+        
+        self.errFlg = false
+        
+        NotificationCenter.default.post(name: .userApiLoadStart, object: nil)
+        let userDefault = UserDefaults.standard
+        let postUrl = URL(string:
+            apiHost + "user/user_ring/delete")!
+        
+        let headers: HTTPHeaders = [
+            "Content-Type":"Application/json",
+            "access-token": userDefault.string(forKey: "access_token")!,
+            "uid": userDefault.string(forKey: "uid")!,
+            "client": userDefault.string(forKey: "client")!
+        ]
+        
+        let params = [
+            "id": String(id)
+        ]
+        
+        Alamofire.request(postUrl,
+                          method: .post,
+                          parameters: params,
+                          encoding: JSONEncoding.default,
+                          headers: headers).responseJSON
+            {
+                response in
+                
+                let json = SwiftyJSON.JSON(data: response.data!)
+                print(json)
+                if(response.response) == nil {
+                    self.sys_err = true
+                    return
+                    
+                }
+                if response.response!.statusCode == 200 {
+                    
+                    self.errFlg = false
+                }else {
+                    self.errFlg = true
+                }
+                NotificationCenter.default.post(name: .userApiLoadComplate, object: nil)
+        }
+        
+    }
 }
 
 public struct Service {
@@ -239,4 +1062,30 @@ public struct UserInfo {
     public var profile = Profile()
     public var image: String? = ""
     
+    
+}
+
+public struct Book {
+    public var id: Int? = 0
+    public var name: String? = nil
+}
+public struct Food {
+    public var id: Int? = 0
+    public var name: String? = nil
+}
+public struct Hoby {
+    public var id: Int? = 0
+    public var name: String? = nil
+}
+public struct Restaurant {
+    public var id: Int? = 0
+    public var name: String? = nil
+}
+public struct Song {
+    public var id: Int? = 0
+    public var name: String? = nil
+}
+public struct Ring {
+    public var id: Int? = 0
+    public var name: String? = nil
 }

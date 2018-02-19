@@ -146,9 +146,10 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
 //        if self.serviceApi.serviceList1.count > 0  {
         
             if self.serviceApi.serviceList1[indexPath.row].service_cd! == "0001" {
-                // 個人データ設定画面
-                self.performSegue(withIdentifier: "userInfoEdit", sender: nil)
-                
+//                // 個人データ設定画面
+                let storyboard: UIStoryboard = UIStoryboard(name: "UserInfoEdit", bundle: nil)
+                let nextView = storyboard.instantiateInitialViewController()
+                present(nextView!, animated: true, completion: nil)
             }else if self.serviceApi.serviceList1[indexPath.row].service_cd! == "0002" {
                 
                 let userdefault = UserDefaults.standard
@@ -169,9 +170,13 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
                     userdefault.set(self.serviceApi.couple_id, forKey: "couple_id")
                     
                     // カップル
-                    self.performSegue(withIdentifier: "showCoupleSegue", sender: nil)
-                }else if !self.serviceApi.couple_info_exist_flg && self.serviceApi.couple_id != 0{
                     
+                    let storyboard: UIStoryboard = UIStoryboard(name: "ShowCouple", bundle: nil)
+                    let nextView = storyboard.instantiateInitialViewController()
+                    
+                    present(nextView!, animated: true, completion: nil)
+                    
+                }else if !self.serviceApi.couple_info_exist_flg && self.serviceApi.couple_id != 0{
                     
                     userdefault.set(self.serviceApi.couple_id, forKey: "couple_id")
                     print("==================================")

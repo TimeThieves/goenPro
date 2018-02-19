@@ -15,11 +15,14 @@ class CreateMessageViewController: UIViewController, UITextViewDelegate {
     
     let messageView = UITextView()
     var loadObserver: NSObjectProtocol?
+    var navItem = UINavigationItem()
+    let navBar = UINavigationBar()
     
     public var couple_id: Int = 0
+    let api: CoupleApi = CoupleApi()
     
     override func viewDidLoad() {
-        
+        print(couple_id)
         super.viewDidLoad()
         
         let notification = NotificationCenter.default
@@ -27,15 +30,7 @@ class CreateMessageViewController: UIViewController, UITextViewDelegate {
         print("waaaaai")
         view.backgroundColor = .white
         
-        let navBar = UINavigationBar()
-        navBar.frame = CGRect(x:0 , y: UIApplication.shared.statusBarFrame.height, width: UIScreen.main.bounds.width, height: 100)
-        navBar.backgroundColor = .white
         
-        let navItem: UINavigationItem = UINavigationItem(title: "メッセージ作成")
-        navItem.leftBarButtonItem = UIBarButtonItem(title: "閉じる",style: .plain, target: self, action: #selector(self.close))
-        navItem.rightBarButtonItem = UIBarButtonItem(title: "送信",style: .plain, target: self, action: #selector(self.insertMessage))
-        //ナビゲーションバーにナビゲーションアイテムを格納する。
-        navBar.pushItem(navItem, animated:true)
         print(navBar.frame.maxY)
         
         messageView.frame = CGRect(x: 0, y: 0 , width: 200, height: 50)
@@ -44,8 +39,11 @@ class CreateMessageViewController: UIViewController, UITextViewDelegate {
         messageView.text = "メッセージを入力しましょう。"
         messageView.font = UIFont.systemFont(ofSize: 20)
         
-        self.view.addSubview(navBar)
         self.view.addSubview(messageView)
+        
+        navVarInit()
+        
+        self.view.addSubview(navBar)
         messageView.delegate = self
         messageView.isScrollEnabled = false
         messageView.translatesAutoresizingMaskIntoConstraints = false
@@ -66,7 +64,7 @@ class CreateMessageViewController: UIViewController, UITextViewDelegate {
     @objc func insertMessage() {
         SVProgressHUD.show()
         loadObserver = NotificationCenter.default.addObserver(
-            forName: .ceremonyApiLoadComplate,
+            forName: .coupleApiLoadComplate,
             object: nil,
             queue: nil,
             using: {
@@ -91,9 +89,68 @@ class CreateMessageViewController: UIViewController, UITextViewDelegate {
                     }
                 }
                 
+                if self.api.updateFlg {
+                    let alertView = UIAlertController(title: "エラー",
+                                                      message: "もう一度入力して下さい。",
+                                                      preferredStyle: .alert)
+                    
+                    alertView.addAction(
+                        UIAlertAction(title: "閉じる",
+                                      style: .default){
+                                        action in return
+                        }
+                    )
+                    self.present(alertView, animated: true,completion: nil)
+                }else {
+                    let alertView = UIAlertController(title: "送信完了",
+                                                      message: "メッセージを送信しました。",
+                                                      preferredStyle: .alert)
+                    
+                    alertView.addAction(
+                        UIAlertAction(title: "閉じる",
+                                      style: .default){
+                                        action in
+                                        
+                                        
+                                        print("close")
+                                        self.dismiss(animated: true, completion: nil)
+                                            
+                                        
+                                        return
+                        }
+                    )
+                    self.present(alertView, animated: true,completion: nil)
+                }
+                
                 SVProgressHUD.dismiss()
         })
         
+        self.api.insertMessage(message: messageView.text!, couple_id: self.couple_id)
+        
+        
+    }
+    
+    func navVarInit() {
+        
+        
+        navBar.frame = CGRect(x:0 , y: UIApplication.shared.statusBarFrame.height, width: UIScreen.main.bounds.width, height: 100)
+        navBar.backgroundColor = .white
+        
+        navItem = UINavigationItem(title: "メッセージ作成")
+        navItem.leftBarButtonItem = UIBarButtonItem(title: "閉じる",style: .plain, target: self, action: #selector(self.close))
+        navItem.rightBarButtonItem = UIBarButtonItem(title: "送信",style: .plain, target: self, action: #selector(self.insertMessage))
+        print(messageView.text)
+        if messageView.text == "メッセージを入力しましょう。" || messageView.text == "" {
+            print("wai")
+            navItem.rightBarButtonItem?.isEnabled = false
+            
+        }else {
+            print("wai2")
+           navItem.rightBarButtonItem?.isEnabled = true
+        }
+        
+        //ナビゲーションバーにナビゲーションアイテムを格納する。
+        navBar.pushItem(navItem, animated:true)
     }
     
     // キーボードが現れた時に、画面全体をずらす。
@@ -139,12 +196,23 @@ class CreateMessageViewController: UIViewController, UITextViewDelegate {
                 constraint.constant = estmatedSize.height
             }
         }
+        if textView.text == "" {
+            
+            navItem.rightBarButtonItem?.isEnabled = false
+        }else {
+            navItem.rightBarButtonItem?.isEnabled = true
+            
+        }
     }
     
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         if messageView.text == "メッセージを入力しましょう。" {
             messageView.text = ""
             messageView.textColor = UIColor.black
+        }else {
+            if messageView.text == "" {
+                navVarInit()
+            }
         }
         return true
     }
